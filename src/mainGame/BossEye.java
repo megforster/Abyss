@@ -19,6 +19,7 @@ import mainGame.Game.STATE;
  *
  */
 
+//weeeeeee
 public class BossEye extends GameObject {
 
 	private Image img;
