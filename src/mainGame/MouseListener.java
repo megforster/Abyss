@@ -3,6 +3,7 @@ package mainGame;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 import mainGame.Game.STATE;
@@ -121,7 +122,7 @@ public class MouseListener extends MouseAdapter {
 			else if (mouseOver(mx, my, ((Game.WIDTH - buttonwidth)/2), ((Game.HEIGHT - buttonheight)*5/6), buttonwidth, buttonheight)) {
 				JOptionPane.showMessageDialog(game,
 						"Controls:"
-								+ " Use either WASD or the Arrow Keys to move. \nYour character shoots in the direction you're moving in. \nSurvive and Fight as long as you can!");
+								+ " use WASD or the Arrow Keys to move and space to shoot. \nCollect power-ups like speed and health boosts to assist you on your joueney. \nSurvive and Fight as long as you can!", "Help Menu", JOptionPane.INFORMATION_MESSAGE, new ImageIcon(MouseListener.class.getResource("/images/PlayerBoi.png")));
 			}
 
 			// Credits
