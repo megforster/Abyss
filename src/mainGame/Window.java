@@ -23,7 +23,7 @@ public class Window extends Canvas{
 	
 	public Window(int width, int height, String title, Game game){
 		
-		JFrame frame = new JFrame(title);
+		EscapableFrame frame = new EscapableFrame(title);
 
 		Toolkit tool = Toolkit.getDefaultToolkit();
 		
