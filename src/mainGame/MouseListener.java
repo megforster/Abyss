@@ -122,7 +122,7 @@ public class MouseListener extends MouseAdapter {
 			else if (mouseOver(mx, my, ((Game.WIDTH - buttonwidth)/2), ((Game.HEIGHT - buttonheight)*5/6), buttonwidth, buttonheight)) {
 				JOptionPane.showMessageDialog(game,
 						"Controls:"
-								+ " use WASD or the Arrow Keys to move and space to shoot. \nCollect power-ups like speed and health boosts to assist you on your joueney. \nSurvive and Fight as long as you can!", "Help Menu", JOptionPane.INFORMATION_MESSAGE, new ImageIcon(MouseListener.class.getResource("/images/PlayerBoi.png")));
+								+ " use WASD or the Arrow Keys to move and space to shoot. \nCollect power-ups like speed and health boosts to assist you on your journey. \nSurvive and Fight as long as you can!", "Help Menu", JOptionPane.INFORMATION_MESSAGE, new ImageIcon(MouseListener.class.getResource("/images/PlayerBoi.png")));
 			}
 
 			// Credits
