@@ -49,7 +49,7 @@ public class EnemyShooterBullet extends GameObject {
 	}
 
 	public void render(Graphics g) {
-		g.setColor(Color.black);
+		g.setColor(Color.red);
 		g.fillRect((int) x, (int) y, 4, 4);
 
 	}
