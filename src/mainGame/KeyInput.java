@@ -69,7 +69,11 @@ public class KeyInput extends KeyAdapter {
 					keyDown[3] = true;
 				}
 				if (key == KeyEvent.VK_SPACE) {
-					upgrades.levelSkipAbility();
+					//System.out.println("pew pew");
+					//player.tick();
+					//handler.addObject(new PlayerBullet((int) player.getX() + 8, (int) player.getY() + 5, player.getVelX(), player.getVelY(), ID.PlayerBullet, handler));
+					//System.out.println("bam bam");
+					//upgrades.levelSkipAbility();
 				}
 				if (key == KeyEvent.VK_P){ // Activates pause menu
 					game.gameState = STATE.Pause;	
@@ -84,7 +88,6 @@ public class KeyInput extends KeyAdapter {
 						upgrades.freezeTimeAbility();
 					}
 				}
-
 			}
 
 		}

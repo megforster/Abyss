@@ -37,7 +37,7 @@ public class PlayerBullet extends GameObject {
 	@Override
 	public void render(Graphics g) {
 		// TODO Auto-generated method stub
-		g.setColor(Color.MAGENTA);
+		g.setColor(Color.BLACK);
 		g.fillRect((int) x, (int) y, 16, 16);
 	}
 

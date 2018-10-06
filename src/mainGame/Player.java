@@ -61,7 +61,7 @@ public class Player extends GameObject {
 
 		collision();
 		checkIfDead();
-		drawFirstBullet();
+		//drawFirstBullet();
 
 	}
 	
@@ -153,6 +153,7 @@ public class Player extends GameObject {
 		if (velX != 0 || velY != 0) 
 			handler.addObject(new PlayerBullet((int) this.x + 8, (int) this.y + 5, velX, velY, ID.PlayerBullet, handler));
 	}
+	
 
 	
 	public double getX() {
@@ -161,6 +162,14 @@ public class Player extends GameObject {
 	
 	public double getY() {
 		return this.y;
+	}
+	
+	public double getVelY() {
+		return this.velY;
+	}
+	
+	public double getVelX() {
+		return this.velX;
 	}
 
 }

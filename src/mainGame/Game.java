@@ -82,7 +82,7 @@ public class Game extends Canvas implements Runnable {
 				this.player, this.upgrades, this.victory);
 		this.addKeyListener(new KeyInput(this.handler, this, this.hud, this.player, this.spawner, this.upgrades));
 		this.addMouseListener(mouseListener);
-		new Window((int) WIDTH, (int) HEIGHT, "Wave Game", this);
+		new Window((int) WIDTH, (int) HEIGHT, "Abyss", this);
 		
 		Background = null;
 		try {
