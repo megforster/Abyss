@@ -47,6 +47,7 @@ public class Game extends Canvas implements Runnable {
 	private Upgrades upgrades;
 	private static Player player;
 	private Image Background;
+	private PlayerBullet bullet;
 
 	private Victory victory;
 	private Pause pause; // added type Pause variable 

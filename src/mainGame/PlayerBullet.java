@@ -19,6 +19,8 @@ public class PlayerBullet extends GameObject {
 		if (pVelY > 0) {velY = 20;}
 		if (pVelY < 0) {velY = -20;}
 	}
+	
+	
 
 	@Override
 	public void tick() {

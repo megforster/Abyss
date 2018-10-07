@@ -61,7 +61,7 @@ public class Player extends GameObject {
 
 		collision();
 		checkIfDead();
-		//drawFirstBullet();
+		//drawFirstBullet(); //uncomment this line to regain shooting with movement
 
 	}
 	
@@ -171,5 +171,7 @@ public class Player extends GameObject {
 	public double getVelX() {
 		return this.velX;
 	}
+	
+	
 
 }

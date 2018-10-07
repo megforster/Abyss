@@ -69,12 +69,17 @@ public class KeyInput extends KeyAdapter {
 					keyDown[3] = true;
 				}
 				if (key == KeyEvent.VK_SPACE) {
-					//System.out.println("pew pew");
-					//player.tick();
-					//handler.addObject(new PlayerBullet((int) player.getX() + 8, (int) player.getY() + 5, player.getVelX(), player.getVelY(), ID.PlayerBullet, handler));
-					//System.out.println("bam bam");
-					//upgrades.levelSkipAbility();
-				}
+					double velX = tempObject.getVelX();
+					double velY = tempObject.getVelY();
+					double x = tempObject.getX()+8;
+					double y = tempObject.getY()+5;
+					handler.addObject(new PlayerBullet((int) x, (int) y, velX, velY, ID.PlayerBullet, handler));
+					
+					
+					
+					
+					
+					}
 				if (key == KeyEvent.VK_P){ // Activates pause menu
 					game.gameState = STATE.Pause;	
 				}
