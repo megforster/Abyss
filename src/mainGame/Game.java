@@ -29,8 +29,8 @@ public class Game extends Canvas implements Runnable {
 	static Dimension scrnSize = Toolkit.getDefaultToolkit().getScreenSize();
 	static Rectangle winSize = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
 	static int taskBarHeight = scrnSize.height - winSize.height;
-	public static final int WIDTH = ((int) (tool.getScreenSize().getWidth()));
-	public static final int HEIGHT = ((int) ((tool.getScreenSize().getHeight()) - taskBarHeight));
+	public static final int WIDTH = (1447);
+	public static final int HEIGHT = (845);
 	
 	private Thread thread;
 	private boolean running = false;
@@ -87,7 +87,9 @@ public class Game extends Canvas implements Runnable {
 		
 		Background = null;
 		try {
-			Background = ImageIO.read(new File("images/Background.png"));
+			//CHANGED BACKGROUND IN PLAYING SCREEN!!
+			//SPACE IMAGE BACKGROUND (abyssspacebackground.png) 
+			Background = ImageIO.read(new File("images/abyssspacebackground.png"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
