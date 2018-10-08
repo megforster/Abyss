@@ -74,6 +74,7 @@ public class KeyInput extends KeyAdapter {
 					double x = tempObject.getX()+8;
 					double y = tempObject.getY()+5;
 					handler.addObject(new PlayerBullet((int) x, (int) y, velX, velY, ID.PlayerBullet, handler));
+					upgrades.levelSkipAbility();
 					
 					
 					

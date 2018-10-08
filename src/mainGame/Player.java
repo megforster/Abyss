@@ -32,7 +32,7 @@ public class Player extends GameObject {
 	private int damage;
 	private int playerWidth, playerHeight;
 	private Image img;
-	public static int playerSpeed = 10;
+	public static int playerSpeed = 15;
 
 	public Player(double x, double y, ID id, Handler handler, HUD hud, Game game) {
 		super(x, y, id);
@@ -61,7 +61,7 @@ public class Player extends GameObject {
 
 		collision();
 		checkIfDead();
-		//drawFirstBullet(); //uncomment this line to regain shooting with movement
+		drawFirstBullet(); //uncomment this line to regain shooting with movement
 
 	}
 	
