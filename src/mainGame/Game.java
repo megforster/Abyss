@@ -88,7 +88,9 @@ public class Game extends Canvas implements Runnable {
 		
 		Background = null;
 		try {
-			Background = ImageIO.read(new File("images/Background.png"));
+			//CHANGED BACKGROUND IN PLAYING SCREEN!!
+			//SPACE IMAGE BACKGROUND (abyssspacebackground.png) 
+			Background = ImageIO.read(new File("images/abyssspacebackground.png"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
