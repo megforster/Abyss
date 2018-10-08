@@ -30,8 +30,8 @@ public class Window extends Canvas{
 		Dimension scrnSize = Toolkit.getDefaultToolkit().getScreenSize();
 		Rectangle winSize = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
 		int taskBarHeight = scrnSize.height - winSize.height;
-		int x = ((int) (tool.getScreenSize().getWidth()));
-		int y = ((int) ((tool.getScreenSize().getHeight()) - taskBarHeight));
+		int x = (1447);
+		int y = (845);
 
 
 		frame.setSize(x,y);
