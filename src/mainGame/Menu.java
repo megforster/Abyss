@@ -170,8 +170,14 @@ public class Menu {
 			g.setColor(Color.white);
 			drawCenteredString(g, "Credits", Creditbutton, font2 );
 
-
-
+			//NEW MENUE
+			//CHOOSE A BACKGROUND
+			g.setFont(font2);
+			g.setColor(Color.white);
+			g.drawRect( ((Game.WIDTH - buttonwidth)/16), ((Game.HEIGHT - buttonheight)/2), buttonwidth, buttonheight);
+			Rectangle Backgroundbutton = new Rectangle (((Game.WIDTH - buttonwidth)/16), ((Game.HEIGHT - buttonheight)/2), buttonwidth, buttonheight);
+			g.setColor(Color.white);
+			drawCenteredString(g, "Pick a Theme:", Backgroundbutton, font2);
 
 	}
 

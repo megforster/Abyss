@@ -207,6 +207,7 @@ public class Game extends Canvas implements Runnable {
 
 		g.setColor(Color.black);
 		//g.drawImage(Background, 0, 0, null);
+		//SETS IMAGE TO SCREEN SIZE
 		g.drawImage(Background, 0, 0, this.getWidth(), this.getHeight(),null);
 		
 		
