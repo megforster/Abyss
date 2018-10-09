@@ -149,10 +149,11 @@ public class Player extends GameObject {
 		this.playerHeight = size;
 	}
 
-	public void drawFirstBullet() {
+	/*public void drawFirstBullet() {
 		if (velX != 0 || velY != 0) 
 			handler.addObject(new PlayerBullet((int) this.x + 8, (int) this.y + 5, velX, velY, ID.PlayerBullet, handler));
 	}
+	*/
 	
 
 	
