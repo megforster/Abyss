@@ -91,7 +91,7 @@ public class Game extends Canvas implements Runnable {
 			//CHANGED BACKGROUND IN PLAYING SCREEN!!
 			//SPACE IMAGE BACKGROUND (abyssspacebackground.png) 
 			//ADDITIONAL BACKGROUND(abysswaterbackground.jpg)
-			Background = ImageIO.read(new File("images/shipwreckbackground.jpg"));
+			Background = ImageIO.read(new File("images/abyssspacebackground.png"));
 		
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -161,7 +161,7 @@ public class Game extends Canvas implements Runnable {
 	 * appearance, etc).
 	 */
 	private void tick() {
-		if (pauseState == false) { // stops ticking hnadler if game is paused 
+		if (pauseState == false) { // stops ticking handler if game is paused 
 		handler.tick();
 		}
 		if (gameState == STATE.Game) {// game is running
