@@ -67,8 +67,9 @@ public class Menu {
 		img = null;
 		try {
 			//CHANGE BACKGROUND IMAGE (background.png --> abyssspacebackground.png) 
+			//ADDITIONAL BACKGROUND(abysswaterbackground.jpg)
 			//CHANGED BACKGROUND IN THE MAIN MENU SCREEN
-			img = ImageIO.read(new File("images/abyssspacebackground.png"));
+			img = ImageIO.read(new File("images/abysssapcebackground.png"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -169,8 +170,14 @@ public class Menu {
 			g.setColor(Color.white);
 			drawCenteredString(g, "Credits", Creditbutton, font2 );
 
-
-
+			//NEW MENUE
+			//CHOOSE A BACKGROUND
+			g.setFont(font2);
+			g.setColor(Color.white);
+			g.drawRect( ((Game.WIDTH - buttonwidth)/16), ((Game.HEIGHT - buttonheight)/2), buttonwidth, buttonheight);
+			Rectangle Backgroundbutton = new Rectangle (((Game.WIDTH - buttonwidth)/16), ((Game.HEIGHT - buttonheight)/2), buttonwidth, buttonheight);
+			g.setColor(Color.white);
+			drawCenteredString(g, "Pick a Theme:", Backgroundbutton, font2);
 
 	}
 

@@ -69,18 +69,21 @@ public class KeyInput extends KeyAdapter {
 					keyDown[3] = true;
 				}
 				if (key == KeyEvent.VK_SPACE) {
+					//upgrades.levelSkipAbility(); //uncomment this to skip levels with space
 					double velX = tempObject.getVelX();
 					double velY = tempObject.getVelY();
 					double x = tempObject.getX()+8;
 					double y = tempObject.getY()+5;
-					handler.addObject(new PlayerBullet((int) x, (int) y, velX, velY, ID.PlayerBullet, handler));
-					upgrades.levelSkipAbility();
-					
-					
-					
-					
-					
+
+
+					if(velX==0&&velY==0) { //hard coded shooting when still 
+						velY=10;
 					}
+					
+					handler.addObject(new PlayerBullet((int) x, (int) y, velX, velY, ID.PlayerBullet, handler));
+		
+					}
+				
 				if (key == KeyEvent.VK_P){ // Activates pause menu
 					game.gameState = STATE.Pause;	
 				}

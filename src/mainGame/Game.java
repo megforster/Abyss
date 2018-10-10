@@ -89,7 +89,9 @@ public class Game extends Canvas implements Runnable {
 		try {
 			//CHANGED BACKGROUND IN PLAYING SCREEN!!
 			//SPACE IMAGE BACKGROUND (abyssspacebackground.png) 
+			//ADDITIONAL BACKGROUND(abysswaterbackground.jpg)
 			Background = ImageIO.read(new File("images/abyssspacebackground.png"));
+		
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -158,7 +160,7 @@ public class Game extends Canvas implements Runnable {
 	 * appearance, etc).
 	 */
 	private void tick() {
-		if (pauseState == false) { // stops ticking hnadler if game is paused 
+		if (pauseState == false) { // stops ticking handler if game is paused 
 		handler.tick();
 		}
 		if (gameState == STATE.Game) {// game is running
@@ -203,8 +205,11 @@ public class Game extends Canvas implements Runnable {
 		///////// Draw things bellow this/////////////
 
 		g.setColor(Color.black);
-		g.drawImage(Background, 0, 0, null);
-
+		//g.drawImage(Background, 0, 0, null);
+		//SETS IMAGE TO SCREEN SIZE
+		g.drawImage(Background, 0, 0, this.getWidth(), this.getHeight(),null);
+		
+		
 		handler.render(g); // ALWAYS RENDER HANDLER, NO MATTER IF MENU OR GAME SCREEN
 
 		if (gameState == STATE.Game) {// user is playing game, draw game objects
