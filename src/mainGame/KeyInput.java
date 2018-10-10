@@ -75,17 +75,8 @@ public class KeyInput extends KeyAdapter {
 					double x = tempObject.getX()+8;
 					double y = tempObject.getY()+5;
 					
-					if(velX==10) {
-						velX=8;
-					}
-					if(velX==-10) {
-						velX = -8;
-					}
-					if(velY==10) {
-						velY = 8;
-					}
-					if(velY==-10) {
-						velY = -8;
+					if(velX==0&&velY==0) { //hard coded shooting when still 
+						velY=10;
 					}
 					
 					handler.addObject(new PlayerBullet((int) x, (int) y, velX, velY, ID.PlayerBullet, handler));
