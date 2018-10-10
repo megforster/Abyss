@@ -176,3 +176,4 @@ public class Player extends GameObject {
 	
 
 }
+//so sneak
