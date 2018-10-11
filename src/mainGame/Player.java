@@ -32,14 +32,14 @@ public class Player extends GameObject {
 	private int damage;
 	private int playerWidth, playerHeight;
 	private Image img;
-	public static int playerSpeed = 15;
+	public static int playerSpeed = 13;
 
 	public Player(double x, double y, ID id, Handler handler, HUD hud, Game game) {
 		super(x, y, id);
 		this.handler = handler;
 		this.hud = hud;
 		this.game = game;
-		this.damage = 2;
+		this.damage = 4;
 		playerWidth = 32;
 		playerHeight = 32;
 		
@@ -106,7 +106,7 @@ public class Player extends GameObject {
 				// Allows player time to get out of upper area where they will get hurt once the
 				// boss starts moving
 				if (this.y <= 300 && tempObject.isMoving) {
-					hud.health -= 2;
+					hud.health -= 1;
 					hud.updateScoreColor(Color.red);
 				}
 			}
