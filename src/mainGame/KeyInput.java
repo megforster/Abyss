@@ -3,6 +3,8 @@ package mainGame;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+import javax.swing.JOptionPane;
+
 import mainGame.Game.STATE;
 
 /**
@@ -44,6 +46,10 @@ public class KeyInput extends KeyAdapter {
 	public void keyPressed(KeyEvent e) {
 		int key = e.getKeyCode();
 		this.speed = Player.playerSpeed;
+		if(key == KeyEvent.VK_ESCAPE)
+		{
+			System.exit(0);
+		}
 
 		// finds what key strokes associate with Player
 		for (int i = 0; i < handler.object.size(); i++) {
@@ -86,7 +92,18 @@ public class KeyInput extends KeyAdapter {
 				
 				if (key == KeyEvent.VK_P){ // Activates pause menu
 					game.gameState = STATE.Pause;	
+					
 				}
+				if(key == KeyEvent.VK_H)
+				{
+					game.gameState = STATE.Pause;
+					JOptionPane.showMessageDialog(game,
+							"Controls: "
+									+ "Use either WASD or the Arrow Keys to move." + "\n" +
+									"Survive waves and defeat bosses to win." + "\n" +
+									"Click 'Exit' to return to main menu.");
+				}
+				
 				if (key == KeyEvent.VK_ENTER) {
 					ability = upgrades.getAbility();
 					if (ability.equals("clearScreen")) {
