@@ -158,7 +158,7 @@ public class MouseListener extends MouseAdapter {
 				handler.clearPlayer();
 				handler.clearEnemies();
 				//Spawn1to10.restart();
-				//hud.setLevel(0);
+				//hud.setLevehl(0);
 				//hud.resetHealth(); 
 				//hud.setScore(0);
 				//hud.setExtraLives(0); // Exit button still fails to fully reset the game 
