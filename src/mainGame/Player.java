@@ -106,7 +106,7 @@ public class Player extends GameObject {
 				// Allows player time to get out of upper area where they will get hurt once the
 				// boss starts moving
 				if (this.y <= 300 && tempObject.isMoving) {
-					hud.health -= 1;
+					hud.health -= .5;
 					hud.updateScoreColor(Color.red);
 				}
 			}
