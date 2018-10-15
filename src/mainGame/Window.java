@@ -28,13 +28,11 @@ public class Window extends Canvas{
 		Toolkit tool = Toolkit.getDefaultToolkit();
 		
 		Dimension scrnSize = Toolkit.getDefaultToolkit().getScreenSize();
+	    frame.setSize(scrnSize.width, scrnSize.height);
 		Rectangle winSize = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
 		int taskBarHeight = scrnSize.height - winSize.height;
-		int x = (1447);
-		int y = (845);
-
-
-		frame.setSize(x,y);
+		int x = ((int) frame.getWidth());
+		int y = ((int) frame.getHeight());
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setResizable(true);
