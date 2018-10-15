@@ -44,7 +44,7 @@ public class EnemyShooter extends GameObject  {
 		this.velY = 0;
 		this.sizeX = sizeX;
 		this.sizeY = sizeY;
-		this.timer = 60;
+		this.timer = 30;
 		this.bulletSpeed = bulletSpeed;
 
 		for (int i = 0; i < handler.object.size(); i++) {
@@ -143,4 +143,4 @@ public class EnemyShooter extends GameObject  {
 
 
 }
-//sneaky comment
+//sneaky comment+2
