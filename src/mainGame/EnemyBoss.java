@@ -46,7 +46,7 @@ public class EnemyBoss extends GameObject {
 		velY = 4;
 
 
-		this.health = 1000;//full health is 1000
+		this.health = 750;//full health is 1000
 	}
 
 	public void tick() {
@@ -119,11 +119,11 @@ public class EnemyBoss extends GameObject {
 
 		// HEALTH BAR
 		g.setColor(Color.GRAY);
-		g.fillRect(Game.WIDTH / 2 - 500, Game.HEIGHT - 150, 1000, 50);
+		g.fillRect(Game.WIDTH / 2 - 375, Game.HEIGHT - 150, 750, 50);
 		g.setColor(Color.RED);
-		g.fillRect(Game.WIDTH / 2 - 500, Game.HEIGHT - 150, this.health, 50);
+		g.fillRect(Game.WIDTH / 2 - 375, Game.HEIGHT - 150, this.health, 50);
 		g.setColor(Color.WHITE);
-		g.drawRect(Game.WIDTH / 2 - 500, Game.HEIGHT - 150, 1000, 50);
+		g.drawRect(Game.WIDTH / 2 - 375, Game.HEIGHT - 150, 750, 50);
 
 	}
 
@@ -139,3 +139,4 @@ public class EnemyBoss extends GameObject {
 	}
 
 } 
+//sneaky beaky
