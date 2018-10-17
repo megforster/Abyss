@@ -104,7 +104,7 @@ public class MouseListener extends MouseAdapter {
 				upgradeScreen.removeUpgradeOption(3);
 
 				game.gameState = STATE.Game;
-			}
+			} 
 
 		}
 
@@ -142,6 +142,16 @@ public class MouseListener extends MouseAdapter {
 			if (mouseOver(mx, my, ((Game.WIDTH - buttonwidth)/2), ((Game.HEIGHT - buttonheight)/2), buttonwidth, buttonheight)) {
 				game.gameState = STATE.Game;
 			}
+			
+			//CURRENTLY WORKING HERE 
+			//ADDING THEME MENUE
+			//Theme Menu
+			else if (mouseOver(mx, my, ((Game.WIDTH - buttonwidth)/16), ((Game.HEIGHT - buttonheight)/2), buttonwidth, buttonheight)) {
+							JOptionPane.showMessageDialog(game,
+									"Pick a theme!"
+									+ "choose a theme for the game" +  "\n" 
+									+ "space or underwater");
+						}
 
 			// Help Button
 			else if (mouseOver(mx, my, ((Game.WIDTH - buttonwidth)/16), ((Game.HEIGHT - buttonheight)*5/6), buttonwidth, buttonheight)) {
