@@ -503,7 +503,7 @@ public class Spawn1to10 {
 	}
 
 	public static void restart() {
-		levelNumber = -10;
+		levelNumber = 0;
 		tempCounter = 0;
 		levelTimer = 150;
 		levelsRemaining = 10;

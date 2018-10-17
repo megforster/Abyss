@@ -14,12 +14,13 @@ public class EnvironmentalObstacle extends GameObject {
 	private Handler handler;
 	private int sizeX;
 	private int sizeY;
-	private GameObject player;
+	private Player player;
 	private Image img;
 
-	public EnvironmentalObstacle(double x, double y, int sizeX, int sizeY, ID id, Handler handler) {
+	public EnvironmentalObstacle(double x, double y, int sizeX, int sizeY, ID id, Handler handler, Player player) {
 		super(x, y, id);
 		this.handler = handler;
+		this.player = player;
 		this.velX = 0;
 		this.velY = 0;
 		this.sizeX = sizeX;
@@ -76,7 +77,9 @@ public class EnvironmentalObstacle extends GameObject {
 	}
 
 	public void collision() {
-		// if player collides with the spiky ball they lose 5HP points
+		if(getBounds().intersects(player.getBounds())) {
+			player.setDamage(5);
+		}
 	}
 
 	@Override

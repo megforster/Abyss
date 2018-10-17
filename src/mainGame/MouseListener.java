@@ -58,7 +58,8 @@ public class MouseListener extends MouseAdapter {
 			spawner2.restart();
 			spawner2.addLevels();
 			Spawn1to10.LEVEL_SET = 1;
-			game.gameState = STATE.Menu;
+			game.gameState = STATE.Game;
+			handler.addObject(player);
 		}
 		
 		else if (game.gameState == STATE.Victory) {
