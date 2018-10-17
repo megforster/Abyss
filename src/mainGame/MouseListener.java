@@ -146,13 +146,14 @@ public class MouseListener extends MouseAdapter {
 			//CURRENTLY WORKING HERE 
 			//ADDING THEME MENUE
 			//Theme Menu
+			/*
 			else if (mouseOver(mx, my, ((Game.WIDTH - buttonwidth)/16), ((Game.HEIGHT - buttonheight)/2), buttonwidth, buttonheight)) {
 							JOptionPane.showMessageDialog(game,
 									"Pick a theme!"
 									+ "choose a theme for the game" +  "\n" 
 									+ "space or underwater");
 						}
-
+*/
 			// Help Button
 			else if (mouseOver(mx, my, ((Game.WIDTH - buttonwidth)/16), ((Game.HEIGHT - buttonheight)*5/6), buttonwidth, buttonheight)) {
 				JOptionPane.showMessageDialog(game,

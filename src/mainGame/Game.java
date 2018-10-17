@@ -233,7 +233,7 @@ public class Game extends Canvas implements Runnable {
 			
 			
 		} else if (gameState == STATE.Theme) { //USER IS IN THEME THEN THEME MENU WILL APEAR
-			theme.render(g);
+			//theme.render(g);
 			
 			
 		} else if (gameState == STATE.Upgrade) {// user is on the upgrade screen, draw the upgrade screen
