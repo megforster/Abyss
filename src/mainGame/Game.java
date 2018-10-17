@@ -53,7 +53,7 @@ public class Game extends Canvas implements Runnable {
 	private Pause pause; // added type Pause variable 
 	
 	//THEME MENU 
-	private Theme theme; 
+	//private Theme theme; 
 
 	public STATE gameState = STATE.Menu;
 	public static int TEMP_COUNTER;
@@ -77,7 +77,7 @@ public class Game extends Canvas implements Runnable {
 		menu = new Menu(this, this.handler, this.hud, this.spawner);
 		
 		//THEME 
-		theme = new Theme(this, this.handler, this.hud);
+		//theme = new Theme(this, this.handler, this.hud);
 		
 		upgradeScreen = new UpgradeScreen(this, this.handler, this.hud);
 		player = new Player(WIDTH / 2 - 32, HEIGHT / 2 - 32, ID.Player, handler, this.hud, this);
@@ -182,7 +182,7 @@ public class Game extends Canvas implements Runnable {
 			
 			//THEME 
 		} else if (gameState == STATE.Menu ) {// user is on theme, options will appear
-			theme.tick();
+			//theme.tick();
 			
 			
 		} else if (gameState == STATE.Upgrade) {// user is on upgrade screen, update the upgrade screen
@@ -230,10 +230,6 @@ public class Game extends Canvas implements Runnable {
 		} else if (gameState == STATE.Menu || gameState == STATE.Help) {// user is in help or the menu, draw the menu
 																		// and help objects
 			menu.render(g);
-			
-			
-		} else if (gameState == STATE.Theme) { //USER IS IN THEME THEN THEME MENU WILL APEAR
-			//theme.render(g);
 			
 			
 		} else if (gameState == STATE.Upgrade) {// user is on the upgrade screen, draw the upgrade screen
