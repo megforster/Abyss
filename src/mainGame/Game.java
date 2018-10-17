@@ -51,6 +51,9 @@ public class Game extends Canvas implements Runnable {
 
 	private Victory victory;
 	private Pause pause; // added type Pause variable 
+	
+	//THEME MENU 
+	//private Theme theme; 
 
 	public STATE gameState = STATE.Menu;
 	public static int TEMP_COUNTER;
@@ -60,7 +63,7 @@ public class Game extends Canvas implements Runnable {
 	 * Used to switch between each of the screens shown to the user
 	 */
 	public enum STATE {
-		Menu, Help, Game, GameOver, Upgrade, Victory, Pause 
+		Menu, Help, Game, GameOver, Upgrade, Victory, Pause, Theme, 
 	};
 
 	/**
@@ -72,6 +75,10 @@ public class Game extends Canvas implements Runnable {
 		spawner = new Spawn1to10(this.handler, this.hud, this);
 		spawner2 = new Spawn10to20(this.handler, this.hud, this.spawner, this);
 		menu = new Menu(this, this.handler, this.hud, this.spawner);
+		
+		//THEME 
+		//theme = new Theme(this, this.handler, this.hud);
+		
 		upgradeScreen = new UpgradeScreen(this, this.handler, this.hud);
 		player = new Player(WIDTH / 2 - 32, HEIGHT / 2 - 32, ID.Player, handler, this.hud, this);
 		upgrades = new Upgrades(this, this.handler, this.hud, this.upgradeScreen, this.player, this.spawner,
@@ -90,7 +97,7 @@ public class Game extends Canvas implements Runnable {
 			//CHANGED BACKGROUND IN PLAYING SCREEN!!
 			//SPACE IMAGE BACKGROUND (abyssspacebackground.png) 
 			//ADDITIONAL BACKGROUND(abysswaterbackground.jpg)
-			Background = ImageIO.read(new File("images/abyssspacebackground.png"));
+			Background = ImageIO.read(new File("images/shipwreckbackground.jpg"));
 		
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -172,6 +179,12 @@ public class Game extends Canvas implements Runnable {
 			}
 		} else if (gameState == STATE.Menu || gameState == STATE.Help) {// user is on menu, update the menu items
 			menu.tick();
+			
+			//THEME 
+		} else if (gameState == STATE.Menu ) {// user is on theme, options will appear
+			//theme.tick();
+			
+			
 		} else if (gameState == STATE.Upgrade) {// user is on upgrade screen, update the upgrade screen
 			upgradeScreen.tick();
 		} else if (gameState == STATE.GameOver) {// game is over, update the game over screen
@@ -217,6 +230,8 @@ public class Game extends Canvas implements Runnable {
 		} else if (gameState == STATE.Menu || gameState == STATE.Help) {// user is in help or the menu, draw the menu
 																		// and help objects
 			menu.render(g);
+			
+			
 		} else if (gameState == STATE.Upgrade) {// user is on the upgrade screen, draw the upgrade screen
 			upgradeScreen.render(g);
 		} else if (gameState == STATE.GameOver) {// game is over, draw the game over screen
