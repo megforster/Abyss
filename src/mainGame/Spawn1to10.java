@@ -31,8 +31,9 @@ public class Spawn1to10 {
 	private double playerY;
 	private double hGenTemp;
 	private double wGenTemp;
-
-	public Spawn1to10(Handler handler, HUD hud, Game game) {
+	private Player player;
+	
+	public Spawn1to10(Handler handler, HUD hud, Game game, Player player) {
 		this.handler = handler;
 		this.hud = hud;
 		this.game = game;
@@ -48,6 +49,8 @@ public class Spawn1to10 {
 		addLevels();
 		index = r.nextInt(levelsRemaining);
 		levelNumber = 0;
+		this.player=player;
+		
 
 	}
 
@@ -82,6 +85,7 @@ public class Spawn1to10 {
 				tempCounter = 0;
 				levelNumber = levels.get(index);
 			}
+			handler.addObject(new EnvironmentalObstacle(100,100,10,10,ID.EnvironmentalObstace, handler, player));
 			break;
 
 		

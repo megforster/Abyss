@@ -72,7 +72,7 @@ public class Game extends Canvas implements Runnable {
 	public Game() {
 		handler = new Handler();
 		hud = new HUD();
-		spawner = new Spawn1to10(this.handler, this.hud, this);
+		spawner = new Spawn1to10(this.handler, this.hud, this, player);
 		spawner2 = new Spawn10to20(this.handler, this.hud, this.spawner, this);
 		menu = new Menu(this, this.handler, this.hud, this.spawner);
 		

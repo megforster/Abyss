@@ -25,6 +25,7 @@ public class EnvironmentalObstacle extends GameObject {
 		this.velY = 0;
 		this.sizeX = sizeX;
 		this.sizeY = sizeY;
+		System.out.println("Im running!");
 
 		Random rand = new Random();
 		int pic = rand.nextInt(3) + 1;
@@ -57,6 +58,7 @@ public class EnvironmentalObstacle extends GameObject {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+				break;
 			}
 	}
 
@@ -67,13 +69,22 @@ public class EnvironmentalObstacle extends GameObject {
 
 	@Override
 	public void render(Graphics g) {
-		double centerX = x + (this.sizeX / 2);
-		double centerY = y + (this.sizeY / 2);
-
-		Graphics2D g2d = (Graphics2D) g;
-		AffineTransform reset = new AffineTransform();
-		reset.rotate(0, 0, 0);
-		g2d.drawImage(img, (int) this.x, (int) this.y, sizeX, sizeY, null);
+		double centerX = x + img.getWidth(null) / 2;
+		double centerY = y +  img.getHeight(null) / 2;
+		
+		double angle = -Math.atan2(velX, velY);
+		      
+		
+		
+		     
+        Graphics2D g2d = (Graphics2D)g; // Create a Java2D version of g.
+        AffineTransform reset = new AffineTransform();
+        reset.rotate(0, 0, 0);
+        Graphics2D g2 = (Graphics2D)g;
+        g2.rotate((angle), centerX, centerY);
+       
+        g2d.drawImage(img, (int) this.x, (int) this.y, null);
+        g2.setTransform(reset);
 	}
 
 	public void collision() {
