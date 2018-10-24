@@ -44,7 +44,7 @@ public class EnemyBurst extends GameObject {
 			setPos();
 			setVel();
 		} else if (this.side.equals("right")) {
-			handler.object.add(new EnemyBurstWarning(Game.WIDTH - 45, 0, 25, Game.HEIGHT, ID.EnemyBurstWarning, handler));
+			handler.object.add(new EnemyBurstWarning(Game.WIDTH - 30, 0, 25, Game.HEIGHT, ID.EnemyBurstWarning, handler));
 			img = null;
 			try {
 				img = ImageIO.read(new File("images/TurtleR.png"));
@@ -66,7 +66,7 @@ public class EnemyBurst extends GameObject {
 			setVel();
 
 		} else if (this.side.equals("bottom")) {
-			handler.object.add(new EnemyBurstWarning(0, Game.HEIGHT - 85, Game.WIDTH, 25, ID.EnemyBurstWarning, handler));
+			handler.object.add(new EnemyBurstWarning(0, Game.HEIGHT - Game.taskBarHeight + 10, Game.WIDTH, 25, ID.EnemyBurstWarning, handler));
 			img = null;
 			try {
 				img = ImageIO.read(new File("images/TurtleB.png"));
