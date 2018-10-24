@@ -16,50 +16,27 @@ public class EnvironmentalObstacle extends GameObject {
 	private int sizeY;
 	private Player player;
 	private Image img;
+	private Rectangle rec;
 
-	public EnvironmentalObstacle(double x, double y, int sizeX, int sizeY, ID id, Handler handler, Player player) {
+	public EnvironmentalObstacle(double x, double y, ID id, Handler handler, Player player) {
+		//apparently this is constantly running???
 		super(x, y, id);
+		System.out.println("WTF IS THIS");
 		this.handler = handler;
 		this.player = player;
 		this.velX = 0;
 		this.velY = 0;
-		this.sizeX = sizeX;
-		this.sizeY = sizeY;
-		System.out.println("Im running!");
 
-		Random rand = new Random();
-		int pic = rand.nextInt(3) + 1;
-
-		switch (pic) {
-			case 1:
+		
 				try {
-					img = ImageIO.read(new File("images/EnvironmentalObstacle.jpg"));
+					img = ImageIO.read(new File("images/Monster-1.png"));
+					img = img.getScaledInstance(200, 200, 0);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
-				break;
-			case 2:
-				try {
-					img = ImageIO.read(new File("images/EnvironmentalObstacle2.jpg"));
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-				break;
-			case 3:
-				try {
-					img = ImageIO.read(new File("images/EnvironmentalObstacle.jpg"));
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-				break;
-			default:
-				try {
-					img = ImageIO.read(new File("images/EnvironmentalObstacle.jpg"));
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-				break;
-			}
+				sizeX = img.getWidth(null);
+				sizeY = img.getHeight(null);
+		getBounds();	
 	}
 
 	@Override
@@ -82,20 +59,21 @@ public class EnvironmentalObstacle extends GameObject {
         reset.rotate(0, 0, 0);
         Graphics2D g2 = (Graphics2D)g;
         g2.rotate((angle), centerX, centerY);
-       
         g2d.drawImage(img, (int) this.x, (int) this.y, null);
         g2.setTransform(reset);
 	}
 
 	public void collision() {
-		if(getBounds().intersects(player.getBounds())) {
-			player.setDamage(5);
+		if(rec.intersects(player.getBounds())) {
+			System.out.println("BAM");
 		}
 	}
 
-	@Override
+	
 	public Rectangle getBounds() {
+		System.out.println("Bop");
 		return new Rectangle((int) this.x, (int) this.y, this.sizeX, this.sizeY);
+	
 	}
 
 }
