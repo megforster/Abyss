@@ -27,7 +27,7 @@ public class EnemyBoss extends GameObject {
 	Random r = new Random();
 	private Image img;
 	private int spawn;
-	public static int enemyDamage = 2; 
+	public static int enemyDamage = 1; 
 
 	public EnemyBoss(ID id, Handler handler) {
 		super(Game.WIDTH / 2 - 48, -120, id);

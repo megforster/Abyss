@@ -45,7 +45,7 @@ public class Spawn10to20 {
 		this.victory = victory;
 		hud.restoreHealth();
 		spawnTimer = 12;
-		levelTimer = 150;
+		levelTimer = 100;
 		//randomMax = 10;
 		levelsRemaining = 10;
 		hud.setLevel(1);

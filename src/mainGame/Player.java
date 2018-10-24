@@ -32,7 +32,7 @@ public class Player extends GameObject {
 	private int damage;
 	private int playerWidth, playerHeight;
 	private Image img;
-	public static int playerSpeed = 13;
+	public static int playerSpeed = 14;
 
 	public Player(double x, double y, ID id, Handler handler, HUD hud, Game game) {
 		super(x, y, id);

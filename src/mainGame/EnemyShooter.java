@@ -35,7 +35,7 @@ public class EnemyShooter extends GameObject  {
 
 
 	private Image img;
-	public static int sizeDecrease = 1;
+	public static int sizeDecrease = 3;
 
 	public EnemyShooter(double x, double y, int sizeX, int sizeY, int bulletSpeed, ID id, Handler handler) {
 		super(x, y, id);
