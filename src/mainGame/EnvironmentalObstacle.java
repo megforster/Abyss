@@ -19,9 +19,7 @@ public class EnvironmentalObstacle extends GameObject {
 	private Rectangle rec;
 
 	public EnvironmentalObstacle(double x, double y, ID id, Handler handler, Player player) {
-		//apparently this is constantly running???
 		super(x, y, id);
-		System.out.println("WTF IS THIS");
 		this.handler = handler;
 		this.player = player;
 		this.velX = 0;

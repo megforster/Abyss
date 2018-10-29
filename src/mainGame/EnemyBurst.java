@@ -10,7 +10,7 @@ import java.util.Random;
 
 import javax.imageio.ImageIO;
 
-import javafx.scene.transform.Rotate;
+//import javafx.scene.transform.Rotate;
 
 /**
  * A type of enemy in the game
