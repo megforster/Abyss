@@ -26,7 +26,6 @@ public class Game extends Canvas implements Runnable {
 	private static final long serialVersionUID = 1L;
 
 	static Toolkit tool = Toolkit.getDefaultToolkit();
-	 //static Dimension taskBarHeight = tool.get
 	static Dimension scrnSize = Toolkit.getDefaultToolkit().getScreenSize();
 	static Rectangle winSize = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
 	static int taskBarHeight = scrnSize.height - winSize.height;
