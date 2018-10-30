@@ -17,6 +17,8 @@ public class EnvironmentalObstacle extends GameObject {
 	private int sizeY;
 	private Player player;
 	private Image img;
+	private static Random r = new Random();
+	private double x, y;
 
 	public EnvironmentalObstacle(double x, double y, ID id, Handler handler, Player player) {
 		super(x, y, id);
@@ -24,6 +26,8 @@ public class EnvironmentalObstacle extends GameObject {
 		this.player = player;
 		this.velX = 0;
 		this.velY = 0;
+		this.x = x;
+		this.y = y;
 
 		
 				try {
@@ -66,6 +70,11 @@ public class EnvironmentalObstacle extends GameObject {
 	public Rectangle getBounds() {
 		return new Rectangle((int) this.x+30, (int) this.y+30, this.sizeX-60, this.sizeY-60);
 	
+	}
+	
+	public void move() {
+	 this.x = r.nextInt(1000)*1;
+	 this.y = r.nextInt(500)*1;
 	}
 
 }

@@ -145,11 +145,11 @@ public class KeyInput extends KeyAdapter {
 				// horizontal movement
 				if (!keyDown[1] && !keyDown[3])
 					tempObject.setVelX(0);
-			}
+			} 
 
 		}
 
-		// if (key == KeyEvent.VK_ESCAPE) System.exit(1);
+		
 	}
 
 }

@@ -33,6 +33,7 @@ public class Player extends GameObject {
 	private int playerWidth, playerHeight;
 	private Image img;
 	public static int playerSpeed = 14;
+	private EnvironmentalObstacle obstacle;
 
 	public Player(double x, double y, ID id, Handler handler, HUD hud, Game game) {
 		super(x, y, id);
@@ -98,7 +99,9 @@ public class Player extends GameObject {
 				// collision code
 				if (getBounds().intersects(tempObject.getBounds())) {// player hit an enemy
 					if(tempObject.getId()==ID.EnvironmentalObstace) {
-						hud.health-=1;
+						obstacle = (EnvironmentalObstacle)tempObject;
+						obstacle.move();
+						hud.health-=5;
 						hud.updateScoreColor(Color.red);
 						
 					}else {
