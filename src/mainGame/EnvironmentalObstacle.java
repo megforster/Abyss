@@ -1,5 +1,6 @@
 package mainGame;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -16,7 +17,6 @@ public class EnvironmentalObstacle extends GameObject {
 	private int sizeY;
 	private Player player;
 	private Image img;
-	private Rectangle rec;
 
 	public EnvironmentalObstacle(double x, double y, ID id, Handler handler, Player player) {
 		super(x, y, id);
@@ -61,16 +61,10 @@ public class EnvironmentalObstacle extends GameObject {
         g2.setTransform(reset);
 	}
 
-	public void collision() {
-		if(rec.intersects(player.getBounds())) {
-			System.out.println("BAM");
-		}
-	}
 
 	
 	public Rectangle getBounds() {
-		System.out.println("Bop");
-		return new Rectangle((int) this.x, (int) this.y, this.sizeX, this.sizeY);
+		return new Rectangle((int) this.x+30, (int) this.y+30, this.sizeX-60, this.sizeY-60);
 	
 	}
 
