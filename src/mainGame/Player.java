@@ -101,7 +101,7 @@ public class Player extends GameObject {
 					if(tempObject.getId()==ID.EnvironmentalObstace) {
 						obstacle = (EnvironmentalObstacle)tempObject;
 						obstacle.move();
-						hud.health-=5;
+						hud.health-=2;
 						hud.updateScoreColor(Color.red);
 						
 					}else {

@@ -103,7 +103,7 @@ public class Spawn1to10 {
 									// run for
 				levelTimer = 2000;// 2000 / 60 method calls a second = 33.33 seconds long
 				tempCounter++;// ensures the method is only called once
-				for(int i = 0; i<5; i++) { //spawns 5 environmental obstacles
+				for(int i = 1; i<=r.nextInt(10)*5; i++) { //spawns 5 environmental obstacles
 					int x = r.nextInt(1000)*1;
 					int y = r.nextInt(500)*1;
 					handler.addObject(new EnvironmentalObstacle(x,y,ID.EnvironmentalObstace, handler, player));
@@ -162,7 +162,7 @@ public class Spawn1to10 {
 			if (tempCounter < 1) {
 				levelTimer = 2000;
 				tempCounter++;
-				for(int i = 0; i<5; i++) { //spawns 5 environmental obstacles
+				for(int i = 1; i<=r.nextInt(10)*5; i++) { //spawns 5 environmental obstacles
 					int x = r.nextInt(1000)*1;
 					int y = r.nextInt(500)*1;
 					handler.addObject(new EnvironmentalObstacle(x,y,ID.EnvironmentalObstace, handler, player));
@@ -212,7 +212,7 @@ public class Spawn1to10 {
 			if (tempCounter < 1) {
 				levelTimer = 1500;
 				tempCounter++;
-				for(int i = 0; i<5; i++) { //spawns 5 environmental obstacles
+				for(int i = 1; i<=r.nextInt(10)*5; i++) { //spawns 5 environmental obstacles
 					int x = r.nextInt(1000)*1;
 					int y = r.nextInt(500)*1;
 					handler.addObject(new EnvironmentalObstacle(x,y,ID.EnvironmentalObstace, handler, player));
@@ -257,7 +257,7 @@ public class Spawn1to10 {
 						-20, ID.EnemyShooter, this.handler));
 				levelTimer = 1300;
 				tempCounter++;
-				for(int i = 0; i<5; i++) { //spawns 5 environmental obstacles
+				for(int i = 1; i<=r.nextInt(10)*5; i++) { //spawns 5 environmental obstacles
 					int x = r.nextInt(1000)*1;
 					int y = r.nextInt(500)*1;
 					handler.addObject(new EnvironmentalObstacle(x,y,ID.EnvironmentalObstace, handler, player));
@@ -288,7 +288,7 @@ public class Spawn1to10 {
 			if (tempCounter < 1) {
 				levelTimer = 1400;
 				tempCounter++;
-				for(int i = 0; i<5; i++) { //spawns 5 environmental obstacles
+				for(int i = 1; i<=r.nextInt(10)*5; i++) { //spawns 5 environmental obstacles
 					int x = r.nextInt(1000)*1;
 					int y = r.nextInt(500)*1;
 					handler.addObject(new EnvironmentalObstacle(x,y,ID.EnvironmentalObstace, handler, player));
@@ -330,7 +330,7 @@ public class Spawn1to10 {
 			if (tempCounter < 1) {
 				levelTimer = 1500;
 				tempCounter++;
-				for(int i = 0; i<5; i++) { //spawns 5 environmental obstacles
+				for(int i = 1; i<=r.nextInt(10)*5; i++) { //spawns 5 environmental obstacles
 					int x = r.nextInt(1000)*1;
 					int y = r.nextInt(500)*1;
 					handler.addObject(new EnvironmentalObstacle(x,y,ID.EnvironmentalObstace, handler, player));
@@ -370,7 +370,7 @@ public class Spawn1to10 {
 			if (tempCounter < 1) {
 				levelTimer = 1200;
 				tempCounter++;
-				for(int i = 0; i<5; i++) { //spawns 5 environmental obstacles
+				for(int i = 1; i<=r.nextInt(10)*5; i++) { //spawns 5 environmental obstacles
 					int x = r.nextInt(1000)*1;
 					int y = r.nextInt(500)*1;
 					handler.addObject(new EnvironmentalObstacle(x,y,ID.EnvironmentalObstace, handler, player));
@@ -419,7 +419,7 @@ public class Spawn1to10 {
 			if (tempCounter < 1) {
 				levelTimer = 1000;
 				tempCounter++;
-				for(int i = 0; i<5; i++) { //spawns 5 environmental obstacles
+				for(int i = 1; i<=r.nextInt(10)*5; i++) { //spawns 5 environmental obstacles
 					int x = r.nextInt(1000)*1;
 					int y = r.nextInt(500)*1;
 					handler.addObject(new EnvironmentalObstacle(x,y,ID.EnvironmentalObstace, handler, player));
@@ -460,7 +460,7 @@ public class Spawn1to10 {
 						-15, ID.EnemyShooter, this.handler));
 				levelTimer = 2500;
 				tempCounter++;
-				for(int i = 0; i<5; i++) { //spawns 5 environmental obstacles
+				for(int i = 1; i<=r.nextInt(10)*5; i++) { //spawns 5 environmental obstacles
 					int x = r.nextInt(1000)*1;
 					int y = r.nextInt(500)*1;
 					handler.addObject(new EnvironmentalObstacle(x,y,ID.EnvironmentalObstace, handler, player));
@@ -487,7 +487,7 @@ public class Spawn1to10 {
 			if (tempCounter < 1) {
 				levelTimer = 1400;
 				tempCounter++;
-				for(int i = 0; i<5; i++) { //spawns 5 environmental obstacles
+				for(int i = 1; i<=r.nextInt(10)*1; i++) { //spawns 5 environmental obstacles
 					int x = r.nextInt(1000)*1;
 					int y = r.nextInt(500)*1;
 					handler.addObject(new EnvironmentalObstacle(x,y,ID.EnvironmentalObstace, handler, player));
@@ -517,7 +517,7 @@ public class Spawn1to10 {
 			if (tempCounter < 1) {
 				handler.addObject(new EnemyBoss(ID.EnemyBoss, handler));
 				tempCounter++;
-				for(int i = 0; i<5; i++) { //spawns 5 environmental obstacles
+				for(int i = 1; i<=r.nextInt(10)*5; i++) { //spawns 5 environmental obstacles
 					int x = r.nextInt(1000)*1;
 					int y = r.nextInt(500)*1;
 					handler.addObject(new EnvironmentalObstacle(x,y,ID.EnvironmentalObstace, handler, player));
