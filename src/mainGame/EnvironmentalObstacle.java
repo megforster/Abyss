@@ -31,7 +31,7 @@ public class EnvironmentalObstacle extends GameObject {
 
 		
 				try {
-					img = ImageIO.read(new File("images/Monster-1.png"));
+					img = ImageIO.read(new File("images/EnvironmentalObstacle.png"));
 					img = img.getScaledInstance(200, 200, 0);
 				} catch (Exception e) {
 					e.printStackTrace();

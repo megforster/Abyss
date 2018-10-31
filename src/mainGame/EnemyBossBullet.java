@@ -37,7 +37,7 @@ public class EnemyBossBullet extends GameObject {
 		
 		img = null;
 		try {
-			img = ImageIO.read(new File("images/BossProjectile.png"));
+			img = ImageIO.read(new File("images/CrabProjectile.png"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

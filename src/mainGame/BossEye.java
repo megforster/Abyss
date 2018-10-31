@@ -39,7 +39,7 @@ public class BossEye extends GameObject {
 
 	public BossEye(double x, double y, ID id, Handler handler, int placement) {
 		super(x, y, id);
-		this.img = getImage("images/FinalBoi.png");
+		this.img = getImage("images/FinalBoss.png");
 		this.velX = 0;
 		this.velY = 0;
 		//this.speed = speedTypes[r.nextInt(4)];

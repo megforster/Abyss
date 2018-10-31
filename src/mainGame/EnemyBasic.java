@@ -32,7 +32,7 @@ public class EnemyBasic extends GameObject {
 		
 		img = null;
 		try {
-			img = ImageIO.read(new File("images/JellyBoi.png"));
+			img = ImageIO.read(new File("images/LighterJelly.png"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

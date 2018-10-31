@@ -27,7 +27,7 @@ public class EnemyFast extends GameObject {
 		velY = 9;
 		img = null;
 		try {
-			img = ImageIO.read(new File("images/FastBoi.png"));
+			img = ImageIO.read(new File("images/DarkerJelly.png"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -27,7 +27,7 @@ public class EnemySweep extends GameObject {
 		this.velY = velY;
 		img = null;
 		try {
-			img = ImageIO.read(new File("images/FastBoi.png"));
+			img = ImageIO.read(new File("images/DarkerJelly.png"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

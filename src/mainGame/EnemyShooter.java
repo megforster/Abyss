@@ -53,7 +53,7 @@ public class EnemyShooter extends GameObject  {
 		}
 		
 		try {
-			img = ImageIO.read(new File("images/OctoBoi.png"));
+			img = ImageIO.read(new File("images/ShooterEnemy.png"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

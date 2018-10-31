@@ -69,14 +69,14 @@ public class Menu {
 			//CHANGE BACKGROUND IMAGE (background.png --> abyssspacebackground.png) 
 			//ADDITIONAL BACKGROUND(abysswaterbackground.jpg)
 			//CHANGED BACKGROUND IN THE MAIN MENU SCREEN
-			img = ImageIO.read(new File("images/abyssspacebackground.png"));
+			img = ImageIO.read(new File("images/SpaceBackground.png"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
 		abyss = null;
 		try {
-			abyss = ImageIO.read(new File("images/abyss.png"));
+			abyss = ImageIO.read(new File("images/AbyssTitle.png"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

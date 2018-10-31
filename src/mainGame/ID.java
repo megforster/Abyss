@@ -26,6 +26,6 @@ public enum ID {
 	PlayerBullet(),
 	Levels1to10Text(),
 	EnemyBasic(),
-	EnvironmentalObstace();
+	EnvironmentalObstacle();
 	
 }

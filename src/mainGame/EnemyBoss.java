@@ -38,7 +38,7 @@ public class EnemyBoss extends GameObject {
 		velY = 2;
 		img = null;
 		try {
-			img = ImageIO.read(new File("images/EnemyBoss.png"));
+			img = ImageIO.read(new File("images/CrabBoss.png"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

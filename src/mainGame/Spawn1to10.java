@@ -106,7 +106,7 @@ public class Spawn1to10 {
 				for(int i = 1; i<=r.nextInt(10)*5; i++) { //spawns 5 environmental obstacles
 					int x = r.nextInt(1000)*1;
 					int y = r.nextInt(500)*1;
-					handler.addObject(new EnvironmentalObstacle(x,y,ID.EnvironmentalObstace, handler, player));
+					handler.addObject(new EnvironmentalObstacle(x,y,ID.EnvironmentalObstacle, handler, player));
 				}
 			}
 			if (spawnTimer == 0) {// time to spawn another enemy
@@ -165,7 +165,7 @@ public class Spawn1to10 {
 				for(int i = 1; i<=r.nextInt(10)*5; i++) { //spawns 5 environmental obstacles
 					int x = r.nextInt(1000)*1;
 					int y = r.nextInt(500)*1;
-					handler.addObject(new EnvironmentalObstacle(x,y,ID.EnvironmentalObstace, handler, player));
+					handler.addObject(new EnvironmentalObstacle(x,y,ID.EnvironmentalObstacle, handler, player));
 				}
 			}
 			if (spawnTimer == 30) {
@@ -215,7 +215,7 @@ public class Spawn1to10 {
 				for(int i = 1; i<=r.nextInt(10)*5; i++) { //spawns 5 environmental obstacles
 					int x = r.nextInt(1000)*1;
 					int y = r.nextInt(500)*1;
-					handler.addObject(new EnvironmentalObstacle(x,y,ID.EnvironmentalObstace, handler, player));
+					handler.addObject(new EnvironmentalObstacle(x,y,ID.EnvironmentalObstacle, handler, player));
 				}
 			}
 			if (spawnTimer == 0) {
@@ -260,7 +260,7 @@ public class Spawn1to10 {
 				for(int i = 1; i<=r.nextInt(10)*5; i++) { //spawns 5 environmental obstacles
 					int x = r.nextInt(1000)*1;
 					int y = r.nextInt(500)*1;
-					handler.addObject(new EnvironmentalObstacle(x,y,ID.EnvironmentalObstace, handler, player));
+					handler.addObject(new EnvironmentalObstacle(x,y,ID.EnvironmentalObstacle, handler, player));
 				}
 			}
 
@@ -291,7 +291,7 @@ public class Spawn1to10 {
 				for(int i = 1; i<=r.nextInt(10)*5; i++) { //spawns 5 environmental obstacles
 					int x = r.nextInt(1000)*1;
 					int y = r.nextInt(500)*1;
-					handler.addObject(new EnvironmentalObstacle(x,y,ID.EnvironmentalObstace, handler, player));
+					handler.addObject(new EnvironmentalObstacle(x,y,ID.EnvironmentalObstacle, handler, player));
 				}
 			}
 			if (spawnTimer <= 0) {
@@ -333,7 +333,7 @@ public class Spawn1to10 {
 				for(int i = 1; i<=r.nextInt(10)*5; i++) { //spawns 5 environmental obstacles
 					int x = r.nextInt(1000)*1;
 					int y = r.nextInt(500)*1;
-					handler.addObject(new EnvironmentalObstacle(x,y,ID.EnvironmentalObstace, handler, player));
+					handler.addObject(new EnvironmentalObstacle(x,y,ID.EnvironmentalObstacle, handler, player));
 				}
 			}
 			if (spawnTimer == 0) {
@@ -373,7 +373,7 @@ public class Spawn1to10 {
 				for(int i = 1; i<=r.nextInt(10)*5; i++) { //spawns 5 environmental obstacles
 					int x = r.nextInt(1000)*1;
 					int y = r.nextInt(500)*1;
-					handler.addObject(new EnvironmentalObstacle(x,y,ID.EnvironmentalObstace, handler, player));
+					handler.addObject(new EnvironmentalObstacle(x,y,ID.EnvironmentalObstacle, handler, player));
 				}
 			}
 			if (spawnTimer == 35) {
@@ -422,7 +422,7 @@ public class Spawn1to10 {
 				for(int i = 1; i<=r.nextInt(10)*5; i++) { //spawns 5 environmental obstacles
 					int x = r.nextInt(1000)*1;
 					int y = r.nextInt(500)*1;
-					handler.addObject(new EnvironmentalObstacle(x,y,ID.EnvironmentalObstace, handler, player));
+					handler.addObject(new EnvironmentalObstacle(x,y,ID.EnvironmentalObstacle, handler, player));
 				}
 			}
 			if (spawnTimer == 0) {
@@ -463,7 +463,7 @@ public class Spawn1to10 {
 				for(int i = 1; i<=r.nextInt(10)*5; i++) { //spawns 5 environmental obstacles
 					int x = r.nextInt(1000)*1;
 					int y = r.nextInt(500)*1;
-					handler.addObject(new EnvironmentalObstacle(x,y,ID.EnvironmentalObstace, handler, player));
+					handler.addObject(new EnvironmentalObstacle(x,y,ID.EnvironmentalObstacle, handler, player));
 				}
 			}
 
@@ -490,7 +490,7 @@ public class Spawn1to10 {
 				for(int i = 1; i<=r.nextInt(10)*1; i++) { //spawns 5 environmental obstacles
 					int x = r.nextInt(1000)*1;
 					int y = r.nextInt(500)*1;
-					handler.addObject(new EnvironmentalObstacle(x,y,ID.EnvironmentalObstace, handler, player));
+					handler.addObject(new EnvironmentalObstacle(x,y,ID.EnvironmentalObstacle, handler, player));
 				}
 			}
 			if (spawnTimer <= 0) {
@@ -520,7 +520,7 @@ public class Spawn1to10 {
 				for(int i = 1; i<=r.nextInt(10)*5; i++) { //spawns 5 environmental obstacles
 					int x = r.nextInt(1000)*1;
 					int y = r.nextInt(500)*1;
-					handler.addObject(new EnvironmentalObstacle(x,y,ID.EnvironmentalObstace, handler, player));
+					handler.addObject(new EnvironmentalObstacle(x,y,ID.EnvironmentalObstacle, handler, player));
 				}
 			} else if (tempCounter >= 1) {
 				for (int i = 0; i < handler.object.size(); i++) {
