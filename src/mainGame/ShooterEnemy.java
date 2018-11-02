@@ -22,7 +22,7 @@ import javax.imageio.ImageIO;
  *
  */
 
-public class EnemyShooter extends GameObject  {
+public class ShooterEnemy extends GameObject  {
 
 	private Handler handler;
 	private int sizeX;
@@ -37,7 +37,7 @@ public class EnemyShooter extends GameObject  {
 	private Image img;
 	public static int sizeDecrease = 3;
 
-	public EnemyShooter(double x, double y, int sizeX, int sizeY, int bulletSpeed, ID id, Handler handler) {
+	public ShooterEnemy(double x, double y, int sizeX, int sizeY, int bulletSpeed, ID id, Handler handler) {
 		super(x, y, id);
 		this.handler = handler;
 		this.velX = 0;
@@ -100,7 +100,7 @@ public class EnemyShooter extends GameObject  {
 		bulletVelY = ((this.bulletSpeed / distance) * diffY);// numerator affects speed of enemy
 
 		handler.addObject(
-				new EnemyShooterBullet(x + this.sizeX / 2, y + this.sizeY /2, bulletVelX, bulletVelY, ID.EnemyShooterBullet, this.handler));
+				new ShooterEnemyBullet(x + this.sizeX / 2, y + this.sizeY /2, bulletVelX, bulletVelY, ID.EnemyShooterBullet, this.handler));
 	}
 
 	public void updateEnemy() {

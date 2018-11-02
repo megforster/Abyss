@@ -127,7 +127,7 @@ public class Spawn1to10 {
 				
 				//
 				handler.addObject(
-						new EnemyBasic(wGenTemp, hGenTemp, 9, 9, ID.EnemyBasic, handler));
+						new LighterJelly(wGenTemp, hGenTemp, 9, 9, ID.EnemyBasic, handler));
 				// add them to the handler, which handles all game objects
 				spawnTimer = 100;// reset the spawn timer
 			}
@@ -170,16 +170,16 @@ public class Spawn1to10 {
 			}
 			if (spawnTimer == 30) {
 				handler.addObject(
-						new EnemySweep(wGenTemp, hGenTemp, 20, 2, ID.EnemySweep, handler));
+						new DarkerJelly2(wGenTemp, hGenTemp, 20, 2, ID.EnemySweep, handler));
 			} else if (spawnTimer == 20) {
 				handler.addObject(
-						new EnemySweep(wGenTemp, hGenTemp, 20, -2, ID.EnemySweep, handler));
+						new DarkerJelly2(wGenTemp, hGenTemp, 20, -2, ID.EnemySweep, handler));
 			} else if (spawnTimer == 10) {
 				handler.addObject(
-						new EnemySweep(wGenTemp, hGenTemp, 20, 4, ID.EnemySweep, handler));
+						new DarkerJelly2(wGenTemp, hGenTemp, 20, 4, ID.EnemySweep, handler));
 			} else if (spawnTimer == 0) {
 				handler.addObject(
-						new EnemySweep(wGenTemp, hGenTemp, 20, -4, ID.EnemySweep, handler));
+						new DarkerJelly2(wGenTemp, hGenTemp, 20, -4, ID.EnemySweep, handler));
 				spawnTimer = 80;
 			}
 
@@ -220,7 +220,7 @@ public class Spawn1to10 {
 			}
 			if (spawnTimer == 0) {
 				handler.addObject(
-						new EnemySmart(wGenTemp, hGenTemp, -5, ID.EnemySmart, handler));
+						new Leech(wGenTemp, hGenTemp, -5, ID.EnemySmart, handler));
 				spawnTimer = 100;
 			}
 			if (levelTimer == 0) {
@@ -253,7 +253,7 @@ public class Spawn1to10 {
 				hGenTemp = r.nextInt(Game.HEIGHT) - 75;
 			}
 			if (tempCounter < 1) {
-				handler.addObject(new EnemyShooter(wGenTemp, hGenTemp, 100, 100,
+				handler.addObject(new ShooterEnemy(wGenTemp, hGenTemp, 100, 100,
 						-20, ID.EnemyShooter, this.handler));
 				levelTimer = 1300;
 				tempCounter++;
@@ -295,7 +295,7 @@ public class Spawn1to10 {
 				}
 			}
 			if (spawnTimer <= 0) {
-				handler.addObject(new EnemyBurst(-200, 200, 50, 50, 200, side[r.nextInt(4)], ID.EnemyBurst, handler));
+				handler.addObject(new Turtle(-200, 200, 50, 50, 200, side[r.nextInt(4)], ID.EnemyBurst, handler));
 				spawnTimer = 180;
 			}
 
@@ -338,7 +338,7 @@ public class Spawn1to10 {
 			}
 			if (spawnTimer == 0) {
 				handler.addObject(
-						new EnemyBasic(wGenTemp, hGenTemp, 7, 7, ID.EnemyBasic, handler));
+						new LighterJelly(wGenTemp, hGenTemp, 7, 7, ID.EnemyBasic, handler));
 				spawnTimer = 50;
 			}
 			if (levelTimer == 0) {
@@ -378,16 +378,16 @@ public class Spawn1to10 {
 			}
 			if (spawnTimer == 35) {
 				handler.addObject(
-						new EnemySweep(wGenTemp, hGenTemp, 25, 2, ID.EnemySweep, handler));
+						new DarkerJelly2(wGenTemp, hGenTemp, 25, 2, ID.EnemySweep, handler));
 			} else if (spawnTimer == 25) {
 				handler.addObject(
-						new EnemySweep(wGenTemp, hGenTemp, 25, -2, ID.EnemySweep, handler));
+						new DarkerJelly2(wGenTemp, hGenTemp, 25, -2, ID.EnemySweep, handler));
 			} else if (spawnTimer == 15) {
 				handler.addObject(
-						new EnemySweep(wGenTemp, hGenTemp, 25, 4, ID.EnemySweep, handler));
+						new DarkerJelly2(wGenTemp, hGenTemp, 25, 4, ID.EnemySweep, handler));
 			} else if (spawnTimer == 0) {
 				handler.addObject(
-						new EnemySweep(wGenTemp, hGenTemp, 25, -4, ID.EnemySweep, handler));
+						new DarkerJelly2(wGenTemp, hGenTemp, 25, -4, ID.EnemySweep, handler));
 				spawnTimer = 100;
 			}
 
@@ -427,7 +427,7 @@ public class Spawn1to10 {
 			}
 			if (spawnTimer == 0) {
 				handler.addObject(
-						new EnemySmart(wGenTemp, hGenTemp, -3, ID.EnemySmart, handler));
+						new Leech(wGenTemp, hGenTemp, -3, ID.EnemySmart, handler));
 				spawnTimer = 50;
 			}
 			if (levelTimer == 0) {
@@ -456,7 +456,7 @@ public class Spawn1to10 {
 			}
 			
 			if (tempCounter < 1) {
-				handler.addObject(new EnemyShooter(wGenTemp, hGenTemp, 200, 200,
+				handler.addObject(new ShooterEnemy(wGenTemp, hGenTemp, 200, 200,
 						-15, ID.EnemyShooter, this.handler));
 				levelTimer = 2500;
 				tempCounter++;
@@ -494,7 +494,7 @@ public class Spawn1to10 {
 				}
 			}
 			if (spawnTimer <= 0) {
-				handler.addObject(new EnemyBurst(-200, 200, 40, 40, 200, side[r.nextInt(4)], ID.EnemyBurst, handler));
+				handler.addObject(new Turtle(-200, 200, 40, 40, 200, side[r.nextInt(4)], ID.EnemyBurst, handler));
 				spawnTimer = 90;
 			}
 
@@ -515,7 +515,7 @@ public class Spawn1to10 {
 
 		case 101:// arbitrary number for the boss
 			if (tempCounter < 1) {
-				handler.addObject(new EnemyBoss(ID.EnemyBoss, handler));
+				handler.addObject(new CrabBoss(ID.EnemyBoss, handler));
 				tempCounter++;
 				for(int i = 1; i<=r.nextInt(10)*5; i++) { //spawns 5 environmental obstacles
 					int x = r.nextInt(1000)*1;

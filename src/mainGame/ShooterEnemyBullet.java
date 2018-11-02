@@ -11,11 +11,11 @@ import java.awt.Rectangle;
  *
  */
 
-public class EnemyShooterBullet extends GameObject {
+public class ShooterEnemyBullet extends GameObject {
 
 	private Handler handler;
 
-	public EnemyShooterBullet(double x, double y, double velX, double velY, ID id, Handler handler) {
+	public ShooterEnemyBullet(double x, double y, double velX, double velY, ID id, Handler handler) {
 		super(x, y, id);
 		this.handler = handler;
 		this.velX = velX;

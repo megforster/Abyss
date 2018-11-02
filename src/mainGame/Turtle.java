@@ -18,7 +18,7 @@ import javax.imageio.ImageIO;
  *
  */
 
-public class EnemyBurst extends GameObject {
+public class Turtle extends GameObject {
 
 	private Handler handler;
 	private int timer;
@@ -28,7 +28,7 @@ public class EnemyBurst extends GameObject {
 	private Image img;
 	static Toolkit tool = Toolkit.getDefaultToolkit();
 
-	public EnemyBurst(double x, double y, double velX, double velY, int size, String side, ID id, Handler handler) {
+	public Turtle(double x, double y, double velX, double velY, int size, String side, ID id, Handler handler) {
 		super(x, y, id);
 		this.handler = handler;
 		this.velX = velX;
@@ -37,7 +37,7 @@ public class EnemyBurst extends GameObject {
 		this.side = side;
 		this.size = size;
 		if (this.side.equals("left")) {
-			handler.object.add(new EnemyBurstWarning(0, 0, 25, Game.HEIGHT, ID.EnemyBurstWarning, handler));
+			handler.object.add(new TurtleWarningBars(0, 0, 25, Game.HEIGHT, ID.EnemyBurstWarning, handler));
 			img = null;
 			try {
 				img = ImageIO.read(new File("images/TurtleL.png"));
@@ -47,7 +47,7 @@ public class EnemyBurst extends GameObject {
 			setPos();
 			setVel();
 		} else if (this.side.equals("right")) {
-			handler.object.add(new EnemyBurstWarning(Game.WIDTH - 25, 0, 25, Game.HEIGHT, ID.EnemyBurstWarning, handler));
+			handler.object.add(new TurtleWarningBars(Game.WIDTH - 25, 0, 25, Game.HEIGHT, ID.EnemyBurstWarning, handler));
 			img = null;
 			try {
 				img = ImageIO.read(new File("images/TurtleR.png"));
@@ -58,7 +58,7 @@ public class EnemyBurst extends GameObject {
 			setVel();
 
 		} else if (this.side.equals("top")) {
-			handler.object.add(new EnemyBurstWarning(0, 0, Game.WIDTH, 25, ID.EnemyBurstWarning, handler));
+			handler.object.add(new TurtleWarningBars(0, 0, Game.WIDTH, 25, ID.EnemyBurstWarning, handler));
 			img = null;
 			try {
 				img = ImageIO.read(new File("images/TurtleT.png"));
@@ -69,7 +69,7 @@ public class EnemyBurst extends GameObject {
 			setVel();
 
 		} else if (this.side.equals("bottom")) {
-			handler.object.add(new EnemyBurstWarning(0, Game.HEIGHT - 50, Game.WIDTH, 25, ID.EnemyBurstWarning, handler));
+			handler.object.add(new TurtleWarningBars(0, Game.HEIGHT - 50, Game.WIDTH, 25, ID.EnemyBurstWarning, handler));
 			img = null;
 			try {
 				img = ImageIO.read(new File("images/TurtleB.png"));

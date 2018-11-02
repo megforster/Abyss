@@ -20,14 +20,14 @@ import javax.swing.ImageIcon;
  *
  */
 
-public class EnemySmart extends GameObject {
+public class Leech extends GameObject {
 
 	private Handler handler;
 	private GameObject player;
 	private int speed;
 	private Image img;
 
-	public EnemySmart(double x, double y, int speed, ID id, Handler handler) {
+	public Leech(double x, double y, int speed, ID id, Handler handler) {
 		super(x, y, id);
 		this.handler = handler;
 		this.speed = speed;

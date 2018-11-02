@@ -15,16 +15,16 @@ import javax.imageio.ImageIO;
  *
  */
 
-public class EnemySweep extends GameObject {
+public class DarkerJelly extends GameObject {
 
 	private Handler handler;
 	private Image img;
 
-	public EnemySweep(double x, double y, double velX, double velY, ID id, Handler handler) {
+	public DarkerJelly(double x, double y, ID id, Handler handler) {
 		super(x, y, id);
 		this.handler = handler;
-		this.velX = velX;
-		this.velY = velY;
+		velX = 2;
+		velY = 9;
 		img = null;
 		try {
 			img = ImageIO.read(new File("images/DarkerJelly.png"));
@@ -37,16 +37,14 @@ public class EnemySweep extends GameObject {
 		this.x += velX;
 		this.y += velY;
 
-		// if (this.y <= 0 || this.y >= Game.HEIGHT - 43) velY *= -1;
-		if (this.x <= 0 || this.x >= Game.WIDTH - 16)
-			velX *= -1;
-
-		
-		
-		if (this.y >= Game.HEIGHT * 1.5 || this.y <= Game.HEIGHT * -1.5) {
-			handler.removeObject(this);
-			System.out.print("Sweep is removed");
+		if (this.y <= 0 || this.y >= Game.HEIGHT - 40) {
+			velY *= -1;
 		}
+		if (this.x <= 0 || this.x >= Game.WIDTH - 16) {
+			velX *= -1;
+		}
+
+		handler.addObject(new Trail(x, y, ID.Trail, Color.cyan, 16, 16, 0.025, this.handler));
 		collision();
 
 	}
@@ -67,7 +65,7 @@ public class EnemySweep extends GameObject {
 	}
 
 	public void render(Graphics g) {
-	
+
 		g.drawImage(img, (int) x, (int) y, 64, 64, null);
 
 	}

@@ -18,7 +18,7 @@ import javax.imageio.ImageIO;
  *
  */
 
-public class EnemyBossBullet extends GameObject {
+public class CrabProjectile extends GameObject {
 
 	private Handler handler;
 	Random r = new Random();
@@ -28,7 +28,7 @@ public class EnemyBossBullet extends GameObject {
 	private Image img;
 
 
-	public EnemyBossBullet(double x, double y, ID id, Handler handler) {
+	public CrabProjectile(double x, double y, ID id, Handler handler) {
 		super(x, y, id);
 		this.handler = handler;
 		velX = (r.nextInt((max - min) + 1) + min);// OFFICIAL WAY TO GET A RANGE FOR randInt()

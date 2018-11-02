@@ -19,7 +19,7 @@ import javax.imageio.ImageIO;
  *
  */
 
-public class EnemyBoss extends GameObject {
+public class CrabBoss extends GameObject {
 
 	private Handler handler;
 	private int timer = 80;
@@ -29,7 +29,7 @@ public class EnemyBoss extends GameObject {
 	private int spawn;
 	public static int enemyDamage = 1; 
 
-	public EnemyBoss(ID id, Handler handler) {
+	public CrabBoss(ID id, Handler handler) {
 		super(Game.WIDTH / 2 - 48, -120, id);
 		this.handler = handler;
 		velX = 0;
@@ -67,7 +67,7 @@ public class EnemyBoss extends GameObject {
 			spawn = r.nextInt(2);
 			if (spawn == 0) {
 				handler.addObject(
-						new EnemyBossBullet((int) this.x + 48, (int) this.y + 72, ID.EnemyBossBullet, handler));
+						new CrabProjectile((int) this.x + 48, (int) this.y + 72, ID.EnemyBossBullet, handler));
 				this.health -= 1;
 			}
 		}
@@ -135,7 +135,7 @@ public class EnemyBoss extends GameObject {
 	// allows for grey line to be drawn, as well as first bullet shot
 	public void drawFirstBullet() {
 		if (timer2 == 1)
-			handler.addObject(new EnemyBossBullet((int) this.x + 48, (int) this.y + 96, ID.EnemyBossBullet, handler));
+			handler.addObject(new CrabProjectile((int) this.x + 48, (int) this.y + 96, ID.EnemyBossBullet, handler));
 	}
 
 } 

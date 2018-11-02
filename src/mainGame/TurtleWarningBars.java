@@ -11,7 +11,7 @@ import java.awt.Rectangle;
  *
  */
 
-public class EnemyBurstWarning extends GameObject {
+public class TurtleWarningBars extends GameObject {
 
 	private Handler handler;
 	private int width;
@@ -20,7 +20,7 @@ public class EnemyBurstWarning extends GameObject {
 	private Color color;
 	private int hasFlashed;
 
-	public EnemyBurstWarning(double x, double y, int width, int height, ID id, Handler handler) {
+	public TurtleWarningBars(double x, double y, int width, int height, ID id, Handler handler) {
 		super(x, y, id);
 		this.handler = handler;
 		this.width = width;

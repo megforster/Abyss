@@ -17,8 +17,8 @@ public class Upgrades {
 	private Spawn10to20 spawner2;
 	private UpgradeScreen upgradeScreen;
 	private String ability;
-	private EnemyBoss redboss;
-	private EnemyShooter shooter;
+	private CrabBoss redboss;
+	private ShooterEnemy shooter;
 
 	public Upgrades(Game game, Handler handler, HUD hud, UpgradeScreen upgradeScreen, Player player, Spawn1to10 spawner,
 			Spawn10to20 spawner2) {
@@ -83,8 +83,8 @@ public class Upgrades {
 	}
 	
 	public void damageBoost() {
-		EnemyBoss.enemyDamage *= 2;
-		EnemyShooter.sizeDecrease *= 2;
+		CrabBoss.enemyDamage *= 2;
+		ShooterEnemy.sizeDecrease *= 2;
 		System.out.print("DamageBoost Active");
 	}
 
