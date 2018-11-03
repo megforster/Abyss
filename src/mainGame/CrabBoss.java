@@ -20,36 +20,38 @@ import javax.imageio.ImageIO;
  */
 
 public class CrabBoss extends GameObject {
-
+	
+	//Instance variables
 	private Handler handler;
-	private int timer = 80;
-	private int timer2 = 50;
-	Random r = new Random();
+	private int timer = 80; //Timer for crab life?
+	private int timer2 = 50; //Timer for projectile generation?
+	Random r = new Random(); //random number generator 
 	private Image img;
 	private int spawn;
-	public static int enemyDamage = 1; 
+	public static int enemyDamage = 1; //sets the amount of damage the boss can do 
 
+	//Constructor 
 	public CrabBoss(ID id, Handler handler) {
 		super(Game.WIDTH / 2 - 48, -120, id);
 		this.handler = handler;
 		velX = 0;
-
-
 		velY = 2;
 		img = null;
+		
 		try {
 			img = ImageIO.read(new File("images/CrabBoss.png"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-		velY = 4;
+		velY = 4; //not sure why velY is set twice??
 
-
-		this.health = 750;//full health is 1000
+	
+		this.health = 750;
 	}
 
 	public void tick() {
+		//accounts for boss movement
 		this.x += velX;
 		this.y += velY;
 
@@ -64,23 +66,23 @@ public class CrabBoss extends GameObject {
 			if (velX == 0)
 				velX = 8;
 			this.isMoving = true;
+			//generates a random number of crab projectiles?
 			spawn = r.nextInt(2);
 			if (spawn == 0) {
 				handler.addObject(
 						new CrabProjectile((int) this.x + 48, (int) this.y + 72, ID.EnemyBossBullet, handler));
-				this.health -= 1;
+				this.health -= 1; //allows for the crab to die over time
 			}
 		}
 
-		// if (this.y <= 0 || this.y >= Game.HEIGHT - 40) velY *= -1;
+		
 		if (this.x <= -100 || this.x >= Game.WIDTH - 30)
 			velX *= -1;
-
-		// handler.addObject(new Trail(x, y, ID.Trail, Color.red, 96, 96, 0.025,
-		// this.handler));
+		
 		collision();
 	}
 	
+		//Code for when player shoots the boss
 		public void collision() {
 
 		for (int i = 0; i < handler.object.size(); i++) {
@@ -96,6 +98,7 @@ public class CrabBoss extends GameObject {
 		}
 	}
 
+	//Gets the crab image for the class? Or the bullet image?
 	public Image getImage(String path) {
 		Image image = null;
 		try {
@@ -108,16 +111,17 @@ public class CrabBoss extends GameObject {
 		return image;
 	}
 
+	//Draws the crab and its health bar
 	public void render(Graphics g) {
+		
+		//Crab code
 		g.setColor(Color.RED);
-
-
 		g.drawLine(0, 300, Game.WIDTH, 300);
 		g.drawImage(img, (int) this.x, (int) this.y, Game.WIDTH / 10, Game.WIDTH /10, null);
 
 
 
-		// HEALTH BAR
+		//Health bar code
 		g.setColor(Color.GRAY);
 		g.fillRect(Game.WIDTH / 2 - 375, Game.HEIGHT - 150, 750, 50);
 		g.setColor(Color.RED);
@@ -128,15 +132,16 @@ public class CrabBoss extends GameObject {
 	}
 
 	@Override
+	//Hit box for the crap
 	public Rectangle getBounds() {
 		return new Rectangle((int) this.x, (int) this.y, 96, 96);
 	}
 
-	// allows for grey line to be drawn, as well as first bullet shot
+	//Allows for grey line to be drawn, as well as first bullet shot
+	//Not sure what part of the code draws the gray line?
 	public void drawFirstBullet() {
 		if (timer2 == 1)
 			handler.addObject(new CrabProjectile((int) this.x + 48, (int) this.y + 96, ID.EnemyBossBullet, handler));
 	}
 
 } 
-//sneaky beaky

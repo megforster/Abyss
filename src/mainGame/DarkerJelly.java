@@ -17,9 +17,11 @@ import javax.imageio.ImageIO;
 
 public class DarkerJelly extends GameObject {
 
+	//Instance variables 
 	private Handler handler;
 	private Image img;
 
+	//Constructor 
 	public DarkerJelly(double x, double y, ID id, Handler handler) {
 		super(x, y, id);
 		this.handler = handler;
@@ -32,7 +34,8 @@ public class DarkerJelly extends GameObject {
 			e.printStackTrace();
 		}
 	}
-
+	
+	//Moves the Jelly and checks for collision
 	public void tick() {
 		this.x += velX;
 		this.y += velY;
@@ -44,7 +47,7 @@ public class DarkerJelly extends GameObject {
 			velX *= -1;
 		}
 
-		handler.addObject(new Trail(x, y, ID.Trail, Color.cyan, 16, 16, 0.025, this.handler));
+		//handler.addObject(new Trail(x, y, ID.Trail, Color.cyan, 16, 16, 0.025, this.handler));
 		collision();
 
 	}

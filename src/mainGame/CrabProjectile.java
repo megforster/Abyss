@@ -20,18 +20,16 @@ import javax.imageio.ImageIO;
 
 public class CrabProjectile extends GameObject {
 
+	//Instance variables
 	private Handler handler;
-	Random r = new Random();
-	private int max = 30;
-	private int min = -30;
-
+	Random r = new Random(); //random number generator
 	private Image img;
 
-
+	//
 	public CrabProjectile(double x, double y, ID id, Handler handler) {
 		super(x, y, id);
 		this.handler = handler;
-		velX = (r.nextInt((max - min) + 1) + min);// OFFICIAL WAY TO GET A RANGE FOR randInt()
+		velX = (r.nextInt(30)*-30); //variable for the angled way projectiles shoot from crab?
 		velY = 45;
 
 		
@@ -44,6 +42,7 @@ public class CrabProjectile extends GameObject {
 
 	}
 
+	//Brings in the projectile image?
 	public Image getImage(String path) {
 		Image image = null;
 		try {
@@ -60,22 +59,17 @@ public class CrabProjectile extends GameObject {
 		this.x += velX;
 		this.y += velY;
 
-		// if (this.y <= 0 || this.y >= Game.HEIGHT - 40) velY *= -1;
-		// if (this.x <= 0 || this.x >= Game.WIDTH - 16) velX *= -1;
-
 		if (this.y >= Game.HEIGHT)
-			handler.removeObject(this);
-
-
-
+			handler.removeObject(this); //Removes projectiles once they reach a certain point?
 	}
 
+	//Controls the visual aspect of the projectiles 
 	public void render(Graphics g) {
-
 		g.drawImage(img, (int) this.x, (int) this.y, 32, 32, null);
 	}
 
 	@Override
+	//Projectile hit box
 	public Rectangle getBounds() {
 		return new Rectangle((int) this.x, (int) this.y, 32, 32);
 	}
