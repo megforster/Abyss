@@ -31,6 +31,8 @@ public class Game extends Canvas implements Runnable {
 	static int taskBarHeight = scrnSize.height - winSize.height;
 	public static final int WIDTH = (int) (scrnSize.getWidth()) + 5;
 	public static final int HEIGHT = (int) (scrnSize.getHeight()) - taskBarHeight + 5;
+	public String message = "Controls:"
+			+ " use WASD or the Arrow Keys to move and space to shoot. \nCollect power-ups like speed and health boosts to assist you on your journey. \nSurvive and Fight as long as you can!";
 	
 	private Thread thread;
 	private boolean running = false;

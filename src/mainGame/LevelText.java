@@ -17,6 +17,7 @@ import java.util.Random;
 
 public class LevelText extends GameObject {
 
+	//Instance Variables 
 	private String text;
 	private int timer;
 	private Color[] color = { Color.WHITE, Color.RED, Color.BLUE, Color.CYAN, Color.GREEN, Color.MAGENTA, Color.ORANGE,
@@ -24,6 +25,7 @@ public class LevelText extends GameObject {
 	private Random r = new Random();
 	private int index;
 
+	//Constructor 
 	public LevelText(double x, double y, String text, ID id) {
 		super(x, y, id);
 		this.text = text;
@@ -32,11 +34,13 @@ public class LevelText extends GameObject {
 	}
 
 	@Override
+	//Allows game to extend GameObject
 	public void tick() {
 
 	}
 
 	@Override
+	//Draws the strings in the different colors 
 	public void render(Graphics g) {
 		timer--;
 
@@ -52,6 +56,7 @@ public class LevelText extends GameObject {
 
 	}
 
+	//Helps control size of text 
 	public int getTextWidth(Font font, String text) {
 		AffineTransform affinetransform = new AffineTransform();
 		FontRenderContext frc = new FontRenderContext(affinetransform, true, true);
@@ -60,6 +65,7 @@ public class LevelText extends GameObject {
 	}
 
 	@Override
+	//Allows class to extend GameObject
 	public Rectangle getBounds() {
 		// TODO Auto-generated method stub
 		return null;

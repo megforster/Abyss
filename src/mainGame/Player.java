@@ -16,24 +16,18 @@ import javax.imageio.ImageIO;
 
 import mainGame.Game.STATE;
 
-/**
- * The main player in the game
- * 
- * @author Brandon Loehle 5/30/16
- *
- */
 
 public class Player extends GameObject {
 
 	// Instance variables
-	Random r = new Random();
+	Random r = new Random(); // random number generator 
 	Handler handler;
 	private HUD hud;
 	private Game game;
 	private int damage;
-	private int playerWidth, playerHeight;
+	private int playerWidth, playerHeight; //width and height of image
 	private Image img;
-	public static int playerSpeed = 14;
+	public static int playerSpeed = 14; 
 	private EnvironmentalObstacle obstacle;
 
 	// Constructor
@@ -42,7 +36,7 @@ public class Player extends GameObject {
 		this.handler = handler;
 		this.hud = hud;
 		this.game = game;
-		this.damage = 4;
+		this.damage = 4; //Damage taken when colliding with an enemy 
 
 		img = null;
 		try {
@@ -65,13 +59,13 @@ public class Player extends GameObject {
 	public void tick() {
 		this.x += velX;
 		this.y += velY;
+		
 		// makes sure player cannot go outside screen bounds
 		x = Game.clamp(x, 0, Game.WIDTH - 38);
 		y = Game.clamp(y, 0, Game.HEIGHT - 60);
 
 		collision();
 		checkIfDead();
-		// drawFirstBullet(); //uncomment this line to regain shooting with movement
 
 	}
 
@@ -121,10 +115,10 @@ public class Player extends GameObject {
 
 			}
 			if (tempObject.getId() == ID.EnemyBoss) { // checks if tempObject is a boss
-				/*
-				 * Allows player time to get out of upper area where they will get hurt once the
-				 * boss starts moving
-				 */
+				
+				 /* Allows player time to get out of upper area where they will get hurt once the
+				 * boss starts moving*/
+				 
 				if (this.y <= 300 && tempObject.isMoving) {
 					hud.health -= .5;
 					hud.updateScoreColor(Color.red);
@@ -134,23 +128,22 @@ public class Player extends GameObject {
 		}
 	}
 
-	// Draws the player sprite
-	//Comment this further 
+	//Draws the player sprite
 	public void render(Graphics g) {
 
-		double centerX = x + playerWidth / 2;
-		double centerY = y + playerHeight / 2;
+		double centerX = x + playerWidth / 2; //sets player center x coordinate
+		double centerY = y + playerHeight / 2; //sets player center y coordinate 
 
-		double angle = -Math.atan2(velX, velY);
+		double angle = -Math.atan2(velX, velY); //angle for diagonal movement
 
 		Graphics2D g2d = (Graphics2D) g; 
 		AffineTransform reset = new AffineTransform();
-		reset.rotate(0, 0, 0);
+		//reset.rotate(0, 0, 0);
 		Graphics2D g2 = (Graphics2D) g;
-		g2.rotate((angle), centerX, centerY);
+		g2.rotate((angle), centerX, centerY); //allows for visual diagonal movement 
 
 		g2d.drawImage(img, (int) this.x, (int) this.y, playerWidth, playerHeight, null);
-		g2.setTransform(reset);
+		g2.setTransform(reset); //resets to initial state for case where player moves on angle
 	}
 
 	@Override
@@ -165,7 +158,6 @@ public class Player extends GameObject {
 	}
 
 	//sets player width and height
-	//comment this better
 	public void setPlayerSize(int size) {
 		this.playerWidth = size;
 		this.playerHeight = size;

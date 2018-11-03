@@ -16,7 +16,8 @@ import mainGame.Game.STATE;
  */
 
 public class MouseListener extends MouseAdapter {
-
+	
+	//Instance variables
 	private Game game;
 	private Handler handler;
 	private HUD hud;
@@ -30,6 +31,7 @@ public class MouseListener extends MouseAdapter {
 	private int buttonwidth = Game.WIDTH/4;
 	private int buttonheight = Game.HEIGHT/5;
 
+	//Constructor
 	public MouseListener(Game game, Handler handler, HUD hud, Spawn1to10 spawner, Spawn10to20 spawner2,
 			UpgradeScreen upgradeScreen, Player player, Upgrades upgrades, Victory victory) {
 		this.game = game;
@@ -43,10 +45,13 @@ public class MouseListener extends MouseAdapter {
 		this.victory = victory;
 	}
 
+	//Code for reaction to a mouse press
 	public void mousePressed(MouseEvent e) {
+		//gets x and y coordinates of the mouse press
 		int mx = e.getX();
 		int my = e.getY();
-
+		
+		//checks if the game has ended and restarts the game to an active gmae screen
 		if (game.gameState == STATE.GameOver) {
 			handler.object.clear();
 			upgrades.resetUpgrades();
@@ -62,6 +67,7 @@ public class MouseListener extends MouseAdapter {
 			handler.addObject(player);
 		}
 		
+		//Checks if the game has been won and restarts it to the main menu
 		else if (game.gameState == STATE.Victory) {
 			handler.object.clear();
 			upgrades.resetUpgrades();
@@ -75,12 +81,17 @@ public class MouseListener extends MouseAdapter {
 			Spawn1to10.LEVEL_SET = 1;
 			game.gameState = STATE.Menu;
 		}
-
+		
+		//checks if the game is currently active
 		else if (game.gameState == STATE.Game) {
 
 		}
 
+		//checks if the upgrades are being accessed 
 		else if (game.gameState == STATE.Upgrade) {
+			
+			//checks if the mouse press was over an upgrade option and if so preforms that option
+			
 			if (mouseOver(mx, my, 100, 300, 1721, 174)) {
 				upgradeText = upgradeScreen.getPath(1);
 
@@ -109,8 +120,10 @@ public class MouseListener extends MouseAdapter {
 
 		}
 
+		//Checks if the game is on the menu screen
 		else if (game.gameState == STATE.Menu) {
-			// Waves Button
+			
+			//checks if "click to start" has been selected and starts the game
 			if (mouseOver(mx, my, ((Game.WIDTH - buttonwidth)/2), ((Game.HEIGHT - buttonheight)/2), buttonwidth, buttonheight)) {
 				handler.object.clear();
 				game.gameState = STATE.Game;
@@ -119,27 +132,27 @@ public class MouseListener extends MouseAdapter {
 				// "images/PickupHealth.png", handler));
 			}
 
-			// Help Button
+			// Checks if the Help Button has been pressed and opens it
 			else if (mouseOver(mx, my, ((Game.WIDTH - buttonwidth)/2), ((Game.HEIGHT - buttonheight)*5/6), buttonwidth, buttonheight)) {
 				JOptionPane.showMessageDialog(game,
-						"Controls:"
-								+ " use WASD or the Arrow Keys to move and space to shoot. \nCollect power-ups like speed and health boosts to assist you on your journey. \nSurvive and Fight as long as you can!", "Help Menu", JOptionPane.INFORMATION_MESSAGE, new ImageIcon(MouseListener.class.getResource("/images/PlayerBoi.png")));
+						game.message, "Help Menu", JOptionPane.INFORMATION_MESSAGE, new ImageIcon(MouseListener.class.getResource("/images/PlayerSprite.png")));
 			}
 
-			// Credits
+			// Checks if the Credits button has been pressed and opens it
 			else if (mouseOver(mx, my, ((Game.WIDTH - buttonwidth)*15/16), ((Game.HEIGHT - buttonheight)*5/6), buttonwidth, buttonheight)) {
 				JOptionPane.showMessageDialog(game,
 						"Made by the Brogrammers 2.0 for CSC 225. \n In Loving Memory of Christopher Cherry.");
 			}
 
-			// Quit Button
+			// Checks if the quit button has been pressed and exits the game
 			else if (mouseOver(mx, my, ((Game.WIDTH - buttonwidth)/16), ((Game.HEIGHT - buttonheight)*5/6), buttonwidth, buttonheight)) {
 				System.exit(1);
 			}
 		}
-		
+		//Code for when the game is paused 
 		else if (game.gameState == STATE.Pause) {
-			// Play Button
+			
+			//Checks if the play button has been pressed and unpasues the game (currently broken)
 			if (mouseOver(mx, my, ((Game.WIDTH - buttonwidth)/2), ((Game.HEIGHT - buttonheight)/2), buttonwidth, buttonheight)) {
 				game.gameState = STATE.Game;
 			}
@@ -155,16 +168,13 @@ public class MouseListener extends MouseAdapter {
 									+ "space or underwater");
 						}
 */
-			// Help Button
+			// Checks if a different help button has been pressed and opens a help menu
 			else if (mouseOver(mx, my, ((Game.WIDTH - buttonwidth)/16), ((Game.HEIGHT - buttonheight)*5/6), buttonwidth, buttonheight)) {
 				JOptionPane.showMessageDialog(game,
-						"Controls: "
-								+ "Use either WASD or the Arrow Keys to move." + "\n" +
-								"Survive waves and defeat bosses to win." + "\n" +
-								"Click 'Exit' to return to main menu.");
+						game.message);
 			}
 
-			// Exit Button
+			// Checks if the exit button has been pressed and ??
 			else if (mouseOver(mx, my, ((Game.WIDTH - buttonwidth)*15/16), ((Game.HEIGHT - buttonheight)*5/6), buttonwidth, buttonheight)) {
 				game.gameState = STATE.Menu;
 				handler.clearPlayer();
@@ -179,7 +189,7 @@ public class MouseListener extends MouseAdapter {
 
 		}
 
-		// Back Button for Help screen
+		// Checks if the back button on the help menu has been pressed and returns to the main menu
 		else if (game.gameState == STATE.Help) {
 			if (mouseOver (mx, my, ((Game.WIDTH - buttonwidth)/2), ((Game.HEIGHT - buttonheight)*5/6), buttonwidth, buttonheight)) {
 				game.gameState = STATE.Menu;
@@ -187,7 +197,8 @@ public class MouseListener extends MouseAdapter {
 			}
 		}
 	}
-
+	
+	//code for when a mouse press is released
 	public void mouseReleased(MouseEvent e) {
 
 	}
