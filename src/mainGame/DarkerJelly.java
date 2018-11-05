@@ -46,27 +46,25 @@ public class DarkerJelly extends GameObject {
 		if (this.x <= 0 || this.x >= Game.WIDTH - 16) {
 			velX *= -1;
 		}
-
-		//handler.addObject(new Trail(x, y, ID.Trail, Color.cyan, 16, 16, 0.025, this.handler));
 		collision();
 
 	}
 	
+	//Code for when the enemy collides with the player bullet
 	public void collision() {
 
 		for (int i = 0; i < handler.object.size(); i++) {
 			GameObject tempObject = handler.object.get(i);
 
-			if (tempObject.getId() == ID.PlayerBullet) {// tempObject is an enemy
-
-				// collision code
+			if (tempObject.getId() == ID.PlayerBullet) {//TempObject is an enemy
 				if (getBounds().intersects(tempObject.getBounds())) {// player hit an enemy
-					setX(100000);
+					setX(100000); //So the enemy is removed it just set faaaar away??
 				}
 			}
 		}
 	}
 
+	//Draws the jelly
 	public void render(Graphics g) {
 
 		g.drawImage(img, (int) x, (int) y, 64, 64, null);
@@ -74,6 +72,7 @@ public class DarkerJelly extends GameObject {
 	}
 
 	@Override
+	//Hit box for the jelly
 	public Rectangle getBounds() {
 		return new Rectangle((int) this.x, (int) this.y, 16, 16);
 	}

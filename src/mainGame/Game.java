@@ -23,20 +23,21 @@ import javax.swing.JButton;
 
 public class Game extends Canvas implements Runnable {
 
-	private static final long serialVersionUID = 1L;
+	//Instance Variables
+	private static final long serialVersionUID = 1L; //Dont know what this does 
 
-	static Toolkit tool = Toolkit.getDefaultToolkit();
-	static Dimension scrnSize = Toolkit.getDefaultToolkit().getScreenSize();
-	static Rectangle winSize = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
+	static Toolkit tool = Toolkit.getDefaultToolkit(); //Don't know what this is 
+	static Dimension scrnSize = Toolkit.getDefaultToolkit().getScreenSize(); //Returns the size of the screen
+	static Rectangle winSize = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();//returns the size of the game window
 	static int taskBarHeight = scrnSize.height - winSize.height;
 	public static final int WIDTH = (int) (scrnSize.getWidth()) + 5;
 	public static final int HEIGHT = (int) (scrnSize.getHeight()) - taskBarHeight + 5;
-	public String message = "Controls:"
+	public String message = "Controls:" //message used for all help menus
 			+ " use WASD or the Arrow Keys to move and space to shoot. \nCollect power-ups like speed and health boosts to assist you on your journey. \nSurvive and Fight as long as you can!";
 	
 	private Thread thread;
 	private boolean running = false;
-	private boolean pauseState = false; // added boolean to toggle elements within the tick method
+	private boolean pauseState = false; //Added boolean to toggle elements within the tick method
 
 	private Handler handler;
 	private HUD hud;
@@ -65,9 +66,7 @@ public class Game extends Canvas implements Runnable {
 		Menu, Help, Game, GameOver, Upgrade, Victory, Pause 
 	};
 
-	/**
-	 * Initialize the core mechanics of the game
-	 */
+	//Constructor, creates the game
 	public Game() {
 		handler = new Handler();
 		hud = new HUD();
@@ -103,12 +102,15 @@ public class Game extends Canvas implements Runnable {
 	 * The thread is simply a programs path of execution. This method ensures that
 	 * this thread starts properly.
 	 */
+	
+	//Triggers the start of the game?
 	public synchronized void start() {
 		thread = new Thread(this);
 		thread.start();
 		running = true;
 	}
 
+	//Triggers the game being over or the player exiting?
 	public synchronized void stop() {
 		try {
 			thread.join();
@@ -122,6 +124,7 @@ public class Game extends Canvas implements Runnable {
 	 * Best Java game loop out there (used by Notch!)
 	 */
 	@Override
+	//Code to keep the game running, like a fancy timer?
 	public void run() {
 		this.requestFocus();
 		long lastTime = System.nanoTime();
@@ -140,13 +143,10 @@ public class Game extends Canvas implements Runnable {
 				frames++;
 				delta--;
 			}
-			//if (running)
-			//render();// 60 times a second, objects are being drawn
-			//frames++;
 
 			if (System.currentTimeMillis() - timer > 1000) {
 				timer += 1000;
-				System.out.println("FPS: " + frames);
+				//System.out.println("FPS: " + frames);
 				System.out.println(gameState);
 				System.out.println(Spawn1to10.LEVEL_SET);
 				frames = 0;
@@ -180,7 +180,7 @@ public class Game extends Canvas implements Runnable {
 			gameOver.tick();
 		} else if (gameState == STATE.Victory) {//game has been won, eye boss has been defeated
 			victory.tick();
-		} else if (gameState == STATE.Pause) {
+		} else if (gameState == STATE.Pause) { //Think this code needs to be changed to fix pause button
 			pause.tick();
 			pauseState = true;
 		}
@@ -207,8 +207,6 @@ public class Game extends Canvas implements Runnable {
 		///////// Draw things bellow this/////////////
 
 		g.setColor(Color.black);
-		//g.drawImage(Background, 0, 0, null);
-		//SETS IMAGE TO SCREEN SIZE
 		g.drawImage(Background, 0, 0, this.getWidth(), this.getHeight(),null);
 		
 		
@@ -256,15 +254,18 @@ public class Game extends Canvas implements Runnable {
 			return var;
 	}
 
+	//Triggers creation of a new game
 	public static void main(String[] args) {
 
 		new Game();
 	}
 	
+	//returns the players x coordinate
 	public static double getPlayerX() {
 		return player.getX();
 	}
 	
+	//returns the players y coordinate 
 	public static double getPlayerY() {
 		return player.getY();
 	}
