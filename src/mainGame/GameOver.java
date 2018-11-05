@@ -15,6 +15,7 @@ import java.awt.geom.AffineTransform;
 
 public class GameOver {
 
+	//Instance Variables
 	private Game game;
 	private Handler handler;
 	private HUD hud;
@@ -22,6 +23,7 @@ public class GameOver {
 	private Color retryColor;
 	private String text;
 
+	//Constructor
 	public GameOver(Game game, Handler handler, HUD hud) {
 		this.game = game;
 		this.handler = handler;
@@ -30,12 +32,14 @@ public class GameOver {
 		this.retryColor = Color.white;
 	}
 
+	//Removes the player from the screen and changes the text color
 	public void tick() {
 		handler.clearPlayer();
 		flash();
 
 	}
 
+	//Draws the text on screen
 	public void render(Graphics g) {
 		Font font = new Font("Amoebic", 1, 100);
 		Font font2 = new Font("Amoebic", 1, 60);
@@ -54,6 +58,7 @@ public class GameOver {
 
 	}
 
+	//Changes the color of the text 
 	public void flash() {
 		timer--;
 		if (timer == 45) {
