@@ -26,6 +26,7 @@ public class KeyInput extends KeyAdapter {
 	private Spawn1to10 spawner;
 	private Upgrades upgrades;
 	private String ability;
+	private boolean play;
 
 	// Constructor
 	public KeyInput(Handler handler, Game game, HUD hud, Player player, Spawn1to10 spawner, Upgrades upgrades) {
@@ -97,7 +98,10 @@ public class KeyInput extends KeyAdapter {
 
 				//P to pause 
 				if (key == KeyEvent.VK_P) { 
-					game.gameState = STATE.Pause;
+					if(game.gameState == STATE.Pause)
+						game.gameState = STATE.Game;
+					else if(game.gameState == STATE.Game)
+						game.gameState = STATE.Pause;
 
 				}
 				
