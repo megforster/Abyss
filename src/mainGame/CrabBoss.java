@@ -93,6 +93,7 @@ public class CrabBoss extends GameObject {
 				// collision code
 				if (getBounds().intersects(tempObject.getBounds())) {// player hit the boss
 					this.health -= enemyDamage;
+					HUD.score = HUD.score + 500;
 				}
 			}
 		}

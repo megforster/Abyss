@@ -65,6 +65,7 @@ public class DarkerJelly2 extends GameObject {
 				//Teleports the jelly far away when the player shoots it
 				if (getBounds().intersects(tempObject.getBounds())) {
 					setX(100000);
+					HUD.score = HUD.score + 25;
 				}
 			}
 		}

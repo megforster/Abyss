@@ -59,6 +59,7 @@ public class DarkerJelly extends GameObject {
 			if (tempObject.getId() == ID.PlayerBullet) {//TempObject is an enemy
 				if (getBounds().intersects(tempObject.getBounds())) {// player hit an enemy
 					setX(100000); //So the enemy is removed it just set faaaar away??
+					HUD.score = HUD.score + 25;
 				}
 			}
 		}

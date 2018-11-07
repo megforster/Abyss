@@ -100,6 +100,7 @@ public class Leech extends GameObject {
 				// collision code
 				if (getBounds().intersects(tempObject.getBounds())) {// player hit an enemy
 					setX(100000); //teleports the leech far off screen when shot
+					HUD.score = HUD.score + 50;
 				}
 			}
 		}

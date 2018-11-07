@@ -106,10 +106,12 @@ public class Player extends GameObject {
 						obstacle.move();
 						hud.health -= 2;
 						hud.updateScoreColor(Color.red);
+						HUD.score--;
 						// code for collision with enemy
 					} else {
 						hud.health -= damage;
 						hud.updateScoreColor(Color.red);
+						HUD.score--;
 					}
 				}
 
