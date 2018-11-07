@@ -21,15 +21,18 @@ import javax.imageio.ImageIO;
 
 public class LighterJelly extends GameObject {
 
+	//Instance variables
 	private Handler handler;
 	private Image img;
 
+	//Constructor 
 	public LighterJelly(double x, double y, int velX, int velY, ID id, Handler handler) {
 		super(x, y, id);
 		this.handler = handler;
 		this.velX = velX;
 		this.velY = velY;
 		
+		//Reads in image for jelly
 		img = null;
 		try {
 			img = ImageIO.read(new File("images/LighterJelly.png"));
@@ -40,10 +43,12 @@ public class LighterJelly extends GameObject {
 	}
 		
 
+	//Controls jelly movement
 	public void tick() {
 		this.x += velX;
 		this.y += velY;
 
+		//Jelly bounces off screen left and right sides 
 		if (this.y <= 0 || this.y >= Game.HEIGHT - 40)
 			velY *= -1;
 		if (this.x <= 0 || this.x >= Game.WIDTH - 16)
@@ -54,6 +59,7 @@ public class LighterJelly extends GameObject {
 
 	}
 	
+	//Collision code for jelly
 	public void collision() {
 
 		for (int i = 0; i < handler.object.size(); i++) {
@@ -62,13 +68,14 @@ public class LighterJelly extends GameObject {
 			if (tempObject.getId() == ID.PlayerBullet) {// tempObject is an enemy
 
 				// collision code
-				if (getBounds().intersects(tempObject.getBounds())) {// player hit an enemy
-					setX(100000);
+				if (getBounds().intersects(tempObject.getBounds())) {
+					setX(100000); //Teleport jelly far off screen when shot by player
 				}
 			}
 		}
 	}
 	
+	//Returns jelly image 
 	public Image getImage(String path) {
 		Image image = null;
 		try {
@@ -81,6 +88,7 @@ public class LighterJelly extends GameObject {
 		return image;
 	}
 
+	//Draws jelly
 	public void render(Graphics g) {
 
         g.drawImage(img, (int) this.x, (int) this.y, 64, 64, null); 
@@ -88,6 +96,7 @@ public class LighterJelly extends GameObject {
 	}
 
 	@Override
+	//Jelly hit box
 	public Rectangle getBounds() {
 		return new Rectangle((int) this.x, (int) this.y, 64, 64);
 	}

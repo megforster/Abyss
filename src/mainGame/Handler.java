@@ -11,6 +11,7 @@ import java.util.ArrayList;
  */
 public class Handler {
 
+	//Instance Variables
 	ArrayList<GameObject> object = new ArrayList<GameObject>();
 	ArrayList<Pickup> pickups = new ArrayList<Pickup>();
 	private int timer = 0;
@@ -64,22 +65,27 @@ public class Handler {
 		}
 	}
 
+	//Pauses the game?
 	public void pause() {
 		timer = 1000;
 	}
 
+	//Adds an object to the handler
 	public void addObject(GameObject object) {
 		this.object.add(object);
 	}
 
+	//Removes an object from the handler
 	public void removeObject(GameObject object) {
 		this.object.remove(object);
 	}
 
+	//Adds a pickup (i.e. power up or extra life) to the handler
 	public void addPickup(Pickup object) {
 		this.pickups.add(object);
 	}
 
+	//Removes a pickup from the handler
 	public void removePickup(Pickup object) {
 		this.pickups.remove(object);
 	}

@@ -11,6 +11,7 @@ import java.awt.Graphics;
  *
  */
 
+//Constructor
 public class HUD {
 
 	public double health = 100;
@@ -51,6 +52,7 @@ public class HUD {
 		}
 	}
 
+	//Draws the health bar, score, level, extra lives, and any titles needed for power-ups
 	public void render(Graphics g) {
 		Font font = new Font("Amoebic", 1, 30);
 
@@ -76,58 +78,72 @@ public class HUD {
 		}
 	}
 
+	//Sets ability
 	public void setAbility(String ability) {
 		this.ability = ability;
 	}
 
+	//Gets the number of uses left?
 	public int getAbilityUses() {
 		return this.abilityUses;
 	}
 
+	//Sets the number of uses
 	public void setAbilityUses(int abilityUses) {
 		this.abilityUses = abilityUses;
 	}
 
+	//Changes the score bar color
 	public void updateScoreColor(Color color) {
 		this.scoreColor = color;
 	}
 
+	//Sets the score
 	public void setScore(int score) {
 		this.score = score;
 	}
 
+	//Returns the score
 	public int getScore() {
 		return score;
 	}
 
+	//Returns the level number
 	public int getLevel() {
 		return level;
 	}
 
+	//Sets the level number
 	public void setLevel(int level) {
 		this.level = level;
 	}
 
+	//Sets the health bar number
 	public void setHealth(int health) {
 		this.health = health;
 	}
 
+	//Toggles player health regeneration on?
 	public void setRegen() {
 		regen = true;
 	}
 
+	//Toggles player health regneration off?
 	public void resetRegen() {
 		regen = false;
 	}
 
+	//Sets the number of extra lives
 	public void setExtraLives(int lives) {
 		this.extraLives = lives;
 	}
 
+	//Returns the number of extra lives
 	public int getExtraLives() {
 		return this.extraLives;
 	}
 
+	//Increases player health and the health bar (for a power up)?
 	public void healthIncrease() {
 		doubleHealth = true;
 		healthMax = 200;
@@ -136,6 +152,7 @@ public class HUD {
 		healthBarWidth = 800;
 	}
 
+	//Sets player health and health bar back to orgianl amount
 	public void resetHealth() {
 		doubleHealth = false;
 		healthMax = 100;
@@ -143,7 +160,8 @@ public class HUD {
 		healthBarModifier = 2;
 		healthBarWidth = 400;
 	}
-
+	
+	//Returns player to the maximum health
 	public void restoreHealth() {
 		this.health = healthMax;
 	}

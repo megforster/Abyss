@@ -22,21 +22,25 @@ import javax.swing.ImageIcon;
 
 public class Leech extends GameObject {
 
+	//Instance variables
 	private Handler handler;
 	private GameObject player;
 	private int speed;
 	private Image img;
 
+	//Constructor 
 	public Leech(double x, double y, int speed, ID id, Handler handler) {
 		super(x, y, id);
 		this.handler = handler;
 		this.speed = speed;
 
+		//Adds a leech to the handler
 		for (int i = 0; i < handler.object.size(); i++) {
 			if (handler.object.get(i).getId() == ID.Player)
 				player = handler.object.get(i);
 		
 
+			//Reads the image for the leech
 			try {
 				img = Toolkit.getDefaultToolkit().getImage("images/Leech.gif");
 				} catch (Exception e) {
@@ -45,6 +49,7 @@ public class Leech extends GameObject {
 		}
 	}
 	
+	//returns the image for the leech
 	public Image getImage(String path) {
 		Image image = null;
 		try {
@@ -58,7 +63,7 @@ public class Leech extends GameObject {
 	}
 	
 
-
+	//Controls leech movement 
 	public void tick() {
 		this.x += velX;
 		this.y += velY;
@@ -84,6 +89,7 @@ public class Leech extends GameObject {
 
 	}
 	
+	//Controls leech collision
 	public void collision() {
 
 		for (int i = 0; i < handler.object.size(); i++) {
@@ -93,12 +99,13 @@ public class Leech extends GameObject {
 
 				// collision code
 				if (getBounds().intersects(tempObject.getBounds())) {// player hit an enemy
-					setX(100000);
+					setX(100000); //teleports the leech far off screen when shot
 				}
 			}
 		}
 	}
 
+	//Draws the leech
 	public void render(Graphics g) {
 		double centerX = x + 48 / 2;
 		double centerY = y +  100 / 2;
@@ -119,6 +126,7 @@ public class Leech extends GameObject {
 	}
 
 	@Override
+	//Leech hit box
 	public Rectangle getBounds() {
 		return new Rectangle((int) this.x, (int) this.y, 48, 100);
 	}

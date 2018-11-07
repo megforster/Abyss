@@ -20,7 +20,6 @@ import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.JPanel;
 
-
 import javax.imageio.ImageIO;
 
 import mainGame.Game.STATE;
@@ -33,8 +32,8 @@ import mainGame.Game.STATE;
  */
 
 public class Menu {
-	
 
+	// Instance variables
 	Toolkit tool = Toolkit.getDefaultToolkit();
 	Dimension scrnSize = Toolkit.getDefaultToolkit().getScreenSize();
 	Rectangle winSize = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();
@@ -51,10 +50,11 @@ public class Menu {
 	private int colorIndex;
 	private Spawn1to10 spawner;
 	private JPanel helpPanel;
-	private int buttonwidth = Game.WIDTH/4;
-	private int buttonheight = Game.HEIGHT/5;
+	private int buttonwidth = Game.WIDTH / 4;
+	private int buttonheight = Game.HEIGHT / 5;
 	private Image abyss;
-	
+
+	// Constructor
 	public Menu(Game game, Handler handler, HUD hud, Spawn1to10 spawner) {
 		this.game = game;
 		this.handler = handler;
@@ -64,32 +64,31 @@ public class Menu {
 		r = new Random();
 		addColors();
 
+		// Reads image for background
 		img = null;
 		try {
-			//CHANGE BACKGROUND IMAGE (background.png --> abyssspacebackground.png) 
-			//ADDITIONAL BACKGROUND(abysswaterbackground.jpg)
-			//CHANGED BACKGROUND IN THE MAIN MENU SCREEN
+			// CHANGE BACKGROUND IMAGE (background.png --> SpaceBackground.png)
+			// ADDITIONAL BACKGROUND(UnderWaterBackground.jpg)
+			// CHANGED BACKGROUND IN THE MAIN MENU SCREEN
 			img = ImageIO.read(new File("images/SpaceBackground.png"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
+		// Reads image for game title
 		abyss = null;
 		try {
 			abyss = ImageIO.read(new File("images/AbyssTitle.png"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 
-
-
+		// Adds fireworks to handler
 		handler.addObject(new MenuFireworks((r.nextInt(Game.WIDTH) - 25), 500, 50, 50, 0, -2,
 				colorPick.get(r.nextInt(6)), ID.Firework, this.handler));
 	}
-	
-	
-	
+
+	// Colors for fireworks?
 	public void addColors() {
 		colorPick.add(Color.blue);
 		colorPick.add(Color.white);
@@ -100,6 +99,7 @@ public class Menu {
 		colorPick.add(Color.yellow);
 	}
 
+	// Controls firework movement?
 	public void tick() {
 		timer--;
 		if (timer <= 0) {
@@ -111,75 +111,78 @@ public class Menu {
 		}
 		handler.tick();
 	}
-	
-	
-	//Draws a string at the center of the sceen
+
+	// Draws a string at the center of the sceen
 	public void drawCenteredString(Graphics g, String text, Rectangle rect, Font font) {
 
-	    FontMetrics metrics = g.getFontMetrics(font);
-	    
-	    int x = rect.x + (rect.width - metrics.stringWidth(text)) / 2;
-	    int y = rect.y + ((rect.height - metrics.getHeight()) / 2) + metrics.getAscent();
+		FontMetrics metrics = g.getFontMetrics(font);
 
-	    g.setFont(font);
+		int x = rect.x + (rect.width - metrics.stringWidth(text)) / 2;
+		int y = rect.y + ((rect.height - metrics.getHeight()) / 2) + metrics.getAscent();
 
-	    g.drawString(text, x, y);
+		g.setFont(font);
+
+		g.drawString(text, x, y);
 	}
-	
 
-
+	// Draws all the buttons
 	public void render(Graphics g) {
 		if (game.gameState == STATE.Menu) {
-			
+
 			g.drawImage(img, 0, 0, Game.WIDTH, Game.HEIGHT, null);
 			handler.render(g);
-			Font font = new Font("Amoebic", 1, Game.WIDTH/20);
-			Font font2 = new Font("Amoebic", 1, Game.WIDTH/30);
+			Font font = new Font("Amoebic", 1, Game.WIDTH / 20);
+			Font font2 = new Font("Amoebic", 1, Game.WIDTH / 30);
 
-			g.drawImage(abyss, ((Game.WIDTH - 720)/2), ((Game.HEIGHT - 200)/16), 720, 200, null);
+			g.drawImage(abyss, ((Game.WIDTH - 720) / 2), ((Game.HEIGHT - 200) / 16), 720, 200, null);
 
-
-
-			
 			g.setFont(font2);
 			g.setColor(Color.white);
-			g.drawRect( ((Game.WIDTH - buttonwidth)/2), ((Game.HEIGHT - buttonheight)/2), buttonwidth, buttonheight);
-			Rectangle wavebutton = new Rectangle (((Game.WIDTH - buttonwidth)/2), ((Game.HEIGHT - buttonheight)/2), buttonwidth, buttonheight);
+			g.drawRect(((Game.WIDTH - buttonwidth) / 2), ((Game.HEIGHT - buttonheight) / 2), buttonwidth, buttonheight);
+			Rectangle wavebutton = new Rectangle(((Game.WIDTH - buttonwidth) / 2), ((Game.HEIGHT - buttonheight) / 2),
+					buttonwidth, buttonheight);
 			g.setColor(Color.white);
 			drawCenteredString(g, "Click to Start", wavebutton, font2);
-			
-			g.setFont(font2);
-			g.setColor(Color.white);
-			g.drawRect(((Game.WIDTH - buttonwidth)/16), ((Game.HEIGHT - buttonheight)*5/6), buttonwidth, buttonheight);
-			Rectangle Quitbutton = new Rectangle (((Game.WIDTH - buttonwidth)/16), ((Game.HEIGHT - buttonheight)*5/6), buttonwidth, buttonheight);
-			g.setColor(Color.white);
-			drawCenteredString(g, "Quit", Quitbutton, font2 );
-			
-			
-			g.setFont(font2);
-			g.setColor(Color.white);
-			g.drawRect(((Game.WIDTH - buttonwidth)/2), ((Game.HEIGHT - buttonheight)*5/6), buttonwidth, buttonheight);
-			Rectangle Helpbutton = new Rectangle (((Game.WIDTH - buttonwidth)/2), ((Game.HEIGHT - buttonheight)*5/6), buttonwidth, buttonheight);
-			g.setColor(Color.white);
-			drawCenteredString(g, "Help", Helpbutton, font2 );
-			
-			g.setFont(font2);
-			g.setColor(Color.white);
-			g.drawRect(((Game.WIDTH - buttonwidth)*15/16), ((Game.HEIGHT - buttonheight)*5/6), buttonwidth, buttonheight);
-			Rectangle Creditbutton = new Rectangle (((Game.WIDTH - buttonwidth)*15/16), ((Game.HEIGHT - buttonheight)*5/6), buttonwidth, buttonheight);
-			g.setColor(Color.white);
-			drawCenteredString(g, "Credits", Creditbutton, font2 );
 
-			//NEW MENUE
-			//CHOOSE A BACKGROUND
 			g.setFont(font2);
 			g.setColor(Color.white);
-			g.drawRect( ((Game.WIDTH - buttonwidth)/16), ((Game.HEIGHT - buttonheight)/2), buttonwidth, buttonheight);
-			Rectangle Backgroundbutton = new Rectangle (((Game.WIDTH - buttonwidth)/16), ((Game.HEIGHT - buttonheight)/2), buttonwidth, buttonheight);
+			g.drawRect(((Game.WIDTH - buttonwidth) / 16), ((Game.HEIGHT - buttonheight) * 5 / 6), buttonwidth,
+					buttonheight);
+			Rectangle Quitbutton = new Rectangle(((Game.WIDTH - buttonwidth) / 16),
+					((Game.HEIGHT - buttonheight) * 5 / 6), buttonwidth, buttonheight);
+			g.setColor(Color.white);
+			drawCenteredString(g, "Quit", Quitbutton, font2);
+
+			g.setFont(font2);
+			g.setColor(Color.white);
+			g.drawRect(((Game.WIDTH - buttonwidth) / 2), ((Game.HEIGHT - buttonheight) * 5 / 6), buttonwidth,
+					buttonheight);
+			Rectangle Helpbutton = new Rectangle(((Game.WIDTH - buttonwidth) / 2),
+					((Game.HEIGHT - buttonheight) * 5 / 6), buttonwidth, buttonheight);
+			g.setColor(Color.white);
+			drawCenteredString(g, "Help", Helpbutton, font2);
+
+			g.setFont(font2);
+			g.setColor(Color.white);
+			g.drawRect(((Game.WIDTH - buttonwidth) * 15 / 16), ((Game.HEIGHT - buttonheight) * 5 / 6), buttonwidth,
+					buttonheight);
+			Rectangle Creditbutton = new Rectangle(((Game.WIDTH - buttonwidth) * 15 / 16),
+					((Game.HEIGHT - buttonheight) * 5 / 6), buttonwidth, buttonheight);
+			g.setColor(Color.white);
+			drawCenteredString(g, "Credits", Creditbutton, font2);
+
+			// NEW MENUE
+			// CHOOSE A BACKGROUND
+			g.setFont(font2);
+			g.setColor(Color.white);
+			g.drawRect(((Game.WIDTH - buttonwidth) / 16), ((Game.HEIGHT - buttonheight) / 2), buttonwidth,
+					buttonheight);
+			Rectangle Backgroundbutton = new Rectangle(((Game.WIDTH - buttonwidth) / 16),
+					((Game.HEIGHT - buttonheight) / 2), buttonwidth, buttonheight);
 			g.setColor(Color.white);
 			drawCenteredString(g, "Pick a Theme:", Backgroundbutton, font2);
 
+		}
+
 	}
-
-
-}}
+}

@@ -14,6 +14,7 @@ import java.util.Random;
 
 public class MenuFireworks extends GameObject {
 
+	//Instance variables
 	private Handler handler;
 	private Random r;
 	private double velX;
@@ -25,7 +26,8 @@ public class MenuFireworks extends GameObject {
 	private int max = 5;
 	private int min = -5;
 	private Color color;
-
+	
+	//Constructor
 	public MenuFireworks(double x, double y, int sizeX, int sizeY, double velX, double velY, Color color, ID id,
 			Handler handler) {
 		super(x, y, id);
@@ -36,16 +38,18 @@ public class MenuFireworks extends GameObject {
 		this.velY = velY;
 		this.sizeX = sizeX;
 		this.sizeY = sizeY;
-		r = new Random();
+		r = new Random(); //random number generator 
 		this.color = color;
 
 	}
 
+	//Draws the firework 
 	public void render(Graphics g) {
 		g.setColor(this.color);
 		g.fillOval((int) this.x, (int) this.y, sizeX, sizeY);
 	}
 
+	//Controls firework movement 
 	public void tick() {
 		this.x += velX;
 		this.y += velY;
@@ -66,7 +70,8 @@ public class MenuFireworks extends GameObject {
 
 	}
 
-	public void sparks(GameObject tempObject) {// when the big circle breaks into a bunch of smaller ones
+	//Adds the sparks to the handler after the firework "explodes"
+	public void sparks(GameObject tempObject) {
 		for (int ii = 0; ii < 3; ii++) {
 			handler.addObject(new MenuFireworks(this.x, this.y, 20, 20, (r.nextInt((max - min) + 1) + min), -5,
 					this.color, ID.FireworkSpark, handler));
@@ -98,6 +103,7 @@ public class MenuFireworks extends GameObject {
 	}
 
 	@Override
+	//Firework hit box
 	public Rectangle getBounds() {
 		return null;
 	}

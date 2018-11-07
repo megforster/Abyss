@@ -18,7 +18,8 @@ import mainGame.Game.STATE;
  */
 
 public class Pause {
-
+	
+	//Instance variables 
 	private Game game;
 	private Handler handler;
 	private HUD hud;
@@ -26,14 +27,11 @@ public class Pause {
 	private int buttonwidth = Game.WIDTH/4;
 	private int buttonheight = Game.HEIGHT/5;
 
+	//Constructor 
 	public Pause(Game game, Handler handler, HUD hud) {
 		this.game = game;
 		this.handler = handler;
 		this.hud = hud;
-	}
-
-	public void tick() {
-
 	}
 
 	/** 
@@ -42,6 +40,8 @@ public class Pause {
 	 *   and three buttons: Play, Help, Exit
 	 * 
 	 */
+	
+	//Draws the pause menu option "buttons"
 	public void render(Graphics g) {
 		if (game.gameState == STATE.Pause) {
 			Font font = new Font("Amoebic", 1, Game.WIDTH/20);
@@ -75,12 +75,16 @@ public class Pause {
 		}
 
 	}
+	
+	//Not sure 
 	public int getTextWidth(Font font, String text) {
 		AffineTransform at = new AffineTransform();
 		FontRenderContext frc = new FontRenderContext(at, true, true);
 		int textWidth = (int) (font.getStringBounds(text, frc).getWidth());
 		return textWidth;
 	}
+	
+	//Not sure
 	public void drawCenteredString(Graphics g, String text, Rectangle rect, Font font) {
 
 		FontMetrics metrics = g.getFontMetrics(font);
