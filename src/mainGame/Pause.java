@@ -33,6 +33,11 @@ public class Pause {
 		this.handler = handler;
 		this.hud = hud;
 	}
+	
+	//Visually stops movement when game is pause?
+	public void tick() {
+		
+	}
 
 	/** 
 	 *   Layout for Pause Menu

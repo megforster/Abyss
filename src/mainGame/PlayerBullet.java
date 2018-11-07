@@ -6,9 +6,11 @@ import java.awt.Rectangle;
 import java.util.Random;
 
 public class PlayerBullet extends GameObject {
-
+	
+	//Instance variables
 	private Handler handler;
 	
+	//Constructor 
 	public PlayerBullet(double x, double y, double pVelX, double pVelY, ID id, Handler handler) {
 		super(x, y, id);
 		this.handler = handler;
@@ -23,6 +25,7 @@ public class PlayerBullet extends GameObject {
 	
 
 	@Override
+	//Controls the movement of the bullet
 	public void tick() {
 		// TODO Auto-generated method stub
 		this.x += velX;
@@ -37,6 +40,7 @@ public class PlayerBullet extends GameObject {
 	}
 
 	@Override
+	//Draws the bullet
 	public void render(Graphics g) {
 		// TODO Auto-generated method stub
 		g.setColor(Color.WHITE);
@@ -44,6 +48,7 @@ public class PlayerBullet extends GameObject {
 	}
 
 	@Override
+	//Bullet hitbox
 	public Rectangle getBounds() {
 		// TODO Auto-generated method stub
 		return new Rectangle((int) this.x, (int) this.y, 16, 16);

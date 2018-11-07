@@ -24,6 +24,7 @@ import javax.imageio.ImageIO;
 
 public class ShooterEnemy extends GameObject  {
 
+	//Instance variable
 	private Handler handler;
 	private int sizeX;
 	private int sizeY;
@@ -37,6 +38,7 @@ public class ShooterEnemy extends GameObject  {
 	private Image img;
 	public static int sizeDecrease = 3;
 
+	//Constructor 
 	public ShooterEnemy(double x, double y, int sizeX, int sizeY, int bulletSpeed, ID id, Handler handler) {
 		super(x, y, id);
 		this.handler = handler;
@@ -59,11 +61,8 @@ public class ShooterEnemy extends GameObject  {
 		}
 	}
 	
-
+	//Lowers enemy health and controls frequency of shooting
 	public void tick() {
-
-
-
 		timer--;
 		if (timer <= 0) {
 			shoot();
@@ -73,6 +72,7 @@ public class ShooterEnemy extends GameObject  {
 		collision();
 	}
 		
+	//Code for when player bullet collides with the enemy
 	public void collision() {
 
 		for (int i = 0; i < handler.object.size(); i++) {
@@ -89,6 +89,7 @@ public class ShooterEnemy extends GameObject  {
 		}
 	}
 
+	//Code for the enemy shooting 
 	public void shoot() {
 		double diffX = this.x + (sizeX /2) - player.getX() - 16;
 		double diffY = this.y + (sizeY / 2) - player.getY() - 16;
@@ -103,6 +104,7 @@ public class ShooterEnemy extends GameObject  {
 				new ShooterEnemyBullet(x + this.sizeX / 2, y + this.sizeY /2, bulletVelX, bulletVelY, ID.EnemyShooterBullet, this.handler));
 	}
 
+	//Health for the enemy (enemy dies over time primarily)
 	public void updateEnemy() {
 		this.sizeX--;
 		this.sizeY--;
@@ -112,6 +114,7 @@ public class ShooterEnemy extends GameObject  {
 		}
 	}
 
+	//Draws the enemy 
 	public void render(Graphics g) {
 		
 		double centerX = x + this.sizeX / 2;
@@ -135,6 +138,7 @@ public class ShooterEnemy extends GameObject  {
 	
 
 	@Override
+	//Hit box
 	public Rectangle getBounds() {
 		return new Rectangle((int) this.x, (int) this.y, this.sizeX, this.sizeY);
 	}
@@ -143,4 +147,3 @@ public class ShooterEnemy extends GameObject  {
 
 
 }
-//sneaky comment+2
