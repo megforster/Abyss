@@ -19,7 +19,7 @@ public class HUD {
 
 	private double greenValue = 255;
 
-	private int score = 00000000000;
+	public static int score = 0;
 	private int level = 0;
 
 	private boolean regen = false;
@@ -40,8 +40,6 @@ public class HUD {
 		greenValue = Game.clamp(greenValue, 0, 255);
 
 		greenValue = health * healthBarModifier;
-
-		score++;
 
 		if (regen) {// regenerates health if that ability has been unlocked
 			timer--;

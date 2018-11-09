@@ -70,6 +70,7 @@ public class LighterJelly extends GameObject {
 				// collision code
 				if (getBounds().intersects(tempObject.getBounds())) {
 					setX(100000); //Teleport jelly far off screen when shot by player
+					HUD.score = HUD.score + 25;
 				}
 			}
 		}

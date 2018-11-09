@@ -84,6 +84,7 @@ public class ShooterEnemy extends GameObject  {
 				if (getBounds().intersects(tempObject.getBounds())) {// player hit an enemy
 					this.sizeX -= sizeDecrease;
 					this.sizeY -= sizeDecrease;
+					HUD.score = HUD.score + 25;
 				}
 			}
 		}

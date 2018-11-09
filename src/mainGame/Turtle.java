@@ -91,6 +91,7 @@ public class Turtle extends GameObject {
 
 
 		timer--;
+		HUD.score++;
 		if (timer <= 0) {
 			this.x += velX;
 			this.y += velY;
