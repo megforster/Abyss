@@ -25,17 +25,21 @@ import mainGame.Game.STATE;
 
 public class UpgradeScreen {
 
+	// Instance variables
 	private Game game;
 	private Handler handler;
 	private HUD hud;
 	private String text;
-	private String[] paths = {"images/clearscreenability.png", "images/decreaseplayersize.png", "images/extralife.png",
+
+	// Array of power-up names
+	private String[] paths = { "images/clearscreenability.png", "images/decreaseplayersize.png", "images/extralife.png",
 			"images/healthincrease.png", "images/healthregeneration.png", "images/improveddamageresistance.png",
-			"images/levelskipability.png", "images/freezetimeability.png", "images/damageboost.png"};
+			"images/levelskipability.png", "images/freezetimeability.png", "images/damageboost.png" };
 	private ArrayList<String> imagePaths = new ArrayList<String>();
 	private Random r = new Random();
 	private int index1, index2, index3, tempCounter;
 
+	// Constructor
 	public UpgradeScreen(Game game, Handler handler, HUD hud) {
 		this.game = game;
 		this.handler = handler;
@@ -50,17 +54,20 @@ public class UpgradeScreen {
 
 	}
 
+	// Draws three power-ups at a time
 	public void render(Graphics g) {
-		Font font = new Font("Amoebic", 1, (Game.WIDTH)/20);
+		Font font = new Font("Amoebic", 1, (Game.WIDTH) / 20);
 		text = "Select an Upgrade!";
 		g.setFont(font);
 		g.setColor(Color.WHITE);
 		g.drawString(text, Game.WIDTH / 2 - getTextWidth(font, text) / 2, 200);
 
-
-		g.drawImage(getImage(imagePaths.get(index1)), (Game.WIDTH/2) - ((Game.WIDTH)*3/4)/2, (Game.HEIGHT/3), (Game.WIDTH)*3/4, (Game.HEIGHT)/10, null);
-		g.drawImage(getImage(imagePaths.get(index2)), (Game.WIDTH/2) - ((Game.WIDTH)*3/4)/2, (Game.HEIGHT/3) + (60 + Game.HEIGHT / 6), (Game.WIDTH)*3/4, (Game.HEIGHT)/10, null);
-		g.drawImage(getImage(imagePaths.get(index3)), (Game.WIDTH/2) - ((Game.WIDTH)*3/4)/2, (Game.HEIGHT/3) + 2 * (60 + Game.HEIGHT / 6), (Game.WIDTH)*3/4, (Game.HEIGHT)/10, null);
+		g.drawImage(getImage(imagePaths.get(index1)), (Game.WIDTH / 2) - ((Game.WIDTH) * 3 / 4) / 2, (Game.HEIGHT / 3),
+				(Game.WIDTH) * 3 / 4, (Game.HEIGHT) / 10, null);
+		g.drawImage(getImage(imagePaths.get(index2)), (Game.WIDTH / 2) - ((Game.WIDTH) * 3 / 4) / 2,
+				(Game.HEIGHT / 3) + (60 + Game.HEIGHT / 6), (Game.WIDTH) * 3 / 4, (Game.HEIGHT) / 10, null);
+		g.drawImage(getImage(imagePaths.get(index3)), (Game.WIDTH / 2) - ((Game.WIDTH) * 3 / 4) / 2,
+				(Game.HEIGHT / 3) + 2 * (60 + Game.HEIGHT / 6), (Game.WIDTH) * 3 / 4, (Game.HEIGHT) / 10, null);
 
 	}
 
@@ -80,12 +87,14 @@ public class UpgradeScreen {
 
 	}
 
+	// Adds an image?
 	public void addPaths() {
 		for (int i = 0; i < 9; i++) {
 			imagePaths.add(paths[i]);
 		}
 	}
 
+	// Randomly generates an image selction
 	public int getIndex(int maxIndex) {
 		int index = r.nextInt(maxIndex);
 		return index;
@@ -113,6 +122,7 @@ public class UpgradeScreen {
 		}
 	}
 
+	// Returns the power-up image
 	public Image getImage(String path) {
 		Image image = null;
 		try {
@@ -125,6 +135,7 @@ public class UpgradeScreen {
 		return image;
 	}
 
+	// Gets the proper width of the text for the screen
 	public int getTextWidth(Font font, String text) {
 		AffineTransform at = new AffineTransform();
 		FontRenderContext frc = new FontRenderContext(at, true, true);
@@ -168,13 +179,4 @@ public class UpgradeScreen {
 		}
 	}
 
-	public void mousePressed(MouseEvent e) {
-
-	}
-
-	public void mouseReleased(MouseEvent e) {
-
-	}
-
 }
-

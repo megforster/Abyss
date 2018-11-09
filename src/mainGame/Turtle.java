@@ -20,6 +20,7 @@ import javax.imageio.ImageIO;
 
 public class Turtle extends GameObject {
 
+	//Instance Variables
 	private Handler handler;
 	private int timer;
 	private int size;
@@ -28,6 +29,7 @@ public class Turtle extends GameObject {
 	private Image img;
 	static Toolkit tool = Toolkit.getDefaultToolkit();
 
+	//Constructor 
 	public Turtle(double x, double y, double velX, double velY, int size, String side, ID id, Handler handler) {
 		super(x, y, id);
 		this.handler = handler;
@@ -36,6 +38,8 @@ public class Turtle extends GameObject {
 		this.timer = 60;
 		this.side = side;
 		this.size = size;
+		
+		//Code for when turtle is coming from the left
 		if (this.side.equals("left")) {
 			handler.object.add(new TurtleWarningBars(0, 0, 25, Game.HEIGHT, ID.EnemyBurstWarning, handler));
 			img = null;
@@ -46,6 +50,8 @@ public class Turtle extends GameObject {
 			}
 			setPos();
 			setVel();
+			
+			//Code for when turtle is coming from the right 
 		} else if (this.side.equals("right")) {
 			handler.object.add(new TurtleWarningBars(Game.WIDTH - 25, 0, 25, Game.HEIGHT, ID.EnemyBurstWarning, handler));
 			img = null;
@@ -57,6 +63,7 @@ public class Turtle extends GameObject {
 			setPos();
 			setVel();
 
+			//Code for when the turtle is coming from the top
 		} else if (this.side.equals("top")) {
 			handler.object.add(new TurtleWarningBars(0, 0, Game.WIDTH, 25, ID.EnemyBurstWarning, handler));
 			img = null;
@@ -68,6 +75,7 @@ public class Turtle extends GameObject {
 			setPos();
 			setVel();
 
+			//Code for when turtule is coming from the bottom
 		} else if (this.side.equals("bottom")) {
 			handler.object.add(new TurtleWarningBars(0, Game.HEIGHT - 50, Game.WIDTH, 25, ID.EnemyBurstWarning, handler));
 			img = null;
@@ -83,13 +91,8 @@ public class Turtle extends GameObject {
 
 	}
 
+	//Controls level length and warning bar removal when turtle off screen 
 	public void tick() {
-
-		// if (this.y <= 0 || this.y >= Game.HEIGHT - 40) velY *= -1;
-		// if (this.x <= 0 || this.x >= Game.WIDTH - 16) velX *= -1;
-
-
-
 		timer--;
 		HUD.score++;
 		if (timer <= 0) {
@@ -100,11 +103,11 @@ public class Turtle extends GameObject {
 		
 		if (this.y >= Game.HEIGHT * 2 || this.y <= Game.HEIGHT *-2 || this.x >= Game.WIDTH * 2 || this.x <= Game.WIDTH * -2) {
 			handler.removeObject(this);
-			System.out.print("Burst is removed");
 		}
 
 	}
 
+	//Sets the turtle position based off of what side its coming from 
 	public void setPos() {
 		if (this.side.equals("left")) {
 			this.y = r.nextInt(((Game.HEIGHT - size) - 0) + 1) + 0;
@@ -124,6 +127,7 @@ public class Turtle extends GameObject {
 		}
 	}
 
+	//Sets turtle velocity based off of what side it is coming from
 	public void setVel() {
 		if (this.side.equals("left")) {
 			this.velY = 0;
@@ -140,6 +144,7 @@ public class Turtle extends GameObject {
 		}
 	}
 
+	//Draws the turtle 
 	public void render(Graphics g) {
 
 		g.drawImage(img, (int) x, (int) y, this.size, this.size, null);
@@ -147,6 +152,8 @@ public class Turtle extends GameObject {
 	}
 
 	@Override
+	
+	//Turtle hit box
 	public Rectangle getBounds() {
 		return new Rectangle((int) this.x, (int) this.y, 200, 200);
 	}

@@ -13,8 +13,10 @@ import java.awt.Rectangle;
 
 public class ShooterEnemyBullet extends GameObject {
 
+	//Instance variables
 	private Handler handler;
 
+	//Constructor
 	public ShooterEnemyBullet(double x, double y, double velX, double velY, ID id, Handler handler) {
 		super(x, y, id);
 		this.handler = handler;
@@ -22,18 +24,14 @@ public class ShooterEnemyBullet extends GameObject {
 		this.velY = velY;
 	}
 
+	//Controls bullet movement 
 	public void tick() {
 		this.x += velX;
 		this.y += velY;
-
-		// if (this.y <= 0 || this.y >= Game.HEIGHT - 40) velY *= -1;
-		// if (this.x <= 0 || this.x >= Game.WIDTH - 16) velX *= -1;
-
-
-
 		removeBullets();
 	}
 
+	//Gets rid of all bullets that go off screen
 	public void removeBullets() {
 
 		for (int i = 0; i < handler.object.size(); i++) {
@@ -48,6 +46,7 @@ public class ShooterEnemyBullet extends GameObject {
 
 	}
 
+	//Draws the bullets
 	public void render(Graphics g) {
 		g.setColor(Color.red);
 		g.fillRect((int) x, (int) y, 4, 4);
@@ -55,6 +54,7 @@ public class ShooterEnemyBullet extends GameObject {
 	}
 
 	@Override
+	//bullet hit box
 	public Rectangle getBounds() {
 		return new Rectangle((int) this.x, (int) this.y, 16, 16);
 	}

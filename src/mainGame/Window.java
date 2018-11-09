@@ -18,15 +18,18 @@ import java.awt.Toolkit;
  */
 
 public class Window extends Canvas{
-
+	
+	//Instance variables
 	private static final long serialVersionUID = 1L;
 	
+	//Constructor 
 	public Window(int width, int height, String title, Game game){
 		
-		JFrame frame = new JFrame(title);
+		JFrame frame = new JFrame(title); //names the window
 
 		Toolkit tool = Toolkit.getDefaultToolkit();
 		
+		//Code for screen size 
 		Dimension scrnSize = Toolkit.getDefaultToolkit().getScreenSize();
 	    frame.setSize(scrnSize.width, scrnSize.height);
 		Rectangle winSize = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();

@@ -13,6 +13,7 @@ import java.awt.Rectangle;
 
 public class TurtleWarningBars extends GameObject {
 
+	//Instance variables 
 	private Handler handler;
 	private int width;
 	private int height;
@@ -20,6 +21,7 @@ public class TurtleWarningBars extends GameObject {
 	private Color color;
 	private int hasFlashed;
 
+	//Constructor 
 	public TurtleWarningBars(double x, double y, int width, int height, ID id, Handler handler) {
 		super(x, y, id);
 		this.handler = handler;
@@ -31,11 +33,13 @@ public class TurtleWarningBars extends GameObject {
 
 	}
 
+	//COntrols the flashing of the warning bars 
 	public void tick() {
 		flash();
 		checkFlash();
 	}
 
+	//Code that makes the warning bars flash
 	public void flash() {
 		timer--;
 		if (timer == 5) {
@@ -47,7 +51,8 @@ public class TurtleWarningBars extends GameObject {
 		}
 
 	}
-
+	
+	//Code for controlling length of flash
 	public void checkFlash() {
 		if (this.hasFlashed == 5) {
 			for (int i = 0; i < handler.object.size(); i++) {
@@ -59,7 +64,8 @@ public class TurtleWarningBars extends GameObject {
 			}
 		}
 	}
-
+	
+	//Draws the warning bar
 	public void render(Graphics g) {
 		g.setColor(this.color);
 		g.fillRect((int) x, (int) y, this.width, this.height);
@@ -67,6 +73,7 @@ public class TurtleWarningBars extends GameObject {
 	}
 
 	@Override
+	//Warning bar hit box
 	public Rectangle getBounds() {
 		return new Rectangle((int) this.x, (int) this.y, 16, 16);
 	}

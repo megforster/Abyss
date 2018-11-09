@@ -9,6 +9,7 @@ package mainGame;
 
 public class Upgrades {
 
+	//Instance variable
 	private Game game;
 	private Handler handler;
 	private HUD hud;
@@ -20,6 +21,7 @@ public class Upgrades {
 	private CrabBoss redboss;
 	private ShooterEnemy shooter;
 
+	//Constructor 
 	public Upgrades(Game game, Handler handler, HUD hud, UpgradeScreen upgradeScreen, Player player, Spawn1to10 spawner,
 			Spawn10to20 spawner2) {
 		this.game = game;
@@ -31,34 +33,41 @@ public class Upgrades {
 		this.spawner2 = spawner2;
 	}
 
+	//Code for the Clear Screen power-up
 	public void clearScreenAbility() {
 		handler.clearEnemies();
 		hud.setAbilityUses(hud.getAbilityUses() - 1);
 		if (hud.getAbilityUses() == 0) {
-			ability = "";
+			ability = ""; //same for all power-ups, code for power-up being used up
 		}
 	}
 
+	//Code for the decrease size power-up
 	public void decreasePlayerSize() {
 		player.setPlayerSize(24);
 	}
 
+	//Code for the extra life power-up
 	public void extraLife() {
 		hud.setExtraLives(hud.getExtraLives() + 1);
 	}
 
+	//Control (call) for the health increase power-up
 	public void healthIncrease() {
 		hud.healthIncrease();
 	}
 
+	//Code (call) for the health regeneration power up 
 	public void healthRegeneration() {
 		hud.setRegen();
 	}
 
+	//Code (call) for the increased damage resistance power-up
 	public void improvedDamageResistance() {
 		player.setDamage(1);
 	}
 
+	//Code for the skip level ability
 	public void levelSkipAbility() {
 		handler.clearEnemies();
 		hud.setLevel(hud.getLevel() + 1);
@@ -74,6 +83,7 @@ public class Upgrades {
 
 	}
 
+	//Code for the freeze time ability 
 	public void freezeTimeAbility() {
 		handler.pause();
 		hud.setAbilityUses(hud.getAbilityUses() - 1);
@@ -82,12 +92,14 @@ public class Upgrades {
 		}
 	}
 	
+	//Code for the damage boost ability
 	public void damageBoost() {
 		CrabBoss.enemyDamage *= 2;
 		ShooterEnemy.sizeDecrease *= 2;
 		System.out.print("DamageBoost Active");
 	}
 
+	//Returns the ability 
 	public String getAbility() {
 		return ability;
 	}
@@ -127,6 +139,7 @@ public class Upgrades {
 
 	}
 
+	//Resets all power-up effect 
 	public void resetUpgrades() {
 		Player.playerSpeed = 10;
 		hud.resetHealth();

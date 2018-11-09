@@ -15,6 +15,7 @@ import java.awt.geom.AffineTransform;
 
 public class Victory {
 
+	//Instance variables 
 	private Game game;
 	private Handler handler;
 	private HUD hud;
@@ -22,6 +23,7 @@ public class Victory {
 	private Color retryColor;
 	private String text;
 
+	//Constructor
 	public Victory(Game game, Handler handler, HUD hud) {
 		this.game = game;
 		this.handler = handler;
@@ -29,13 +31,14 @@ public class Victory {
 		timer = 90;
 		this.retryColor = Color.white;
 	}
-
+	//Removes the player and calls the text to flash color
 	public void tick() {
 		handler.clearPlayer();
 		flash();
 
 	}
 
+	//Draws the words for the victory screen
 	public void render(Graphics g) {
 		Font font = new Font("Amoebic", 1, 100);
 		Font font2 = new Font("Amoebic", 1, 60);
@@ -53,7 +56,8 @@ public class Victory {
 		g.drawString(text, Game.WIDTH / 2 - getTextWidth(font2, text) / 2, Game.HEIGHT / 2 + 150);
 
 	}
-
+	
+	//Causes the text on the screen to flash black and white
 	public void flash() {
 		timer--;
 		if (timer == 45) {

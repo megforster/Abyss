@@ -21,13 +21,14 @@ import java.awt.Rectangle;
 
 public class Trail extends GameObject{
 
+	//Instance Variables
 	private float alpha = 1;
 	private Handler handler;
 	private Color color;
 	private int width, height;
-	private double life;	//life = 0.01 -> 0.1
+	private double life;
 	
-	
+	//Constructor 
 	public Trail(double x, double y, ID id, Color color, int width, int height, double life, Handler handler) {
 		super(x, y, id);
 		this.handler = handler;
@@ -38,8 +39,8 @@ public class Trail extends GameObject{
 
 	}
 
-
-	public void tick() {//slowly fades each square
+	//Slowly fades each square
+	public void tick() {
 		if (alpha > life){
 			alpha -= life - 0.001;
 		}
@@ -47,7 +48,7 @@ public class Trail extends GameObject{
 		
 	}
 
-
+	//Draws the square
 	public void render(Graphics g) {
 		Graphics2D g2d = (Graphics2D)g;
 		g2d.setComposite(makeTransparent(alpha));
@@ -56,18 +57,14 @@ public class Trail extends GameObject{
 		g2d.setComposite(makeTransparent(1));//allows for the rectangle to appear like it's fading
 	}
 	
-	/**
-	 * Helps make the rectangle fade away
-	 * @param alpha is the amount of fade
-	 * @return the AlphaComposite instance of this alpha level (simply how Swing allows you to use opacity in objects)
-	 */
+	//Helps fade the square 
 	private AlphaComposite makeTransparent(float alpha){
 		int type = AlphaComposite.SRC_OVER;
 		return (AlphaComposite.getInstance(type, alpha));
 		
 	}
 
-
+	//Method to allow trail to extend game object
 	public Rectangle getBounds() {
 		return null;
 	}

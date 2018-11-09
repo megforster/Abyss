@@ -15,6 +15,7 @@ import mainGame.Game.STATE;
 
 public class Spawn10to20 {
 
+	//Instance variables
 	private Handler handler;
 	private HUD hud;
 	private Game game;
@@ -34,9 +35,10 @@ public class Spawn10to20 {
 
 	private double playerX;
 	private double playerY;
-	private double hGenTemp;
-	private double wGenTemp;
+	private double enemyX;
+	private double enemyY;
 
+	//Constructor
 	public Spawn10to20(Handler handler, HUD hud, Spawn1to10 spawner, Game game) {
 		restart();
 		this.handler = handler;
@@ -46,16 +48,15 @@ public class Spawn10to20 {
 		hud.restoreHealth();
 		spawnTimer = 12;
 		levelTimer = 100;
-		//randomMax = 10;
 		levelsRemaining = 10;
 		hud.setLevel(1);
 		tempCounter = 0;
 		addLevels();
-		//index = r.nextInt(randomMax);
 		index = r.nextInt(levelsRemaining);
 		levelNumber = 0;
 	}
 
+	//adds a level number to the array list of levels 
 	public void addLevels() {
 		for (int i = 1; i <= 10; i++) {
 			levels.add(i);
@@ -63,15 +64,15 @@ public class Spawn10to20 {
 	}
 
 	public void tick() {
-		// if(LEVEL_SET_2_RESET < 1){
-		// restart();
-		// LEVEL_SET_2_RESET ++;
-		// }
+	
+		//Controls which enemies spawn on which levels
 		switch (levelNumber) {
 		
 		/**
 		 * Case system to spawn correct enemies based on current level
 		 */
+		
+		//"Opening screen"
 		case 0:
 			levelTimer--;
 			if (tempCounter < 1) {
@@ -81,56 +82,53 @@ public class Spawn10to20 {
 						ID.Levels1to10Text));
 				tempCounter++;
 			}
+			//Gets rid of all enemies if they are still present 
 			if (levelTimer <= 0) {
 				handler.clearEnemies();
 				tempCounter = 0;
-				levelNumber = levels.get(index);
+				levelNumber = levels.get(index); //Queues up the next level
 			}
 
 		break;
 
-		case 1:// this is level 1
-			spawnTimer--;// keep decrementing the spawning spawnTimer 60 times a second
-			levelTimer--;// keep decrementing the level spawnTimer 60 times a second
-			if (tempCounter < 1) {// called only once, but sets the levelTimer to how long we want this level to
-									// run for
+		//Case 1's comments apply to the remaining cases
+		case 1:
+			spawnTimer--; //Keep decrementing the spawning spawnTimer 60 times a second
+			levelTimer--; // Keep decrementing the level spawnTimer 60 times a second
+			if (tempCounter < 1) { //Sets time level timer ticks for 
 				levelTimer = 1500;
-				tempCounter++;// ensures the method is only called once
+				tempCounter++; //Ensures the method is only called once
 			}
-			if (spawnTimer == 0) {// time to spawn another enemy
+			if (spawnTimer == 0) { //Queue's another enemy to spawn 
 				
 				findX();
 				findY();
-				//temporary enemy height generation variable -EH
-				hGenTemp = r.nextInt(Game.HEIGHT);
-				//temporary enemy width generation variable -EH
-				wGenTemp = r.nextInt(Game.WIDTH);
-				//this checks to see if the enemy width and height are both within 
-				//75 pixels of the player's respective x and y coordinates.
-				//if that is the case, it rerolls the enemy width and height. -EH
-				while (Math.abs(wGenTemp - playerX) < 100 && Math.abs(hGenTemp - playerY) < 100) {
-					wGenTemp = r.nextInt(Game.WIDTH);
-					hGenTemp = r.nextInt(Game.HEIGHT);
+				enemyX = r.nextInt(Game.HEIGHT); //Generates an enemy spawn x
+				enemyY = r.nextInt(Game.WIDTH); //Generates an enemy spawn y
+				
+				//Regenerates enemy coordinates if they are in the same area as the player
+				while (Math.abs(enemyY - playerX) < 100 && Math.abs(enemyX - playerY) < 100) {
+					enemyY = r.nextInt(Game.WIDTH);
+					enemyX = r.nextInt(Game.HEIGHT);
 				}
 				
-				//
-				handler.addObject(
-						new LighterJelly(wGenTemp, hGenTemp, 9, 9, ID.EnemyBasic, handler));
-				// add them to the handler, which handles all game objects
-				spawnTimer = 80;// reset the spawn timer
+				//Creates the enemy 
+				handler.addObject(new LighterJelly(enemyY, enemyX, 9, 9, ID.EnemyBasic, handler));
+				
+				spawnTimer = 80;//Reset the spawn timer
 			}
-			if (levelTimer == 0) {// level is over
-				handler.clearEnemies();// clear the enemies
-				hud.setLevel(hud.getLevel() + 1);// Increment level number on HUD
+			if (levelTimer == 0) { //Checks if the level is over
+				handler.clearEnemies(); //Clears all the enemies
+				hud.setLevel(hud.getLevel() + 1); //Increments level number on HUD
 				spawnTimer = 40;
-				tempCounter = 0;// reset tempCounter
-				if (levelsRemaining == 1) {// time for the boss!
-					levelNumber = 101;// arbitrary number for the boss level
-				} else {// not time for the boss, just go to the next level
-					levels.remove(index);// remove the current level from being selected
+				tempCounter = 0;
+				if (levelsRemaining == 1) { //Checks if its time for the boss
+					levelNumber = 101; //Arbitrary number for the boss level
+				} else {
+					levels.remove(index); //Remove the current level from being selected
 					levelsRemaining--;
-					index = r.nextInt(levelsRemaining);// pick another level at random
-					levelNumber = levels.get(index);// set levelNumber to whatever index was randomly selected
+					index = r.nextInt(levelsRemaining); //Pick another level at random
+					levelNumber = levels.get(index);
 				}
 			} 
 			break;
@@ -140,11 +138,11 @@ public class Spawn10to20 {
 			
 			findX();
 			findY();
-			hGenTemp = r.nextInt(Game.HEIGHT);
-			wGenTemp = r.nextInt(Game.WIDTH);
-			while (Math.abs(wGenTemp - playerX) < 100 && Math.abs(hGenTemp - playerY) < 100) {
-				wGenTemp = r.nextInt(Game.WIDTH);
-				hGenTemp = r.nextInt(Game.HEIGHT);
+			enemyX = r.nextInt(Game.HEIGHT);
+			enemyY = r.nextInt(Game.WIDTH);
+			while (Math.abs(enemyY - playerX) < 100 && Math.abs(enemyX - playerY) < 100) {
+				enemyY = r.nextInt(Game.WIDTH);
+				enemyX = r.nextInt(Game.HEIGHT);
 			}
 			
 			if (tempCounter < 1) {
@@ -153,16 +151,16 @@ public class Spawn10to20 {
 			}
 			if (spawnTimer == 30) {
 				handler.addObject(
-						new DarkerJelly2(wGenTemp, hGenTemp, 20, 2, ID.EnemySweep, handler));
+						new DarkerJelly2(enemyY, enemyX, 20, 2, ID.EnemySweep, handler));
 			} else if (spawnTimer == 20) {
 				handler.addObject(
-						new DarkerJelly2(wGenTemp, hGenTemp, 20, -2, ID.EnemySweep, handler));
+						new DarkerJelly2(enemyY, enemyX, 20, -2, ID.EnemySweep, handler));
 			} else if (spawnTimer == 10) {
 				handler.addObject(
-						new DarkerJelly2(wGenTemp, hGenTemp, 20, 4, ID.EnemySweep, handler));
+						new DarkerJelly2(enemyY, enemyX, 20, 4, ID.EnemySweep, handler));
 			} else if (spawnTimer == 0) {
 				handler.addObject(
-						new DarkerJelly2(wGenTemp, hGenTemp, 20, -4, ID.EnemySweep, handler));
+						new DarkerJelly2(enemyY, enemyX, 20, -4, ID.EnemySweep, handler));
 				spawnTimer = 45;
 			}
 
@@ -186,11 +184,11 @@ public class Spawn10to20 {
 			
 			findX();
 			findY();
-			hGenTemp = r.nextInt(Game.HEIGHT);
-			wGenTemp = r.nextInt(Game.WIDTH);
-			while (Math.abs(wGenTemp - playerX) < 100 && Math.abs(hGenTemp - playerY) < 100) {
-				wGenTemp = r.nextInt(Game.WIDTH);
-				hGenTemp = r.nextInt(Game.HEIGHT);
+			enemyX = r.nextInt(Game.HEIGHT);
+			enemyY = r.nextInt(Game.WIDTH);
+			while (Math.abs(enemyY - playerX) < 100 && Math.abs(enemyX - playerY) < 100) {
+				enemyY = r.nextInt(Game.WIDTH);
+				enemyX = r.nextInt(Game.HEIGHT);
 			}
 			
 			if (tempCounter < 1) {
@@ -199,7 +197,7 @@ public class Spawn10to20 {
 			}
 			if (spawnTimer == 0) {
 				handler.addObject(
-						new Leech(wGenTemp, hGenTemp, -5, ID.EnemySmart, handler));
+						new Leech(enemyY, enemyX, -5, ID.EnemySmart, handler));
 				spawnTimer = 60;
 			}
 			if (levelTimer == 0) {
@@ -222,18 +220,18 @@ public class Spawn10to20 {
 			
 			findX();
 			findY();
-			hGenTemp = r.nextInt(Game.HEIGHT) - 75;
-			wGenTemp = r.nextInt(Game.WIDTH) - 35;
-			while (Math.abs(wGenTemp - playerX) < 100 && Math.abs(hGenTemp - playerY) < 100) {
+			enemyX = r.nextInt(Game.HEIGHT) - 75;
+			enemyY = r.nextInt(Game.WIDTH) - 35;
+			while (Math.abs(enemyY - playerX) < 100 && Math.abs(enemyX - playerY) < 100) {
 				
 				//these two lines have constants subtracted from them
 				//because thats how they were originally made when instantiated -EH
-				wGenTemp = r.nextInt(Game.WIDTH) - 35;
-				hGenTemp = r.nextInt(Game.HEIGHT) - 75;
+				enemyY = r.nextInt(Game.WIDTH) - 35;
+				enemyX = r.nextInt(Game.HEIGHT) - 75;
 			}
 			
 			if (tempCounter < 1) {
-				handler.addObject(new ShooterEnemy(wGenTemp, hGenTemp, 100, 100,
+				handler.addObject(new ShooterEnemy(enemyY, enemyX, 100, 100,
 						-30, ID.EnemyShooter, this.handler));
 				levelTimer = 1300;
 				tempCounter++;
@@ -291,11 +289,11 @@ public class Spawn10to20 {
 			
 			findX();
 			findY();
-			hGenTemp = r.nextInt(Game.HEIGHT);
-			wGenTemp = r.nextInt(Game.WIDTH);
-			while (Math.abs(wGenTemp - playerX) < 100 && Math.abs(hGenTemp - playerY) < 100) {
-				wGenTemp = r.nextInt(Game.WIDTH);
-				hGenTemp = r.nextInt(Game.HEIGHT);
+			enemyX = r.nextInt(Game.HEIGHT);
+			enemyY = r.nextInt(Game.WIDTH);
+			while (Math.abs(enemyY - playerX) < 100 && Math.abs(enemyX - playerY) < 100) {
+				enemyY = r.nextInt(Game.WIDTH);
+				enemyX = r.nextInt(Game.HEIGHT);
 			}
 			
 			if (tempCounter < 1) {
@@ -304,7 +302,7 @@ public class Spawn10to20 {
 			}
 			if (spawnTimer == 0) {
 				handler.addObject(
-						new LighterJelly(wGenTemp, hGenTemp, 15, 15, ID.EnemyBasic, handler));
+						new LighterJelly(enemyY, enemyX, 15, 15, ID.EnemyBasic, handler));
 				spawnTimer = 50;
 			}
 			if (levelTimer == 0) {
@@ -327,11 +325,11 @@ public class Spawn10to20 {
 			
 			findX();
 			findY();
-			hGenTemp = r.nextInt(Game.HEIGHT);
-			wGenTemp = r.nextInt(Game.WIDTH);
-			while (Math.abs(wGenTemp - playerX) < 100 && Math.abs(hGenTemp - playerY) < 100) {
-				wGenTemp = r.nextInt(Game.WIDTH);
-				hGenTemp = r.nextInt(Game.HEIGHT);
+			enemyX = r.nextInt(Game.HEIGHT);
+			enemyY = r.nextInt(Game.WIDTH);
+			while (Math.abs(enemyY - playerX) < 100 && Math.abs(enemyX - playerY) < 100) {
+				enemyY = r.nextInt(Game.WIDTH);
+				enemyX = r.nextInt(Game.HEIGHT);
 			}
 			
 			if (tempCounter < 1) {
@@ -340,16 +338,16 @@ public class Spawn10to20 {
 			}
 			if (spawnTimer == 35) {
 				handler.addObject(
-						new DarkerJelly2(wGenTemp, hGenTemp, 25, 2, ID.EnemySweep, handler));
+						new DarkerJelly2(enemyY, enemyX, 25, 2, ID.EnemySweep, handler));
 			} else if (spawnTimer == 25) {
 				handler.addObject(
-						new DarkerJelly2(wGenTemp, hGenTemp, 25, -2, ID.EnemySweep, handler));
+						new DarkerJelly2(enemyY, enemyX, 25, -2, ID.EnemySweep, handler));
 			} else if (spawnTimer == 15) {
 				handler.addObject(
-						new DarkerJelly2(wGenTemp, hGenTemp, 30, 4, ID.EnemySweep, handler));
+						new DarkerJelly2(enemyY, enemyX, 30, 4, ID.EnemySweep, handler));
 			} else if (spawnTimer == 0) {
 				handler.addObject(
-						new DarkerJelly2(wGenTemp, hGenTemp, 25, -4, ID.EnemySweep, handler));
+						new DarkerJelly2(enemyY, enemyX, 25, -4, ID.EnemySweep, handler));
 				spawnTimer = 30;
 			}
 
@@ -372,11 +370,11 @@ public class Spawn10to20 {
 			
 			findX();
 			findY();
-			hGenTemp = r.nextInt(Game.HEIGHT);
-			wGenTemp = r.nextInt(Game.WIDTH);
-			while (Math.abs(wGenTemp - playerX) < 100 && Math.abs(hGenTemp - playerY) < 100) {
-				wGenTemp = r.nextInt(Game.WIDTH);
-				hGenTemp = r.nextInt(Game.HEIGHT);
+			enemyX = r.nextInt(Game.HEIGHT);
+			enemyY = r.nextInt(Game.WIDTH);
+			while (Math.abs(enemyY - playerX) < 100 && Math.abs(enemyX - playerY) < 100) {
+				enemyY = r.nextInt(Game.WIDTH);
+				enemyX = r.nextInt(Game.HEIGHT);
 			}
 			
 			if (tempCounter < 1) {
@@ -385,7 +383,7 @@ public class Spawn10to20 {
 			}
 			if (spawnTimer == 0) {
 				handler.addObject(
-						new Leech(wGenTemp, hGenTemp, -9, ID.EnemySmart, handler));
+						new Leech(enemyY, enemyX, -9, ID.EnemySmart, handler));
 				spawnTimer = 50;
 			}
 			if (levelTimer == 0) {
@@ -407,15 +405,15 @@ public class Spawn10to20 {
 			
 			findX();
 			findY();
-			hGenTemp = r.nextInt(Game.HEIGHT) - 75;
-			wGenTemp = r.nextInt(Game.WIDTH) - 35;
-			while (Math.abs(wGenTemp - playerX) < 100 && Math.abs(hGenTemp - playerY) < 100) {
-				wGenTemp = r.nextInt(Game.WIDTH) - 35;
-				hGenTemp = r.nextInt(Game.HEIGHT) - 75;
+			enemyX = r.nextInt(Game.HEIGHT) - 75;
+			enemyY = r.nextInt(Game.WIDTH) - 35;
+			while (Math.abs(enemyY - playerX) < 100 && Math.abs(enemyX - playerY) < 100) {
+				enemyY = r.nextInt(Game.WIDTH) - 35;
+				enemyX = r.nextInt(Game.HEIGHT) - 75;
 			}
 			
 			if (tempCounter < 1) {
-				handler.addObject(new ShooterEnemy(wGenTemp, hGenTemp, 200, 200,
+				handler.addObject(new ShooterEnemy(enemyY, enemyX, 200, 200,
 						-40, ID.EnemyShooter, this.handler));
 				levelTimer = 2500;
 				tempCounter++;
@@ -479,14 +477,11 @@ public class Spawn10to20 {
 				tempCounter++;
 				
 				} else if (tempCounter == 1) {
-//					LEVEL_SET_2_RESET++; //game automatically goes to victory screen when boss appears, CHANGE
-//					game.gameState = STATE.Victory;
 						for (int i = 0; i < handler.object.size(); i++) {
 							GameObject tempObject = handler.object.get(i);
 							if (tempObject.getId() == ID.BossEye) {
 								if (tempObject.getHealth() <= 0) {
 									handler.removeObject(tempObject);
-									//handler.clearEnemies();
 									LEVEL_SET_2_RESET++;
 									game.gameState = STATE.Victory;
 									tempCounter++;
@@ -497,29 +492,7 @@ public class Spawn10to20 {
 		}	
 					}
 				
-
-
-		
-		// WINNER
-		// else if(levelNumber){
-		// levelTimer --;
-		// if(tempCounter < 1){
-		// handler.addObject(new LevelText(Game.WIDTH / 2 - 675, Game.HEIGHT / 2 - 200,
-		// "Same levels...", ID.Levels1to10Text));
-		// handler.addObject(new LevelText(Game.WIDTH / 2 - 675, Game.HEIGHT / 2,
-		// "...but a little harder now", ID.Levels1to10Text));
-		// tempCounter++;
-		// }
-		// if(levelTimer <= 0){
-		// handler.clearEnemies();
-		// tempCounter = 0;
-		// levelNumber = levels.get(index);
-		// }
-		//
-		// }
-
-	
-
+	//Code for the skip level ability?
 	public void skipLevel() {
 		if (levelsRemaining == 1) {
 			tempCounter = 0;
@@ -533,8 +506,9 @@ public class Spawn10to20 {
 		}
 	}
 
+	//Resets the game
 	public void restart() {
-		levelNumber = -10;
+		levelNumber = 0;
 		tempCounter = 0;
 		levelTimer = 150;
 		levelsRemaining = 10;
@@ -542,10 +516,12 @@ public class Spawn10to20 {
 
 	}
 
+	//Gets the player's x coordinate 
 	public void findX() {
 		playerX = Game.getPlayerX();
 	}
 
+	//Gets the player's y coordinate 
 	public void findY() {
 		playerY = Game.getPlayerY();
 	}
