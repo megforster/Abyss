@@ -52,10 +52,10 @@ public class EnvironmentalObstacle extends GameObject {
 		g2.setTransform(reset);
 	}
 
-	//Creates the hit box
+	//Creates the hit box 
 	public Rectangle getBounds() {
 		return new Rectangle((int) this.x + 30, (int) this.y + 30, this.sizeX - 60, this.sizeY - 60);
-
+		//the additions to the dimensions account for the image being scaled
 	}
 
 	//Generates the new random location when player runs into obstacle

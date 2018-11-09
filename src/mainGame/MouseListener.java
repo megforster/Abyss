@@ -51,7 +51,7 @@ public class MouseListener extends MouseAdapter {
 		int mx = e.getX();
 		int my = e.getY();
 		
-		//checks if the game has ended and restarts the game to an active gmae screen
+		//checks if the game has ended and restarts the game to an active game screen
 		if (game.gameState == STATE.GameOver) {
 			handler.object.clear();
 			upgrades.resetUpgrades();
@@ -90,7 +90,7 @@ public class MouseListener extends MouseAdapter {
 		//checks if the upgrades are being accessed 
 		else if (game.gameState == STATE.Upgrade) {
 			
-			//checks if the mouse press was over an upgrade option and if so preforms that option
+			//checks if the mouse press was over an upgrade option and if so performs that option
 			
 			if (mouseOver(mx, my, 100, 300, 1721, 174)) {
 				upgradeText = upgradeScreen.getPath(1);
@@ -128,8 +128,6 @@ public class MouseListener extends MouseAdapter {
 				handler.object.clear();
 				game.gameState = STATE.Game;
 				handler.addObject(player);
-				// handler.addPickup(new PickupHealth(100, 100, ID.PickupHealth,
-				// "images/PickupHealth.png", handler));
 			}
 
 			// Checks if the Help Button has been pressed and opens it

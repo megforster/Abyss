@@ -60,7 +60,7 @@ public class BossEye extends GameObject {
 			}
 		} else if (tempCounter == 1) {
 			spawn();
-			//Allows eyes to attack in order with decreasing speed?
+			//Allows eyes to attack in order with decreasing speed
 			if (this.placement == 1 && this.spawnOrder >= 1) {
 				attackPlayer();
 				this.speed = -3;

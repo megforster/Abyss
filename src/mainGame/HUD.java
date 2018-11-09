@@ -152,7 +152,7 @@ public class HUD {
 		healthBarWidth = 800;
 	}
 
-	//Sets player health and health bar back to orgianl amount
+	//Sets player health and health bar back to original amount
 	public void resetHealth() {
 		doubleHealth = false;
 		healthMax = 100;

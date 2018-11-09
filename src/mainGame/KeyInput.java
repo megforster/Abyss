@@ -91,7 +91,7 @@ public class KeyInput extends KeyAdapter {
 						velY = 10;
 					}
 					
-					//cretaes the player bullet
+					//Creates the player bullet
 					handler.addObject(new PlayerBullet((int) x, (int) y, velX, velY, ID.PlayerBullet, handler));
 
 				}
