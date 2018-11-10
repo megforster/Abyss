@@ -12,6 +12,11 @@ import java.awt.Rectangle;
 import java.awt.Toolkit;
 import javax.swing.JFrame;
 import javax.imageio.ImageIO;
+import javax.sound.sampled.AudioFormat;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.DataLine;
 import javax.swing.JButton;
 
 /**
@@ -58,6 +63,8 @@ public class Game extends Canvas implements Runnable {
 	public STATE gameState = STATE.Menu;
 	public static int TEMP_COUNTER;
 	public static Window test;
+	
+	private SoundEffects background = new SoundEffects();
 
 	/**
 	 * Used to switch between each of the screens shown to the user
@@ -96,6 +103,10 @@ public class Game extends Canvas implements Runnable {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+			//Plays the background music
+			//Will have to adjust this when player can pick a theme
+			background.playCont("SpaceBackgroundMusic.wav");
+		
 	}
 
 	/**

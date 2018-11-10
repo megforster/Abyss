@@ -3,17 +3,28 @@ package mainGame;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.io.File;
 import java.util.Random;
+
+import javax.sound.sampled.AudioFormat;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.DataLine;
 
 public class PlayerBullet extends GameObject {
 	
 	//Instance variables
 	private Handler handler;
+	private SoundEffects bullet = new SoundEffects();
 	
 	//Constructor 
 	public PlayerBullet(double x, double y, double pVelX, double pVelY, ID id, Handler handler) {
 		super(x, y, id);
 		this.handler = handler;
+
+		//Plays the bullet sound effect
+		bullet.playOnce("PlayerBulletSound.wav");
 		
 		if (pVelX > 0) {velX = 20;}
 		if (pVelX < 0) {velX = -20;}
