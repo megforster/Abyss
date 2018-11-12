@@ -29,7 +29,7 @@ import javax.swing.JButton;
 public class Game extends Canvas implements Runnable {
 
 	//Instance Variables
-	private static final long serialVersionUID = 1L; //Dont know what this does 
+	private static final long serialVersionUID = 1L; //Don't know what this does 
 
 	static Toolkit tool = Toolkit.getDefaultToolkit(); //Don't know what this is 
 	static Dimension scrnSize = Toolkit.getDefaultToolkit().getScreenSize(); //Returns the size of the screen

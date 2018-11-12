@@ -181,6 +181,17 @@ public class Menu {
 					((Game.HEIGHT - buttonheight) / 2), buttonwidth, buttonheight);
 			g.setColor(Color.white);
 			drawCenteredString(g, "Pick a Theme:", Backgroundbutton, font2);
+			
+			// Picking Difficulty Button
+			g.setFont(font2);
+			g.setColor(Color.white);
+			g.drawRect(((Game.WIDTH - buttonwidth) * 15 / 16), ((Game.HEIGHT - buttonheight) / 2), buttonwidth,
+					buttonheight);
+			Rectangle DifficultyButton = new Rectangle(((Game.WIDTH - buttonwidth) * 15 / 16),
+					((Game.HEIGHT - buttonheight) / 2), buttonwidth, buttonheight);
+			g.setColor(Color.white);
+			drawCenteredString(g, "Pick Difficulty:", DifficultyButton, font2);
+
 
 		}
 

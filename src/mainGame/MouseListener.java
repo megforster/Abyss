@@ -146,6 +146,9 @@ public class MouseListener extends MouseAdapter {
 			else if (mouseOver(mx, my, ((Game.WIDTH - buttonwidth)/16), ((Game.HEIGHT - buttonheight)*5/6), buttonwidth, buttonheight)) {
 				System.exit(1);
 			}
+			else if (mouseOver(mx, my, ((Game.WIDTH - buttonwidth)*15/16), ((Game.HEIGHT - buttonheight)*5/6), buttonwidth, buttonheight)) {
+				System.exit(1);
+			}
 		}
 		//Code for when the game is paused 
 		else if (game.gameState == STATE.Pause) {
