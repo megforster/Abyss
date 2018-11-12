@@ -29,6 +29,7 @@ public class Player extends GameObject {
 	private Image img;
 	public static int playerSpeed = 14; 
 	private EnvironmentalObstacle obstacle;
+	private Leech enemy;
 
 	// Constructor
 	public Player(double x, double y, ID id, Handler handler, HUD hud, Game game) {
@@ -108,6 +109,12 @@ public class Player extends GameObject {
 						hud.updateScoreColor(Color.red);
 						HUD.score--;
 						// code for collision with enemy
+					}else if(tempObject.getId() == ID.EnemySmart) {
+						enemy = (Leech) tempObject;
+						enemy.move();
+						hud.health -= 2;
+						hud.updateScoreColor(Color.red);
+						HUD.score = HUD.score - 10;
 					} else {
 						hud.health -= damage;
 						hud.updateScoreColor(Color.red);

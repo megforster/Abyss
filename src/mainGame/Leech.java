@@ -9,6 +9,7 @@ import java.awt.Toolkit;
 import java.awt.geom.AffineTransform;
 import java.io.File;
 import java.net.URL;
+import java.util.Random;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -27,6 +28,7 @@ public class Leech extends GameObject {
 	private GameObject player;
 	private int speed;
 	private Image img;
+	private static Random r = new Random();
 
 	//Constructor 
 	public Leech(double x, double y, int speed, ID id, Handler handler) {
@@ -125,7 +127,11 @@ public class Leech extends GameObject {
         g2.setTransform(reset);
 
 	}
-
+	public void move() {
+		this.x = r.nextInt(1000) * 1;
+		this.y = r.nextInt(500) * 1;
+		
+	}
 	@Override
 	//Leech hit box
 	public Rectangle getBounds() {

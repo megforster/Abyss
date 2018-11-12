@@ -180,6 +180,9 @@ public class MouseListener extends MouseAdapter {
 				theme.setBackgroundMusic(2);
 				game.gameState = STATE.Menu;
 			}
+			else if (mouseOver(mx, my, ((Game.WIDTH - buttonwidth)*15/16), ((Game.HEIGHT - buttonheight)*5/6), buttonwidth, buttonheight)) {
+				System.exit(1);
+			}
 		}
 
 		// Code for when the game is paused
