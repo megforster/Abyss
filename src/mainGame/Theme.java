@@ -17,7 +17,8 @@ import javax.swing.ImageIcon;
 import mainGame.Game.STATE;
 
 public class Theme {
-
+	
+	//Instance variables
 	private Game game;
 	private Handler handler;
 	private HUD hud;
@@ -26,15 +27,18 @@ public class Theme {
 	private String background = "images/8BitBackground.png";
 	private String music = "vampireweekend.wav";
 	
+	//Constructor
 	public Theme(Game game, Handler handler, HUD hud) {
 		this.game = game;
 		this.handler = handler;
 		this.hud=hud;
 	}
 	
+	//Empty method
 	public void tick() {
 	}
 	
+	//Draws the buttons and images
 	public void render(Graphics g) {
 		if(game.gameState == STATE.Theme) {
 			Font font = new Font("Amoebic", 1, Game.WIDTH/20);
@@ -90,6 +94,7 @@ public class Theme {
 		}
 	}
 	
+	//Used for drawing a string in the center of the rectangle
 	public int getTextWidth(Font font, String text) {
 		AffineTransform at = new AffineTransform();
 		FontRenderContext frc = new FontRenderContext(at, true, true);
@@ -97,6 +102,7 @@ public class Theme {
 		return textWidth;
 	}
 	
+	//Code for drawing the string in the middle of the rectangle 
 	public void drawCenteredString(Graphics g, String text, Rectangle rect, Font font) {
 
 		FontMetrics metrics = g.getFontMetrics(font);
@@ -108,6 +114,7 @@ public class Theme {
 		g.drawString(text, x, y);
 	}
 	
+	//Code for changing background menus
 	public void setBackgroundImage(int x) {
 		if(x==0) {
 			background = "images/shipwreckbackground.jpg";
@@ -119,6 +126,7 @@ public class Theme {
 
 	}
 	
+	//Code for setting background music
 	public void setBackgroundMusic(int x) {
 		if(x==0) {
 			music = "bubble.wav";
@@ -131,10 +139,12 @@ public class Theme {
 	
 	}
 	
+	//Returns the string needed to read the background image
 	public String getBackground() {
 		return background;
 	}
 	
+	//Returns the string needed to read the background music
 	public String getMusic() {
 		return music;
 	}

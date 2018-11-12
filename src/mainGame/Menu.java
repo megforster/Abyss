@@ -135,9 +135,10 @@ public class Menu {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			
+			//plays the background music 
 			background.playCont(theme.getBackground());
 			
+			//Draws the background image
 			g.drawImage(img, 0, 0, Game.WIDTH, Game.HEIGHT, null);
 			handler.render(g);
 			Font font = new Font("Amoebic", 1, Game.WIDTH / 20);

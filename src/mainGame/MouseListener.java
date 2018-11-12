@@ -157,18 +157,23 @@ public class MouseListener extends MouseAdapter {
 				game.gameState = STATE.Theme;
 			}
 		}
-
+			//Code for theme menu
 		else if (game.gameState == STATE.Theme) {
+			//code for ocean background
 			if (mouseOver(mx, my, ((Game.WIDTH - buttonwidth) / 16), ((Game.HEIGHT - buttonheight) / 2), buttonwidth,
 					buttonheight)) {
 				theme.setBackgroundImage(0);
 				theme.setBackgroundMusic(0);
-				game.gameState = STATE.Menu;
+				game.gameState = STATE.Menu; //returns the user to the main game menu after selection
+				
+				//code for classic background
 			} else if (mouseOver(mx, my, ((Game.WIDTH - buttonwidth) / 2), ((Game.HEIGHT - buttonheight) / 2),
 					buttonwidth, buttonheight)) {
 				theme.setBackgroundImage(1);
 				theme.setBackgroundMusic(1);
 				game.gameState = STATE.Menu;
+				
+				//code for space background
 			} else if (mouseOver(mx, my, ((Game.WIDTH - buttonwidth)*15/16), ((Game.HEIGHT - buttonheight) / 2),
 					buttonwidth, buttonheight)) {
 				theme.setBackgroundImage(2);

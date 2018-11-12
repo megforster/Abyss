@@ -94,6 +94,7 @@ public class Game extends Canvas implements Runnable {
 		this.addMouseListener(mouseListener);
 		new Window((int) WIDTH, (int) HEIGHT, "Abyss", this);
 		
+		//code for the background image and theme music 
 		Background = null;
 		try {
 			Background = ImageIO.read(new File(theme.getBackground()));
@@ -105,6 +106,7 @@ public class Game extends Canvas implements Runnable {
 		
 	}
 	
+	//Used when switching theme music from the default 
 	public void playMusic() {
 		background.stop();
 		background.playCont(theme.getMusic());
