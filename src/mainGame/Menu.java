@@ -16,6 +16,7 @@ import java.awt.font.FontRenderContext;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.JPanel;
@@ -54,9 +55,10 @@ public class Menu {
 	private int buttonheight = Game.HEIGHT / 5;
 	private Image abyss;
 	private Theme theme;
+	private SoundEffects background;
 
 	// Constructor
-	public Menu(Game game, Handler handler, HUD hud, Spawn1to10 spawner, Theme theme) {
+	public Menu(Game game, Handler handler, HUD hud, Spawn1to10 spawner, Theme theme, SoundEffects background) {
 		this.game = game;
 		this.handler = handler;
 		this.hud = hud;
@@ -65,6 +67,7 @@ public class Menu {
 		r = new Random();
 		addColors();
 		this.theme = theme;
+		this.background = background;
 
 		// Reads image for background
 		img = null;
@@ -127,7 +130,14 @@ public class Menu {
 	// Draws all the buttons
 	public void render(Graphics g) {
 		if (game.gameState == STATE.Menu) {
-
+			try {
+				img = ImageIO.read(new File(theme.getBackground()));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+			background.playCont(theme.getBackground());
+			
 			g.drawImage(img, 0, 0, Game.WIDTH, Game.HEIGHT, null);
 			handler.render(g);
 			Font font = new Font("Amoebic", 1, Game.WIDTH / 20);
