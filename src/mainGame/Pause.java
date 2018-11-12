@@ -89,7 +89,7 @@ public class Pause {
 		return textWidth;
 	}
 	
-	//Not sure
+	//Code for drawing a line of text in the middle of a rectangle
 	public void drawCenteredString(Graphics g, String text, Rectangle rect, Font font) {
 
 		FontMetrics metrics = g.getFontMetrics(font);

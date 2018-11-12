@@ -56,7 +56,7 @@ public class Game extends Canvas implements Runnable {
 	private static Player player;
 	private Image Background;
 	private PlayerBullet bullet;
-
+	private Theme theme;
 	private Victory victory;
 	private Pause pause; // added type Pause variable 
 
@@ -70,16 +70,17 @@ public class Game extends Canvas implements Runnable {
 	 * Used to switch between each of the screens shown to the user
 	 */
 	public enum STATE {
-		Menu, Help, Game, GameOver, Upgrade, Victory, Pause 
+		Menu, Help, Game, GameOver, Upgrade, Victory, Pause, Theme
 	};
 
 	//Constructor, creates the game
 	public Game() {
 		handler = new Handler();
 		hud = new HUD();
+		theme = new Theme(this, this.handler, this.hud);
 		spawner = new Spawn1to10(this.handler, this.hud, this, player);
 		spawner2 = new Spawn10to20(this.handler, this.hud, this.spawner, this);
-		menu = new Menu(this, this.handler, this.hud, this.spawner);
+		menu = new Menu(this, this.handler, this.hud, this.spawner, this.theme);
 		upgradeScreen = new UpgradeScreen(this, this.handler, this.hud);
 		player = new Player(WIDTH / 2 - 32, HEIGHT / 2 - 32, ID.Player, handler, this.hud, this);
 		upgrades = new Upgrades(this, this.handler, this.hud, this.upgradeScreen, this.player, this.spawner,
@@ -88,7 +89,7 @@ public class Game extends Canvas implements Runnable {
 		victory = new Victory(this, this.handler, this.hud);
 		pause = new Pause(this, this.handler, this.hud); // updated core game mechanics to include a new Pause state
 		mouseListener = new MouseListener(this, this.handler, this.hud, this.spawner, this.spawner2, this.upgradeScreen,
-				this.player, this.upgrades, this.victory);
+				this.player, this.upgrades, this.victory, this.theme);
 		this.addKeyListener(new KeyInput(this.handler, this, this.hud, this.player, this.spawner, this.upgrades));
 		this.addMouseListener(mouseListener);
 		new Window((int) WIDTH, (int) HEIGHT, "Abyss", this);
@@ -98,14 +99,14 @@ public class Game extends Canvas implements Runnable {
 			//CHANGED BACKGROUND IN PLAYING SCREEN!!
 			//SPACE IMAGE BACKGROUND (abyssspacebackground.png) 
 			//ADDITIONAL BACKGROUND(abysswaterbackground.jpg)
-			Background = ImageIO.read(new File("images/SpaceBackground.png"));
+			Background = ImageIO.read(new File(theme.getBackground()));
 		
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 			//Plays the background music
 			//Will have to adjust this when player can pick a theme
-			background.playCont("SpaceBackgroundMusic.wav");
+			background.playCont(theme.getMusic());
 		
 	}
 
@@ -194,6 +195,8 @@ public class Game extends Canvas implements Runnable {
 		} else if (gameState == STATE.Pause) { //Think this code needs to be changed to fix pause button
 			pause.tick();
 			pauseState = true;
+		}else if (gameState== STATE.Theme) {
+			theme.tick();
 		}
 
 	}
@@ -236,6 +239,8 @@ public class Game extends Canvas implements Runnable {
 			victory.render(g);
 		} else if (gameState == STATE.Pause) { // game is paused, pause menu is drawn 
 			pause.render(g);	
+		} else if (gameState==STATE.Theme) {
+			theme.render(g);
 		}
 
 		///////// Draw things above this//////////////

@@ -53,9 +53,10 @@ public class Menu {
 	private int buttonwidth = Game.WIDTH / 4;
 	private int buttonheight = Game.HEIGHT / 5;
 	private Image abyss;
+	private Theme theme;
 
 	// Constructor
-	public Menu(Game game, Handler handler, HUD hud, Spawn1to10 spawner) {
+	public Menu(Game game, Handler handler, HUD hud, Spawn1to10 spawner, Theme theme) {
 		this.game = game;
 		this.handler = handler;
 		this.hud = hud;
@@ -63,14 +64,12 @@ public class Menu {
 		timer = 10;
 		r = new Random();
 		addColors();
+		this.theme = theme;
 
 		// Reads image for background
 		img = null;
 		try {
-			// CHANGE BACKGROUND IMAGE (background.png --> SpaceBackground.png)
-			// ADDITIONAL BACKGROUND(UnderWaterBackground.jpg)
-			// CHANGED BACKGROUND IN THE MAIN MENU SCREEN
-			img = ImageIO.read(new File("images/SpaceBackground.png"));
+			img = ImageIO.read(new File(theme.getBackground()));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -171,8 +170,7 @@ public class Menu {
 			g.setColor(Color.white);
 			drawCenteredString(g, "Credits", Creditbutton, font2);
 
-			// NEW MENUE
-			// CHOOSE A BACKGROUND
+			//Theme menu
 			g.setFont(font2);
 			g.setColor(Color.white);
 			g.drawRect(((Game.WIDTH - buttonwidth) / 16), ((Game.HEIGHT - buttonheight) / 2), buttonwidth,
