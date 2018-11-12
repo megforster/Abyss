@@ -80,7 +80,7 @@ public class Game extends Canvas implements Runnable {
 		theme = new Theme(this, this.handler, this.hud);
 		spawner = new Spawn1to10(this.handler, this.hud, this, player);
 		spawner2 = new Spawn10to20(this.handler, this.hud, this.spawner, this);
-		menu = new Menu(this, this.handler, this.hud, this.spawner, this.theme);
+		menu = new Menu(this, this.handler, this.hud, this.spawner, this.theme, background);
 		upgradeScreen = new UpgradeScreen(this, this.handler, this.hud);
 		player = new Player(WIDTH / 2 - 32, HEIGHT / 2 - 32, ID.Player, handler, this.hud, this);
 		upgrades = new Upgrades(this, this.handler, this.hud, this.upgradeScreen, this.player, this.spawner,
@@ -96,18 +96,18 @@ public class Game extends Canvas implements Runnable {
 		
 		Background = null;
 		try {
-			//CHANGED BACKGROUND IN PLAYING SCREEN!!
-			//SPACE IMAGE BACKGROUND (abyssspacebackground.png) 
-			//ADDITIONAL BACKGROUND(abysswaterbackground.jpg)
 			Background = ImageIO.read(new File(theme.getBackground()));
 		
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-			//Plays the background music
-			//Will have to adjust this when player can pick a theme
-			background.playCont(theme.getMusic());
+		background.playCont(theme.getMusic());
 		
+	}
+	
+	public void playMusic() {
+		background.stop();
+		background.playCont(theme.getMusic());
 	}
 
 	/**
@@ -220,6 +220,15 @@ public class Game extends Canvas implements Runnable {
 
 		///////// Draw things bellow this/////////////
 
+		Background = null;
+		try {
+			Background = ImageIO.read(new File(theme.getBackground()));
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
 		g.setColor(Color.black);
 		g.drawImage(Background, 0, 0, this.getWidth(), this.getHeight(),null);
 		

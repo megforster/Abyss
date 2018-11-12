@@ -10,6 +10,7 @@ import javax.sound.sampled.DataLine;
 
 public class SoundEffects {
 	
+	private Clip clipb = null;
 	public SoundEffects() {
 		
 	}
@@ -37,17 +38,23 @@ public class SoundEffects {
 			AudioInputStream stream;
 			AudioFormat format;
 			DataLine.Info info;
-			Clip clip;
 
 			stream = AudioSystem.getAudioInputStream(new File(song));
 			format = stream.getFormat();
 			info = new DataLine.Info(Clip.class, format);
-			clip = (Clip) AudioSystem.getLine(info);
-			clip.open(stream);
-			clip.start();
-			clip.loop(clip.LOOP_CONTINUOUSLY);
+			clipb = (Clip) AudioSystem.getLine(info);
+			clipb.open(stream);
+			clipb.start();
+			clipb.loop(clipb.LOOP_CONTINUOUSLY);
 		} catch (Exception e) {
 		}
 	}
+	
+	public void stop() {
+		clipb.close();
+		
+	}
+	
+	
 
 }

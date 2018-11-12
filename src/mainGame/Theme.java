@@ -114,7 +114,7 @@ public class Theme {
 		}else if (x==1) {
 			background = "images/8BitBackground.png";
 		}else if (x==2) {
-			background = "SpaceBackground.png";		
+			background = "images/SpaceBackground.png";		
 		}
 
 	}
@@ -127,6 +127,7 @@ public class Theme {
 		}else if (x==2) {
 			music = "SpaceBackgroundMusic.wav";
 		}
+		game.playMusic();
 	
 	}
 	
