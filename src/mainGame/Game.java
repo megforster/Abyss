@@ -70,7 +70,7 @@ public class Game extends Canvas implements Runnable {
 	 * Used to switch between each of the screens shown to the user
 	 */
 	public enum STATE {
-		Menu, Help, Game, GameOver, Upgrade, Victory, Pause, Theme
+		Menu, Help, Game, GameOver, Upgrade, Victory, Pause, Theme, Difficulty
 	};
 
 	//Constructor, creates the game
