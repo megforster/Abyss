@@ -11,6 +11,8 @@ import javax.sound.sampled.DataLine;
 public class SoundEffects {
 	
 	private Clip clipb = null;
+	private Clip clip = null;
+	
 	public SoundEffects() {
 		
 	}
@@ -20,7 +22,6 @@ public class SoundEffects {
 			AudioInputStream stream;
 			AudioFormat format;
 			DataLine.Info info;
-			Clip clip;
 
 			stream = AudioSystem.getAudioInputStream(new File(song));
 			format = stream.getFormat();
@@ -55,6 +56,10 @@ public class SoundEffects {
 		
 	}
 	
+	public void stop2() {
+		clip.close();
+	}
 	
+
 
 }
