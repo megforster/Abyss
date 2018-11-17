@@ -25,7 +25,6 @@ public class PlayerBullet extends GameObject {
 
 		//Plays the bullet sound effect
 		bullet.playOnce("PlayerBulletSound.wav");
-		bullet.stop2();
 		
 		if (pVelX > 0) {velX = 20;}
 		if (pVelX < 0) {velX = -20;}

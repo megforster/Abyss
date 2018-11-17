@@ -14,23 +14,22 @@ public class SoundEffects {
 	private Clip clip = null;
 	
 	public SoundEffects() {
-		
 	}
 	
-	public void playOnce(String song) {
+	public void playOnce(String song) {	
 		try {
 			AudioInputStream stream;
 			AudioFormat format;
 			DataLine.Info info;
 
-			stream = AudioSystem.getAudioInputStream(new File(song));
+			stream = AudioSystem.getAudioInputStream(new File("PlayerBullet.wav"));
 			format = stream.getFormat();
 			info = new DataLine.Info(Clip.class, format);
 			clip = (Clip) AudioSystem.getLine(info);
 			clip.open(stream);
 			clip.start();
 		} catch (Exception e) {
-		}	
+		}			
 	}
 	
 	public void playCont(String song) {

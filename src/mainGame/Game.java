@@ -33,7 +33,7 @@ public class Game extends Canvas implements Runnable {
 
 	static Toolkit tool = Toolkit.getDefaultToolkit(); //Don't know what this is 
 	static Dimension scrnSize = Toolkit.getDefaultToolkit().getScreenSize(); //Returns the size of the screen
-	static Rectangle winSize = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();//returns the size of the game window
+	static Rectangle winSize = GraphicsEnvironment.getLocalGraphicsEnvironment().getMaximumWindowBounds();//returns the size of the game window	
 	static int taskBarHeight = scrnSize.height - winSize.height;
 	public static final int WIDTH = (int) (scrnSize.getWidth()) + 5;
 	public static final int HEIGHT = (int) (scrnSize.getHeight()) - taskBarHeight + 5;
@@ -82,7 +82,7 @@ public class Game extends Canvas implements Runnable {
 		spawner2 = new Spawn10to20(this.handler, this.hud, this.spawner, this);
 		menu = new Menu(this, this.handler, this.hud, this.spawner, this.theme, background);
 		upgradeScreen = new UpgradeScreen(this, this.handler, this.hud);
-		player = new Player(WIDTH / 2 - 32, HEIGHT / 2 - 32, ID.Player, handler, this.hud, this);
+		player = new Player(WIDTH / 2 - 32, HEIGHT / 2 - 32, ID.Player, handler, this.hud, this, theme);
 		upgrades = new Upgrades(this, this.handler, this.hud, this.upgradeScreen, this.player, this.spawner,
 				this.spawner2);
 		gameOver = new GameOver(this, this.handler, this.hud);
@@ -199,6 +199,7 @@ public class Game extends Canvas implements Runnable {
 			pauseState = true;
 		}else if (gameState== STATE.Theme) {
 			theme.tick();
+			
 		}
 
 	}

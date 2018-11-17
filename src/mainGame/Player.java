@@ -30,24 +30,30 @@ public class Player extends GameObject {
 	public static int playerSpeed = 14; 
 	private EnvironmentalObstacle obstacle;
 	private Leech enemy;
+	private Theme theme;
 
 	// Constructor
-	public Player(double x, double y, ID id, Handler handler, HUD hud, Game game) {
+	public Player(double x, double y, ID id, Handler handler, HUD hud, Game game, Theme theme) {
 		super(x, y, id);
 		this.handler = handler;
 		this.hud = hud;
 		this.game = game;
 		this.damage = 4; //Damage taken when colliding with an enemy 
+		this.theme = theme;
 
 		img = null;
+		setImage();
+	}
+	
+	public void setImage() {
 		try {
-			img = ImageIO.read(new File("images/PlayerSprite.png")); // reads image for obstacle visual
+			img = ImageIO.read(new File(theme.getSprite())); // reads image for obstacle visual
 			img = img.getScaledInstance(30, 30, 0); // scales image down
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
+		
 		playerWidth = img.getWidth(null); // sets hit box width to image width
 		playerHeight = img.getHeight(null); // sets hit box height to image height
 	}
@@ -139,7 +145,7 @@ public class Player extends GameObject {
 
 	//Draws the player sprite
 	public void render(Graphics g) {
-
+		setImage();
 		double centerX = x + playerWidth / 2; //sets player center x coordinate
 		double centerY = y + playerHeight / 2; //sets player center y coordinate 
 
@@ -150,7 +156,6 @@ public class Player extends GameObject {
 		//reset.rotate(0, 0, 0);
 		Graphics2D g2 = (Graphics2D) g;
 		g2.rotate((angle), centerX, centerY); //allows for visual diagonal movement 
-
 		g2d.drawImage(img, (int) this.x, (int) this.y, playerWidth, playerHeight, null);
 		g2.setTransform(reset); //resets to initial state for case where player moves on angle
 	}

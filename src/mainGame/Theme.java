@@ -26,6 +26,7 @@ public class Theme {
 	private int buttonheight = Game.HEIGHT/5;
 	private String background = "images/8BitBackground.png";
 	private String music = "vampireweekend.wav";
+	private String sprite = "images/PlayerSprite.png";
 	
 	//Constructor
 	public Theme(Game game, Handler handler, HUD hud) {
@@ -118,10 +119,13 @@ public class Theme {
 	public void setBackgroundImage(int x) {
 		if(x==0) {
 			background = "images/shipwreckbackground.jpg";
+			sprite = "images/oceanPlayer.png";
 		}else if (x==1) {
 			background = "images/8BitBackground.png";
+			sprite = "images/PlayerSprite.png";
 		}else if (x==2) {
-			background = "images/SpaceBackground.png";		
+			background = "images/SpaceBackground.png";	
+			sprite = "images/ailenPlayer.png";
 		}
 
 	}
@@ -147,6 +151,10 @@ public class Theme {
 	//Returns the string needed to read the background music
 	public String getMusic() {
 		return music;
+	}
+	
+	public String getSprite() {
+		return sprite;
 	}
 	
 }
