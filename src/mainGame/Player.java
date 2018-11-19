@@ -48,8 +48,14 @@ public class Player extends GameObject {
 	public void setImage() {
 		try {
 			img = ImageIO.read(new File(theme.getSprite())); // reads image for obstacle visual
+			
+			if(theme.getSprite()=="images/PlayerSprite.png") {
 			img = img.getScaledInstance(30, 30, 0); // scales image down
-
+			}else if(theme.getSprite()=="images/oceanPlayer.png") {
+				img = img.getScaledInstance(100, 100, 0);
+			}else if(theme.getSprite()=="images/ailenPlayer.png") {
+				img = img.getScaledInstance(80, 80, 0);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
