@@ -36,7 +36,7 @@ public class Pause {
 	
 	//Visually stops movement when game is pause?
 	public void tick() {
-		
+		game.run();
 	}
 
 	/** 

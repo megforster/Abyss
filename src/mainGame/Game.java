@@ -89,7 +89,7 @@ public class Game extends Canvas implements Runnable {
 		victory = new Victory(this, this.handler, this.hud);
 		pause = new Pause(this, this.handler, this.hud); // updated core game mechanics to include a new Pause state
 		mouseListener = new MouseListener(this, this.handler, this.hud, this.spawner, this.spawner2, this.upgradeScreen,
-				this.player, this.upgrades, this.victory, this.theme);
+				this.player, this.upgrades, this.victory, this.theme, this.pause);
 		this.addKeyListener(new KeyInput(this.handler, this, this.hud, this.player, this.spawner, this.upgrades));
 		this.addMouseListener(mouseListener);
 		new Window((int) WIDTH, (int) HEIGHT, "Abyss", this);

@@ -31,10 +31,11 @@ public class MouseListener extends MouseAdapter {
 	private int buttonwidth = Game.WIDTH / 4;
 	private int buttonheight = Game.HEIGHT / 5;
 	private Theme theme;
+	private Pause pause;
 
 	// Constructor
 	public MouseListener(Game game, Handler handler, HUD hud, Spawn1to10 spawner, Spawn10to20 spawner2,
-			UpgradeScreen upgradeScreen, Player player, Upgrades upgrades, Victory victory, Theme theme) {
+			UpgradeScreen upgradeScreen, Player player, Upgrades upgrades, Victory victory, Theme theme, Pause pause) {
 		this.game = game;
 		this.handler = handler;
 		this.hud = hud;
@@ -45,6 +46,7 @@ public class MouseListener extends MouseAdapter {
 		this.upgrades = upgrades;
 		this.victory = victory;
 		this.theme = theme;
+		this.pause = pause;
 	}
 
 	// Code for reaction to a mouse press
@@ -193,7 +195,9 @@ public class MouseListener extends MouseAdapter {
 			// broken)
 			if (mouseOver(mx, my, ((Game.WIDTH - buttonwidth) / 2), ((Game.HEIGHT - buttonheight) / 2), buttonwidth,
 					buttonheight)) {
-				game.gameState = STATE.Game;
+				//game.gameState = STATE.Game;
+				pause.tick();
+				
 			}
 
 			// Checks if a different help button has been pressed and opens a help menu
