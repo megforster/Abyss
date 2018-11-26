@@ -156,9 +156,16 @@ public class MouseListener extends MouseAdapter {
 			else if (mouseOver(mx, my, ((Game.WIDTH - buttonwidth) / 16), ((Game.HEIGHT - buttonheight) * 5 / 6),
 					buttonwidth, buttonheight)) {
 				System.exit(1);
-			} else if (mouseOver(mx, my, ((Game.WIDTH - buttonwidth) / 16), ((Game.HEIGHT - buttonheight) / 2),
+			} 
+			
+			else if (mouseOver(mx, my, ((Game.WIDTH - buttonwidth) / 16), ((Game.HEIGHT - buttonheight) / 2),
 					buttonwidth, buttonheight)) {
 				game.gameState = STATE.Theme;
+			}
+			
+			else if (mouseOver(mx, my, ((Game.WIDTH - buttonwidth)* 15/16), ((Game.HEIGHT - buttonheight) / 2),
+					buttonwidth, buttonheight)) {
+				game.gameState = STATE.Difficulty;
 			}
 		}
 			//Code for theme menu
