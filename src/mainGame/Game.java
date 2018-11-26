@@ -57,6 +57,7 @@ public class Game extends Canvas implements Runnable {
 	private Image Background;
 	private PlayerBullet bullet;
 	private Theme theme;
+	private Difficulty difficulty;
 	private Victory victory;
 	private Pause pause; // added type Pause variable 
 
@@ -78,6 +79,7 @@ public class Game extends Canvas implements Runnable {
 		handler = new Handler();
 		hud = new HUD();
 		theme = new Theme(this, this.handler, this.hud);
+		difficulty = new Difficulty(this, this.handler, this.hud);
 		spawner = new Spawn1to10(this.handler, this.hud, this, player);
 		spawner2 = new Spawn10to20(this.handler, this.hud, this.spawner, this);
 		menu = new Menu(this, this.handler, this.hud, this.spawner, this.theme, background);
@@ -89,7 +91,7 @@ public class Game extends Canvas implements Runnable {
 		victory = new Victory(this, this.handler, this.hud);
 		pause = new Pause(this, this.handler, this.hud); // updated core game mechanics to include a new Pause state
 		mouseListener = new MouseListener(this, this.handler, this.hud, this.spawner, this.spawner2, this.upgradeScreen,
-				this.player, this.upgrades, this.victory, this.theme, this.pause);
+				this.player, this.upgrades, this.victory, this.theme, this.difficulty, this.pause);
 		this.addKeyListener(new KeyInput(this.handler, this, this.hud, this.player, this.spawner, this.upgrades));
 		this.addMouseListener(mouseListener);
 		new Window((int) WIDTH, (int) HEIGHT, "Abyss", this);
@@ -199,7 +201,8 @@ public class Game extends Canvas implements Runnable {
 			pauseState = true;
 		}else if (gameState== STATE.Theme) {
 			theme.tick();
-			
+		}else if (gameState == STATE.Difficulty) {
+			difficulty.tick();
 		}
 
 	}
@@ -253,6 +256,8 @@ public class Game extends Canvas implements Runnable {
 			pause.render(g);	
 		} else if (gameState==STATE.Theme) {
 			theme.render(g);
+		} else if (gameState == STATE.Difficulty) {
+			difficulty.render(g);
 		}
 
 		///////// Draw things above this//////////////

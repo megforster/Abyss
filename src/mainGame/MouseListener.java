@@ -30,12 +30,13 @@ public class MouseListener extends MouseAdapter {
 	private Victory victory;
 	private int buttonwidth = Game.WIDTH / 4;
 	private int buttonheight = Game.HEIGHT / 5;
+	private Difficulty difficulty;
 	private Theme theme;
 	private Pause pause;
 
 	// Constructor
 	public MouseListener(Game game, Handler handler, HUD hud, Spawn1to10 spawner, Spawn10to20 spawner2,
-			UpgradeScreen upgradeScreen, Player player, Upgrades upgrades, Victory victory, Theme theme, Pause pause) {
+			UpgradeScreen upgradeScreen, Player player, Upgrades upgrades, Victory victory, Theme theme, Difficulty difficulty, Pause pause) {
 		this.game = game;
 		this.handler = handler;
 		this.hud = hud;
@@ -46,6 +47,7 @@ public class MouseListener extends MouseAdapter {
 		this.upgrades = upgrades;
 		this.victory = victory;
 		this.theme = theme;
+		this.difficulty = difficulty;
 		this.pause = pause;
 	}
 
@@ -187,11 +189,19 @@ public class MouseListener extends MouseAdapter {
 				System.exit(1);
 			}
 		}
+		
+		else if(game.gameState == STATE.Difficulty) {
+			if (mouseOver(mx, my, ((Game.WIDTH - buttonwidth) / 16), ((Game.HEIGHT - buttonheight) / 2), buttonwidth,
+					buttonheight)) { 
+				
+				
+			}
+		}
 
 		// Code for when the game is paused
 		else if (game.gameState == STATE.Pause) {
 
-			// Checks if the play button has been pressed and unpasues the game (currently
+			// Checks if the play button has been pressed and unpauses the game (currently
 			// broken)
 			if (mouseOver(mx, my, ((Game.WIDTH - buttonwidth) / 2), ((Game.HEIGHT - buttonheight) / 2), buttonwidth,
 					buttonheight)) {
