@@ -198,9 +198,8 @@ public class MouseListener extends MouseAdapter {
 		}
 		
 		else if(game.gameState == STATE.Difficulty) {
-			if (mouseOver(mx, my, ((Game.WIDTH - buttonwidth) / 16), ((Game.HEIGHT - buttonheight) / 2), buttonwidth,
-					buttonheight)) { 
-				
+			if (mouseOver(mx, my, ((Game.WIDTH - buttonwidth) / 16), ((Game.HEIGHT - buttonheight) * 5 / 6),
+					buttonwidth, buttonheight)) { 			
 				
 			}
 		}

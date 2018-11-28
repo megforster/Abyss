@@ -66,6 +66,8 @@ public class Game extends Canvas implements Runnable {
 	public static Window test;
 	
 	private SoundEffects background = new SoundEffects();
+	
+	
 
 	/**
 	 * Used to switch between each of the screens shown to the user
@@ -135,7 +137,12 @@ public class Game extends Canvas implements Runnable {
 			e.printStackTrace();
 		}
 	}
+	
+	// Game Difficulty Speed
+	public void speed() {
 
+	}
+	
 	/**
 	 * Best Java game loop out there (used by Notch!)
 	 */
