@@ -11,6 +11,10 @@ import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
 import javax.swing.JFrame;
+
+import kuusisto.tinysound.Music;
+import kuusisto.tinysound.TinySound;
+
 import javax.imageio.ImageIO;
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
@@ -64,8 +68,8 @@ public class Game extends Canvas implements Runnable {
 	public STATE gameState = STATE.Menu;
 	public static int TEMP_COUNTER;
 	public static Window test;
+	public Music song;
 	
-	private SoundEffects background = new SoundEffects();
 
 	/**
 	 * Used to switch between each of the screens shown to the user
@@ -76,13 +80,17 @@ public class Game extends Canvas implements Runnable {
 
 	//Constructor, creates the game
 	public Game() {
+		
+		TinySound.init();
+		song = TinySound.loadMusic("classic.wav");
+		
 		handler = new Handler();
 		hud = new HUD();
 		theme = new Theme(this, this.handler, this.hud);
 		difficulty = new Difficulty(this, this.handler, this.hud);
 		spawner = new Spawn1to10(this.handler, this.hud, this, player);
 		spawner2 = new Spawn10to20(this.handler, this.hud, this.spawner, this);
-		menu = new Menu(this, this.handler, this.hud, this.spawner, this.theme, background);
+		menu = new Menu(this, this.handler, this.hud, this.spawner, this.theme);
 		upgradeScreen = new UpgradeScreen(this, this.handler, this.hud);
 		player = new Player(WIDTH / 2 - 32, HEIGHT / 2 - 32, ID.Player, handler, this.hud, this, theme);
 		upgrades = new Upgrades(this, this.handler, this.hud, this.upgradeScreen, this.player, this.spawner,
@@ -104,14 +112,17 @@ public class Game extends Canvas implements Runnable {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		background.playCont(theme.getMusic());
 		
+		
+		song.play(true);
 	}
 	
-	//Used when switching theme music from the default 
 	public void playMusic() {
-		background.stop();
-		background.playCont(theme.getMusic());
+		song.stop();
+		song.unload();
+		song = TinySound.loadMusic(theme.getMusic());
+		song.play(true);
+		
 	}
 
 	/**

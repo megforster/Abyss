@@ -55,19 +55,17 @@ public class Menu {
 	private int buttonheight = Game.HEIGHT / 5;
 	private Image abyss;
 	private Theme theme;
-	private SoundEffects background;
 
 	// Constructor
-	public Menu(Game game, Handler handler, HUD hud, Spawn1to10 spawner, Theme theme, SoundEffects background) {
+	public Menu(Game game, Handler handler, HUD hud, Spawn1to10 spawner, Theme theme) {
 		this.game = game;
 		this.handler = handler;
 		this.hud = hud;
 		this.spawner = spawner;
 		timer = 10;
 		r = new Random();
-		addColors();
+		//addColors();
 		this.theme = theme;
-		this.background = background;
 
 		// Reads image for background
 		img = null;
@@ -84,10 +82,10 @@ public class Menu {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
+	
 		// Adds fireworks to handler
-		handler.addObject(new MenuFireworks((r.nextInt(Game.WIDTH) - 25), 500, 50, 50, 0, -2,
-				colorPick.get(r.nextInt(6)), ID.Firework, this.handler));
+		//handler.addObject(new MenuFireworks((r.nextInt(Game.WIDTH) - 25), 500, 50, 50, 0, -2,
+				//colorPick.get(r.nextInt(6)), ID.Firework, this.handler));
 	}
 
 	// Colors for fireworks?
@@ -104,13 +102,13 @@ public class Menu {
 	// Controls firework movement?
 	public void tick() {
 		timer--;
-		if (timer <= 0) {
+		/*if (timer <= 0) {
 			handler.object.clear();
 			colorIndex = r.nextInt(6);
 			handler.addObject(new MenuFireworks((r.nextInt(Game.WIDTH) - 25), 1080, 100, 100, 0, -4,
 					colorPick.get(colorIndex), ID.Firework, this.handler));
 			timer = 300;
-		}
+		}*/
 		handler.tick();
 	}
 
@@ -136,7 +134,7 @@ public class Menu {
 				e.printStackTrace();
 			}
 			//plays the background music 
-			background.playCont(theme.getBackground());
+			//background.playCont(theme.getBackground());
 			
 			//Draws the background image
 			g.drawImage(img, 0, 0, Game.WIDTH, Game.HEIGHT, null);

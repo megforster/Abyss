@@ -25,7 +25,7 @@ public class Theme {
 	private int buttonwidth = Game.WIDTH / 4;
 	private int buttonheight = Game.HEIGHT / 5;
 	private String background = "images/8BitBackground.png";
-	private String music = "vampireweekend.wav";
+	private String music = "classic.mp3";
 	private String sprite = "images/PlayerSprite.png";
 
 	// Constructor
@@ -106,7 +106,7 @@ public class Theme {
 		g.drawString(text, x, y);
 	}
 
-	// Code for changing background menus
+	// Code for changing backgrounds and sprites
 	public void setBackgroundImage(int x) {
 		if (x == 0) {
 			background = "images/shipwreckbackground.jpg";
@@ -126,9 +126,9 @@ public class Theme {
 		if (x == 0) {
 			music = "bubble.wav";
 		} else if (x == 1) {
-			music = "vampireweekend.wav";
+			music = "classic.wav";
 		} else if (x == 2) {
-			music = "SpaceBackgroundMusic.wav";
+			music = "space.wav";
 		}
 		game.playMusic();
 

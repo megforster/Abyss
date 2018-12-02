@@ -5,6 +5,7 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.JOptionPane;
 
+import kuusisto.tinysound.TinySound;
 import mainGame.Game.STATE;
 
 /**
@@ -53,6 +54,7 @@ public class KeyInput extends KeyAdapter {
 		// Esc key to exit game entirely
 		if (key == KeyEvent.VK_ESCAPE) {
 			System.exit(0);
+			TinySound.shutdown();
 		}
 
 		// Finds what key strokes associate with Player

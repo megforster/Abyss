@@ -16,7 +16,6 @@ public class PlayerBullet extends GameObject {
 	
 	//Instance variables
 	private Handler handler;
-	private SoundEffects bullet = new SoundEffects();
 	
 	//Constructor 
 	public PlayerBullet(double x, double y, double pVelX, double pVelY, ID id, Handler handler) {
@@ -24,7 +23,7 @@ public class PlayerBullet extends GameObject {
 		this.handler = handler;
 
 		//Plays the bullet sound effect
-		bullet.playOnce("PlayerBulletSound.wav");
+		//bullet.playOnce("PlayerBulletSound.wav");
 		
 		if (pVelX > 0) {velX = 20;}
 		if (pVelX < 0) {velX = -20;}

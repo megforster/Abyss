@@ -47,7 +47,7 @@ public class Player extends GameObject {
 	
 	public void setImage() {
 		try {
-			img = ImageIO.read(new File(theme.getSprite())); // reads image for obstacle visual
+			img = ImageIO.read(new File(theme.getSprite())); // reads sprite for obstacle visual
 			
 			if(theme.getSprite()=="images/PlayerSprite.png") {
 			img = img.getScaledInstance(30, 30, 0); // scales image down
