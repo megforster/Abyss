@@ -43,7 +43,7 @@ public class Difficulty {
 			Rectangle titleCenter = new Rectangle(((Game.WIDTH - 500) / 2), ((Game.HEIGHT - 200) / 16), 500, 200);
 			drawCenteredString(g, "Pick a Difficulty", titleCenter, font);
 
-			// EASY BUTTON
+		// EASY BUTTON
 			Rectangle easyButton = new Rectangle(((Game.WIDTH - buttonwidth) / 16), ((Game.HEIGHT - buttonheight) * 5 / 6),
 					buttonwidth, buttonheight);
 			drawCenteredString(g, "EASY", easyButton, font);
@@ -59,7 +59,7 @@ public class Difficulty {
 			g.drawImage(sleepEmoji, (Game.WIDTH * 1/6) - 100, (Game.HEIGHT / 2) - 105, 210,
 					200, null);
 
-			// MEDIUM Button
+		// MEDIUM Button
 			Rectangle mediumButton = new Rectangle(((Game.WIDTH - buttonwidth) / 2), ((Game.HEIGHT - buttonheight) * 5 / 6),
 					buttonwidth, buttonheight);
 			drawCenteredString(g, "MEDIUM", mediumButton, font);
@@ -73,7 +73,7 @@ public class Difficulty {
 			g.drawImage(smilingEmoji, ((Game.WIDTH / 2) - 105), ((Game.HEIGHT / 2) - 100), 210,
 					200, null);
 
-			// HARD BUTTON
+		// HARD BUTTON
 			Rectangle hardButton = new Rectangle(((Game.WIDTH - buttonwidth) * 15/16), ((Game.HEIGHT - buttonheight) * 5 / 6),
 					buttonwidth, buttonheight);
 			drawCenteredString(g, "HARD", hardButton, font);
@@ -88,13 +88,6 @@ public class Difficulty {
 			g.drawImage(devilEmoji, (Game.WIDTH * 5/6) - 100, (Game.HEIGHT / 2) - 105, 210,
 					200, null);
 		}
-	}
-
-	public int getTextWidth(Font font, String text) {
-		AffineTransform at = new AffineTransform();
-		FontRenderContext frc = new FontRenderContext(at, true, true);
-		int textWidth = (int) (font.getStringBounds(text, frc).getWidth());
-		return textWidth;
 	}
 
 	public void drawCenteredString(Graphics g, String text, Rectangle rect, Font font) {
