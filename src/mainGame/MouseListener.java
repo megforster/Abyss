@@ -149,7 +149,7 @@ public class MouseListener extends MouseAdapter {
 			else if (mouseOver(mx, my, ((Game.WIDTH - buttonwidth) * 15 / 16), ((Game.HEIGHT - buttonheight) * 5 / 6),
 					buttonwidth, buttonheight)) {
 				JOptionPane.showMessageDialog(game,
-						"Made by the Brogrammers 2.0 for CSC 225. \nIn Loving Memory of Christopher Cherry. \nFixed by the Visionaries, you're welcome.");
+						"Made by the Brogrammers 2.0 for CSC 225. \nIn Loving Memory of Christopher Cherry. \nFixed by the Visionaries, you're welcome. \nIn loving memory of Reese DelGrande");
 			}
 
 			// Checks if the quit button has been pressed and exits the game
