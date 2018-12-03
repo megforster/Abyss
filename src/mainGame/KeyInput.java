@@ -53,8 +53,8 @@ public class KeyInput extends KeyAdapter {
 
 		// Esc key to exit game entirely
 		if (key == KeyEvent.VK_ESCAPE) {
+			TinySound.shutdown(); //Turns TinySound "off"
 			System.exit(0);
-			TinySound.shutdown();
 		}
 
 		// Finds what key strokes associate with Player

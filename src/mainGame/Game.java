@@ -80,8 +80,8 @@ public class Game extends Canvas implements Runnable {
 	//Constructor, creates the game
 	public Game() {
 		
-		TinySound.init();
-		song = TinySound.loadMusic("classic.wav");
+		TinySound.init(); //Turns TinySound "on"
+		song = TinySound.loadMusic("classic.wav"); //"Loads" the song to TinySound
 		
 		handler = new Handler();
 		hud = new HUD();
@@ -113,13 +113,13 @@ public class Game extends Canvas implements Runnable {
 		}
 		
 		
-		song.play(true);
+		song.play(true); //Triggers TinySound to play the currently loaded song
 	}
 	
 	public void playMusic() {
-		song.stop();
-		song.unload();
-		song = TinySound.loadMusic(theme.getMusic());
+		song.stop(); //Triggers TinySound to stop playing the currently loaded song
+		song.unload(); //Tells TinySound to "unload" the current sound
+		song = TinySound.loadMusic(theme.getMusic()); //Tells TinySound to "load" the song
 		song.play(true);
 		
 	}
