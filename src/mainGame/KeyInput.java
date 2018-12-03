@@ -2,6 +2,7 @@ package mainGame;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.Random;
 
 import javax.swing.JOptionPane;
 
@@ -28,6 +29,7 @@ public class KeyInput extends KeyAdapter {
 	private Upgrades upgrades;
 	private String ability;
 	private boolean play;
+	Random r = new Random(); //used when player presses "E"
 
 	// Constructor
 	public KeyInput(Handler handler, Game game, HUD hud, Player player, Spawn1to10 spawner, Upgrades upgrades) {
@@ -57,6 +59,46 @@ public class KeyInput extends KeyAdapter {
 			System.exit(0);
 		}
 
+		//Displays one of four results randomly, I checked 
+		if(key==KeyEvent.VK_E) {
+			int joke = r.nextInt(4)*1;
+			switch(joke){
+			case 1:
+				System.out.println("Q: What does Tarzan say when he sees a herd of elephants in the distance?\r\n" + 
+						"A: “Look, a herd of elephants in the distance”\r\n" + 
+						"\r\n" + 
+						"Q: What does Tarzan say when he sees a herd of elephants with sunglasses\r\n" + 
+						"A: Nothing. He doesn’t recognize them.\r\n" + 
+						"\r\n" + 
+						"Q: What does Tarzan say when he sees a herd of giraffes in the distance?\r\n" + 
+						"A: “Haha! You fooled me once with those disguises, but not this time!”\n");
+				break;
+			case 2:
+				System.out.println("Q. Why do ducks have webbed feet?\r\n" + 
+						"A. To stomp out forest fires.\r\n" + 
+						"\r\n" + 
+						"Q. Why do elephants have large feet?\r\n" + 
+						"A. To stomp out flaming ducks!\n");
+				break;
+			
+			case 3:
+				System.out.println("Q. Why did the elephant fall out of the tree?\r\n" + 
+						"A. Because it was dead.\r\n" + 
+						"\r\n" + 
+						"Q. Why did the second elephant fall out of the tree?\r\n" + 
+						"A. It was stapled to the first elephant.\r\n" + 
+						"\r\n" + 
+						"Q. Why did the third elephant fall out of the tree?\r\n" + 
+						"A. Peer pressure.\r\n" + 
+						"\r\n" + 
+						"Q. Why did the tree fall down?\r\n" + 
+						"A. It thought it was an elephant.\n");
+				break;
+			default: 
+				System.out.println("You do not have the elephant's favor, no joke for you!\n");
+			}	
+			
+		}
 		// Finds what key strokes associate with Player
 		for (int i = 0; i < handler.object.size(); i++) {
 			GameObject tempObject = handler.object.get(i);
